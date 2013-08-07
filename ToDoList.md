@@ -7,6 +7,7 @@ Create rough copy of the relational diagram
 
 <h3>Due 14-08-2013</h3>
 <p>
+Create DB Table "Facilities"<br>
 Create DB Table "Staff"<br>
 Create DB Table "Supplies"<br>
 Create DB Table "Services"<br>
