@@ -1,10 +1,7 @@
 Contributors
 ===============
 
-Cheng Cheng
-
-Karim Kaidbey
-
-Christopher Mukherjee
-
-Alexander Vissa
+* Cheng Cheng
+* Karim Kaidbey
+* Christopher Mukherjee
+* Alexander Vissa
