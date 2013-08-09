@@ -1,0 +1,140 @@
+* {
+	margin:0px;
+	padding:0px;
+}
+body  {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	background: #ffffff;
+	color: #4e4e4e;
+}
+a {
+	color:#778899;
+	font-size:12px;
+	text-decoration:underline;
+}
+a:hover {
+	color:#20B2AA;
+	font-size:12px;
+	text-decoration:none;
+}
+#container { 
+	width: 800px;  
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+} 
+#header {
+	width:800px;
+	background:url(images/headerBackground.jpg) no-repeat left top;
+}
+#menu {
+	padding:20px 0;
+}
+ul#navlist {
+	margin-left: 0;
+	padding-left: 0;
+	white-space: nowrap;
+}
+
+#navlist li {
+	display: inline;
+	list-style-type: none;
+    
+}
+
+#navlist a { 
+	padding: 13px 20px; 
+    
+}
+
+#navlist a:link, #navlist a:visited {
+	color: #778899 ;
+	text-decoration: none;
+	font-size:36px;
+	background:url(images/p.jpg) no-repeat 22px top;
+}
+
+#navlist a:hover {
+	color: #20B2AA  ;
+	text-decoration: none;
+	font-size:36px;
+	/*background:url(images/pActive.jpg) no-repeat 22px top;*/
+}
+#navlist #active a {
+	
+	text-decoration: none;
+	font-size:20px;
+	background:url(images/pActive.jpg) no-repeat 22px top;
+}
+
+#navlist #active1 a {
+	
+	text-decoration: none;
+	font-size:20px;
+	background:url(images/pActive.jpg) no-repeat 22px top;
+}
+#navlist #active2 a {
+	
+	text-decoration: none;
+	font-size:20px;
+	background:url(images/pActive.jpg) no-repeat 22px top;
+}
+#navlist #active3 a {
+	
+	text-decoration: none;
+	font-size:20px;
+	background:url(images/pActive.jpg) no-repeat 22px top;
+}
+#navlist #active4 a {
+	
+	text-decoration: none;
+	font-size:20px;
+	background:url(images/pActive.jpg) no-repeat 22px top;
+}
+#navlist #active5  a {
+	
+	text-decoration: none;
+	font-size:20px;
+	background:url(images/pActive.jpg) no-repeat 22px top;
+}
+
+
+
+
+
+
+#logo {
+	color:#FFF;
+	font-size:48px;
+	text-align:center;
+}
+#author {
+	padding-top:220px;
+	text-align:center;
+}
+#sidebar1 {
+    color: #778899;
+	float: left; /* since this element is floated, a width must be given */
+	width: 200px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+}
+#sidebar1 li {
+	list-style:none;
+	background:url(images/pp.jpg) no-repeat left 4px;
+	padding-left:10px;
+	padding-right:30px;
+	margin:10px 0;
+}
+#mainContent { 
+	margin: 0 0 0 210px;  
+	background:#ebebeb;
+	padding:20px;
+} 
+#footer {
+	text-align:center;
+	padding:20px 0;
+} 
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
