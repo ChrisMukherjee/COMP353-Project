@@ -7,22 +7,24 @@ Create rough copy of the relational diagram
 
 <h3>Due 14-08-2013</h3>
 <p>
-Create DB Table "Facilities"<br>
-Create DB Table "Staff"<br>
-Create DB Table "Supplies"<br>
+Create DB Table "Facilities" - DONE<br>
+Create DB Table "Staff" - DONE<br>
+Create DB Table "Supplies" - DONE<br>
 Create DB Table "Services"<br>
 Create DB Table "Schedule"<br>
-Create DB Table "Patients"<br>
-Create DB Table "Directors/Administrators"<br>
-Create DB Table "Doctors"<br>
-Create DB Table "Residents and Interns"<br>
-Create DB Table "Nurse Shift Supervisor"<br>
-Create DB Table "Nurse"<br>
+Create DB Table "Patients"<br><br>
+
+Create DB View "Directors/Administrators"<br>
+Create DB View "Doctors"<br>
+Create DB View "Residents and Interns"<br>
+Create DB View "Nurse Shift Supervisor"<br>
+Create DB View "Nurse"<br>
 Generate records using "Spawner"
 </p>
 
 <h3>Due 21-08-2013</h3>
 <p>
+Create SQL for PHP Code<br/>
 Create PHP Code<br>
 Create clean copy of the relational diagram<br/>
 Describe asssumptions made regarding design (Crow's foot notation)
