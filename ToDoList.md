@@ -12,7 +12,7 @@ Create DB Table "Staff" - DONE<br>
 Create DB Table "Supplies" - DONE<br>
 Create DB Table "Services"<br>
 Create DB Table "Schedule"<br>
-Create DB Table "Patients"<br>
+Create DB Table "Patients"<br><br>
 
 Create DB View "Directors/Administrators"<br>
 Create DB View "Doctors"<br>
