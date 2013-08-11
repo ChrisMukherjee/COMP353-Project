@@ -44,7 +44,7 @@ if (isset($_SESSION['login'])) {
                 <p>Karim Kaidbey - <a href="mailto:kkaidbey@yahoo.ca">kkaidbey@yahoo.ca</a></p>
                 <p>Alexander Vissa - <a href="mailto:alexvissa@gmail.com">alexvissa@gmail.com</a></p>
                 <p>Christopher Mukherjee - <a href="mailto:chris.mukherjee@gmail.com">chris.mukherjee@gmail.com</a></p>
-                <p>Cheng Cheng - <a href="mailto:cheng.cheng@hotmail.ca">cheng.cheng@live.ca</a></p>
+                <p>Cheng Cheng - <a href="mailto:cheng.cheng@hotmail.ca">cheng.cheng@hotmail.ca</a></p>
 				</strong>
 
                
