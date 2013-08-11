@@ -2,7 +2,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Starline</title>
+<!--Favicon (favorite icon)-->
+<link rel="icon" type="image/ico" href="/images/tdxicon.ico"/>
+<!--Normalize CSS-->
+<link rel="stylesheet" type="text/css" href="/normalize.css" />
+<!--External CSS-->
 <link href="styles.css" rel="stylesheet" type="text/css" /><!--[if IE 5]>
 <style type="text/css"> 
 /* place css box model fixes for IE 5* in this conditional comment */
@@ -16,6 +20,8 @@
 /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
 </style>
 <![endif]-->
+<title>Starline Medical Center</title>
+
 </head>
 
 <body>
@@ -24,14 +30,14 @@
 	<!-- begin #header -->
     <div id="header">
     	<div id="logo">
-        	Starline For Hospital
+        	Starline Medical Center
         </div>
         <div id="author">
         	
         </div>
         <div id="menu">
         	<ul id="navlist">
-                <li id="active"><a href="index.html">Home</a></li>
+                <li id="active"><a href="index.php">Home</a></li>
                 <li id="active1"><a href="patients.html">Patients&Vistors</a></li>
                 <li id="active2"><a href="doctors.html">Doctors</a></li>
                 <li id="active3"><a href="interns.html">Residents&Interns</a></li>
