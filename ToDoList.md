@@ -2,7 +2,7 @@
 
 <h3>Due 08-08-2013</h3>
 <p>
-Create rough copy of the relational diagram
+Create rough copy of the relational diagram - DONE
 </p>
 
 <h3>Due 14-08-2013</h3>
