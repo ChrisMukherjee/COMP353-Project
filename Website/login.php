@@ -68,7 +68,7 @@ if (isset($_POST["username"])) {
     <!-- begin #mainContent -->
     <div id="mainContent">
     	<p>Please login below to access the Starline Medical Center Database</p>
-		<hr /><br/>
+		<br/>
 <form method="post" onsubmit="window.location.reload()" action="?">
 <table>
 <tr>
