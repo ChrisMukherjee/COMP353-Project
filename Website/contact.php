@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<?php session_start(); ?>
+<?php
+if (isset($_SESSION['login'])) {
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -54,3 +59,10 @@
 <!-- end #container -->
 </body>
 </html>
+
+<?php
+}
+else {
+header("Location: login.php");
+}
+?>
