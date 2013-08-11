@@ -21,13 +21,11 @@
 </style>
 <![endif]-->
 <title>Starline Medical Center</title>
-
 </head>
 
 <body>
 <!-- begin #container -->
 <div id="container">
-
 	<!--Include the Website Header-->
 	<?php include 'header.php'; ?>
 	<!--Include the Website Sidebar-->
