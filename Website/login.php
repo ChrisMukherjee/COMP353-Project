@@ -1,10 +1,5 @@
 <?php session_start(); ?>
 <?php
-// By Christopher Mukherjee
-// PHP code to login registered users
-
-if (!isset($_SESSION['login'])) {
-
 if (isset($_POST["username"])) {
 	if ($_POST["username"] != null && file_exists("members.txt")) {
 		$username = $_POST["username"];
@@ -99,7 +94,7 @@ if (isset($_POST["username"])) {
 
 	<!--Include the Website Footer-->
 	<?php include 'footer.php'; ?>
-</div>
+
 <!-- end #container -->
 </body>
 </html>
