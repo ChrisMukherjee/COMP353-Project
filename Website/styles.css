@@ -142,5 +142,5 @@ ul#navlist {
 .error
 {
 	font-weight: bold;
-	text: red;
+	color: red;
 }
