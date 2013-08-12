@@ -27,7 +27,6 @@
  //   exit('cannot login. click <a href="javascript:history.back(-1);">go back </a> try again');
 //}
 ?>
-
 <?php session_start(); ?>
 <?php
 if (!isset($_SESSION['login'])) {
@@ -58,7 +57,6 @@ if (isset($_POST["username"])) {
 	}
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,10 +86,8 @@ if (isset($_POST["username"])) {
 <body>
 <!-- begin #container -->
 <div id="container">
-
 	<!--Include the Website Header-->
 	<?php include 'header.php'; ?>
-
     <!-- begin #mainContent -->
     	<p><br/>Please login below to access the Starline Medical Center Database</p>
 		<br/>
@@ -114,21 +110,18 @@ if (isset($_POST["username"])) {
 	if (isset($_POST["username"])) {
 		if ($_POST["username"] != null || !file_exists("members.txt")) {
 			if (!isset($_SESSION['login'])) {
-				echo "<p class=\"error\">Error: Invalid username or password</p>";
+				echo '<p class="error">Error: Invalid username or password</p>';
 			}
 		}
 	}
 ?>
-    <!-- end #mainContent -->
+<!-- end #mainContent -->
 	<br class="clearfloat" />
-
 	<!--Include the Website Footer-->
 	<?php include 'footer.php'; ?>
-
 <!-- end #container -->
 </body>
 </html>
-
 <?php
 }
 else {

@@ -2,7 +2,6 @@
 <?php
 if (isset($_SESSION['login'])) {
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +34,6 @@ if (isset($_SESSION['login'])) {
 	<?php include 'header.php'; ?>
 	<!--Include the Website Sidebar-->
 	<?php include 'sidebar.php'; ?>
-
     <!-- begin #mainContent -->
     <div id="mainContent">
     	<p>
@@ -55,14 +53,12 @@ Flash Template is a ready-made Flash Site that you can download and use for free
     </div>
     <!-- end #mainContent -->
 	<br class="clearfloat" />
-
 	<!--Include the Website Footer-->
 	<?php include 'footer.php'; ?>
 </div>
 <!-- end #container -->
 </body>
 </html>
-
 <?php
 }
 else {

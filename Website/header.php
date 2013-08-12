@@ -18,5 +18,5 @@ echo '<li id="active4"><a href="nurses.php">Nurses</a></li>';
 echo '<li id="active5"><a href="contact.php">Contact Us</a></li>';
 echo '</ul></div>'; }
 ?>
-    </div>
+</div>
     <!-- end #header -->

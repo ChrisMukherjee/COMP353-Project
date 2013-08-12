@@ -139,8 +139,7 @@ ul#navlist {
     line-height: 0px;
 }
 
-.error
-{
+.error {
 	font-weight: bold;
 	color: red;
 }
