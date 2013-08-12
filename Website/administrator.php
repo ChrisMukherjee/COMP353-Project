@@ -1,8 +1,17 @@
-﻿<!DOCTYPE html>
+﻿<?php session_start(); ?>
+<?php
+if (isset($_SESSION['login'])) {
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Starline</title>
+<!--Favicon (favorite icon)-->
+<link rel="icon" type="image/ico" href="/images/tdxicon.ico"/>
+<!--Normalize CSS-->
+<link rel="stylesheet" type="text/css" href="/normalize.css" />
+<!--External CSS-->
 <link href="styles.css" rel="stylesheet" type="text/css" /><!--[if IE 5]>
 <style type="text/css"> 
 /* place css box model fixes for IE 5* in this conditional comment */
@@ -16,51 +25,17 @@
 /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
 </style>
 <![endif]-->
+<title>Starline - Administrator</title>
 </head>
 
 <body>
 <!-- begin #container -->
 <div id="container">
-	<!-- begin #header -->
-    <div id="header">
-    	<div id="logo">
-        	Starline For Hospital
-        </div>
-        <div id="author">
-        	
-        </div>
-        <div id="menu">
-        	<ul id="navlist">
-                <li id="active"><a href="index.html">Home</a></li>
-                <li id="active1"><a href="patients.html">Patients&Vistors</a></li>
-                <li id="active2"><a href="doctors.html">Doctors</a></li>
-                <li id="active3"><a href="interns.html">Residents&Interns</a></li>
-                <li id="active4"><a href="nurses.html">Nurses</a></li>
-                <li id="active5"><a href="contact.html">Contact Us</a></li>
-               
-            </ul>
-        </div>
-    </div>
-    <!-- end #header -->
-    <!-- begin #sidebar1 -->
-    <div id="sidebar1">
-    	<h2>Manager</h2>
-        <ul>
-        	<li><a href="admistrator.html"><fontcolor = #778899>Administrators</fontcolor></a></li>
-            <li><a href="directors.html">Directors</a></li>
-            <li><a href="supervisor.html">Nurse Shift Supervisor</a></li>
-            
-        </ul>
-        <br /><br />
-        <h2>Testimonials</h2>
-        <ul>
-        	<li>Congratulations for your web site. You did a great job!<br />Author: Ludovic Tourne</li>
-            <li>First thank you for this wonderfull webside it is really nice<br />Author: victoir</li>
-            <li>Hello, Wonderfull Templates you have.<br />Author: richard</li>
-            <li>Thank you for your great site.<br />Author: Miro</li>
-        </ul>
-    </div>
-    <!-- end #sidebar1 -->
+	<!--Include the Website Header-->
+	<?php include 'header.php'; ?>
+	<!--Include the Website Sidebar-->
+	<?php include 'sidebar.php'; ?>
+
     <!-- begin #mainContent -->
     <div id="mainContent">
     	<p>
@@ -80,18 +55,16 @@ Flash Template is a ready-made Flash Site that you can download and use for free
     </div>
     <!-- end #mainContent -->
 	<br class="clearfloat" />
-    <!-- begin #footer -->
- <div id="footer">
-    	<p>
-       Copyright &copy;2010 
-      <a class="footerLink" href="#" title="This page validates as XHTML 1.0 Strict"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> 
-      <a class="footerLink" href="#" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a><br />
-       Site created by <a title="Facebook Welcome Page" href="#">Team G </a>  
-    </p>
-    </div>
-    <img src="images/footerPic.jpg" alt="" width="800" height="156" />
-<!-- end #footer -->
+    <!--Include the Website Footer-->
+	<?php include 'footer.php'; ?>
 </div>
 <!-- end #container -->
 </body>
 </html>
+
+<?php
+}
+else {
+header("Location: login.php");
+}
+?>
