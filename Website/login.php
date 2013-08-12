@@ -1,5 +1,7 @@
 <?php session_start(); ?>
 <?php
+if (!isset($_SESSION['login'])) {
+
 if (isset($_POST["username"])) {
 	if ($_POST["username"] != null && file_exists("members.txt")) {
 		$username = $_POST["username"];
@@ -96,3 +98,10 @@ if (isset($_POST["username"])) {
 <!-- end #container -->
 </body>
 </html>
+
+<?php
+}
+else {
+header("Location: index.php");
+}
+?>
