@@ -1,11 +1,11 @@
 <?php 
-//session_start();
-//if(!isset($_POST['submit']))
-//{
- //   exit('invalid!');
-//}
-//$username = $_POST['username'];
-//$password = $_POST['password'];
+session_start();
+if(!isset($_POST['submit']))
+{
+	exit('invalid!');
+}
+$username = $_POST['username'];
+$password = $_POST['password'];
 
 //connect to the local database and schema'hospital'
 //$link = mysql_connect('localhost','root',''); 
@@ -94,7 +94,7 @@ if (isset($_POST["username"])) {
 <form method="post" onsubmit="window.location.reload()" action="?">
 <table>
 <tr>
-<td>Username:</td>
+<td>User ID:</td>
 <td><input name="username" id="username" type="text" size="30"/></td>
 </tr>
 <tr>
