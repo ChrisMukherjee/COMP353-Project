@@ -61,8 +61,7 @@ if (isset($_POST["username"])) {
 	<?php include 'header.php'; ?>
 
     <!-- begin #mainContent -->
-    <div id="mainContent">
-    	<p>Please login below to access the Starline Medical Center Database</p>
+    	<p><br/>Please login below to access the Starline Medical Center Database</p>
 		<br/>
 <form method="post" onsubmit="window.location.reload()" action="?">
 <table>
@@ -88,7 +87,6 @@ if (isset($_POST["username"])) {
 		}
 	}
 ?>
-    </div>
     <!-- end #mainContent -->
 	<br class="clearfloat" />
 
