@@ -2,7 +2,7 @@
     <div id="sidebar1">
     	<h2>Manager</h2>
         <ul>
-        	<li><a href="admistrator.php"><fontcolor = #778899>Administrators</fontcolor></a></li>
+        	<li><a href="administrator.php"><fontcolor = #778899>Administrators</fontcolor></a></li>
             <li><a href="directors.php">Directors</a></li>
             <li><a href="supervisor.php">Nurse Shift Supervisor</a></li>
             
