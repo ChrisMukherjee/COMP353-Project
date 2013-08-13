@@ -7,12 +7,15 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 // Connect to the local database and schema 'hospital'
-$link = mysql_connect('localhost','root',''); 
-mysql_select_db('hospital');
+$link = mysqli_connect("localhost","user1","user123","Hospital");
+if (mysqli_connect_errno($link)) {
+	echo "Failed to connect to MySQL Server, Error: " . mysqli_connect_error();
+}
 
 // Check the username and password
-$check_query = mysql_query("SELECT staffID FROM staff WHERE staffID='$username' and password='$password'  LIMIT 1");
+$check_query = mysql_query("SELECT staffID FROM Staff WHERE staffID='$username' AND password='$password' LIMIT 1");
 if($result = mysql_fetch_array($check_query)) {
+	echo $result['staffID']. " - ". $result['password'];
 	// Login successful
 	$_SESSION['userid'] = $result['staffID'];
 	$_SESSION['login']=true;
