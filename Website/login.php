@@ -1,60 +1,28 @@
-<?php 
-session_start();
-if(!isset($_POST['submit']))
-{
-	exit('invalid!');
-}
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-//connect to the local database and schema'hospital'
-//$link = mysql_connect('localhost','root',''); 
-//mysql_select_db('hospital');
-//check the username and password
-
-
-//$check_query = mysql_query("select uid from staff where username='$username' and password='$password'  limit 1");
-//if($result = mysql_fetch_array($check_query))
-//{
-    // success in login
-  //  $_SESSION['username'] = $username;
-  //  $_SESSION['userid'] = $result['uid'];
-   // echo $username,' Welcome <a href="my.php">Acoount</a><br />';
-  //  echo 'click <a href="login.php?action=logout">logout</a> login <br />';
-//    exit;
-//} 
-//else {
- //   exit('cannot login. click <a href="javascript:history.back(-1);">go back </a> try again');
-//}
-?>
-<?php session_start(); ?>
-<?php
+<?php session_start();
 if (!isset($_SESSION['login'])) {
 
 if (isset($_POST["username"])) {
-	if ($_POST["username"] != null && file_exists("members.txt")) {
-		$username = $_POST["username"];
-		$password = $_POST["password"];
-		$file = fopen("members.txt", 'r');
 
-		while(!feof($file)) {
-			$line = fgets($file);
-			$line = trim($line);
-			if (empty($line)) {
-				continue;
-			}
-			else {
-				$array = explode("#", $line);
-				if ($username == $array[0] && $password == $array[1]) {
-					$_SESSION['login']=true;
-					header('Location: index.php');
-					fclose($file);
-					break;
-				}
-			}
-		}
-		fclose($file);
-	}
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+// Connect to the local database and schema 'hospital'
+$link = mysql_connect('localhost','root',''); 
+mysql_select_db('hospital');
+
+// Check the username and password
+$check_query = mysql_query("SELECT staffID FROM staff WHERE staffID='$username' and password='$password'  LIMIT 1");
+if($result = mysql_fetch_array($check_query)) {
+	// Login successful
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: trenddemo.php');
+	exit;
+}
+else {
+	// Login unsuccessful
+	$_SESSION['error']=true;
+}
 }
 ?>
 <!DOCTYPE html>
@@ -107,13 +75,10 @@ if (isset($_POST["username"])) {
 </table>
 </form>
 <?php
-	if (isset($_POST["username"])) {
-		if ($_POST["username"] != null || !file_exists("members.txt")) {
-			if (!isset($_SESSION['login'])) {
-				echo '<p class="error">Error: Invalid username or password</p>';
-			}
-		}
-	}
+if (isset($_SESSION['error'])) {
+	echo '<p class="error">Error: Invalid username or password</p>';
+	UNSET($_SESSION['error']);
+}
 ?>
 <!-- end #mainContent -->
 	<br class="clearfloat" />
