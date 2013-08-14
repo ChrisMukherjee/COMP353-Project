@@ -3,29 +3,47 @@ if (!isset($_SESSION['login'])) {
 
 if (isset($_POST["username"])) {
 
+$username = "";
+$password = "";
+$db_uname = "root";
+$db_pw = "admin";
+
+$host = "localhost";
+$db_name = "hospital";
+$tbl_name = "staff";
+
+// Connect to the local database and schema 'hospital'
+mysql_connect("$host", "$db_uname", "$db_pw") or die("Error: Cannot connect to MySQL Server");
+mysql_select_db("$db_name")or die("Error: Cannot select database \"$db_name\"");
+
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-// Connect to the local database and schema 'hospital'
-$link = mysqli_connect("localhost","user1","user123","Hospital");
-if (mysqli_connect_errno($link)) {
-	echo "Failed to connect to MySQL Server, Error: " . mysqli_connect_error();
-}
 
-// Check the username and password
-$check_query = mysql_query("SELECT staffID FROM Staff WHERE staffID='$username' AND password='$password' LIMIT 1");
-if($result = mysql_fetch_array($check_query)) {
+// To protect MySQL injection
+$username = stripslashes($username);
+$password = stripslashes($password);
+$username = mysql_real_escape_string($username);
+$password = mysql_real_escape_string($password);
+$sql="SELECT * FROM $tbl_name WHERE staffID='$username' and password='$password'";
+$result = mysql_query($sql) or die ('Unable to run query: '.mysql_error());
+
+$count = mysql_num_rows($result);
+
+if($count == 1) {
 	echo $result['staffID']. " - ". $result['password'];
 	// Login successful
 	$_SESSION['userid'] = $result['staffID'];
 	$_SESSION['login']=true;
-	header('Location: trenddemo.php');
+	header('Location: index.php');
 	exit;
 }
+
 else {
 	// Login unsuccessful
 	$_SESSION['error']=true;
 }
+
 }
 ?>
 <!DOCTYPE html>
@@ -73,7 +91,9 @@ else {
 <td><input name="password" id="password" type="password" size="30"/></td>
 </tr>
 <tr>
-<td><input type="submit" value="Login"/></td>
+<td><input type="submit" value="Login"/>
+	<input type="submit" value="Guest"/>
+</td>
 </tr>
 </table>
 </form>

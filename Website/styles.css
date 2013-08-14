@@ -143,3 +143,8 @@ ul#navlist {
 	font-weight: bold;
 	color: red;
 }
+	
+.success {
+	font-weight: bold;
+	color: blue;
+}
