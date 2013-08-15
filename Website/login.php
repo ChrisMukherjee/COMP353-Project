@@ -39,54 +39,74 @@ if($count == 1) {
 	$dir="SELECT * FROM director WHERE staffID='$username'";
 	$dirCount = mysql_num_rows(mysql_query($dir));
 	
+	$res="SELECT * FROM residents WHERE staffID='$username'";
+	$resCount = mysql_num_rows(mysql_query($res));
+	
+	$int="SELECT * FROM interns WHERE staffID='$username'";
+	$intCount = mysql_num_rows(mysql_query($int));
+	
 	$doc="SELECT * FROM doctor WHERE staffID='$username'";
 	$docCount = mysql_num_rows(mysql_query($doc));
 	
 	$nur="SELECT * FROM nurse WHERE staffID='$username'";
 	$nurCount = mysql_num_rows(mysql_query($nur));
 	
-	$tec="SELECT * FROM technicians WHERE staffID='$username'";
-	$tecCount = mysql_num_rows(mysql_query($tec));
+	$sup="SELECT * FROM supervisor WHERE staffID='$username'";
+	$supCount = mysql_num_rows(mysql_query($sup));
 	
-	if($admCount == 1){
+	if($admCount >= 1){
 	$_SESSION['userid'] = $result['staffID'];
 	$_SESSION['login']=true;
-	header('Location: administrators.php');
+	header('Location: dir_admin.php');
 	exit;
 	}//End of administrators count
 	
-	elseif($dirCount == 1){
+	elseif($dirCount >= 1){
 	$_SESSION['userid'] = $result['staffID'];
 	$_SESSION['login']=true;
-	header('Location: director.php');
+	header('Location: dir_admin.php');
 	exit;
 	}//End of director count
 	
-	elseif($docCount == 1){
+	elseif($resCount >= 1){
 	$_SESSION['userid'] = $result['staffID'];
 	$_SESSION['login']=true;
-	header('Location: doctor.php');
+	header('Location: res_int.php');
+	exit;
+	}//End of residents count
+	
+	elseif($intCount >= 1){
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: res_int.php');
+	exit;
+	}//End of interns count
+	
+	elseif($docCount >= 1){
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: doctors.php');
 	exit;
 	}//End of doctor count
 	
-	elseif($nurCount == 1){
+	elseif($nurCount >= 1){
 	$_SESSION['userid'] = $result['staffID'];
 	$_SESSION['login']=true;
-	header('Location: nurse.php');
+	header('Location: nurses.php');
 	exit;
 	}//End of nurse count
 	
-	elseif($tecCount == 1){
+	elseif($supCount >= 1){
 	$_SESSION['userid'] = $result['staffID'];
 	$_SESSION['login']=true;
-	header('Location: technicians.php');
+	header('Location: nurses_sup.php');
 	exit;
-	}//End of technicians count
+	}//End of supervisor count
 	
 	else{
 	$_SESSION['userid'] = $result['staffID'];
 	$_SESSION['login']=true;
-	header('Location: index.php');
+	header('Location: patients.php');
 	exit;
 	}//End of default
 }
@@ -131,7 +151,7 @@ mysql_close($con);
 	<!--Include the Website Header-->
 	<?php include 'header.php'; ?>
     <!-- begin #mainContent -->
-    	<p><br/>Please login below to access the Starline Medical Center Database<br>If you are a patient, leave the username and password untouched and simply click "Login"</p>
+    	<p><br/>Please login below to access the Starline Medical Center Database</p>
 		<br/>
 <form method="post" onsubmit="window.location.reload()" action="?">
 <table>
@@ -144,9 +164,7 @@ mysql_close($con);
 <td><input name="password" id="password" type="password" size="30"/></td>
 </tr>
 <tr>
-<td><input type="submit" value="Login"/>
-	<input type="submit" value="Patients"/>
-</td>
+<td><input type="submit" value="Login"/></td>
 </tr>
 </table>
 </form>
