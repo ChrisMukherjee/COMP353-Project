@@ -53,18 +53,19 @@ For support please visit www.cssmoban.com<br /><br /><br /><br />
 Flash Template is a ready-made Flash Site that you can download and use for free! Flash Template was created by professional and independent designers for you. You need only to make your adjustments and your flash site is ready. If you open .fla file you can easily change the text information and graphics of the site. There's no need to make animation - our designers already did it. After your text and graphics adjustments you need only to upload .swf file to your server and enjoy your ready Flash Site! Using Free Flash Templates you can save your time and money! 
         </p>
     </div>
-    <!-- end #mainContent -->
-	<br class="clearfloat" />
-    <!--Include the Website Footer-->
-	<?php include 'footer.php'; ?>
+<!-- end #mainContent -->
 </div>
 <!-- end #container -->
+<div class="push"></div>
+</div>
+<!--Include the Website Footer-->
+<?php include 'footer.php'; ?>
 </body>
 </html>
 
 <?php
 }
 else {
-header("Location: login.php");
+header("Location: index.php");
 }
 ?>

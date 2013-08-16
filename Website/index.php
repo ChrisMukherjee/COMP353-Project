@@ -178,8 +178,8 @@ mysql_close($con);
 </tr>
 </table>
 </div>
+<div class="floatRight"><p>OR</p><input type="submit" value="Login as Patient"></div>
 </form>
-<div class="floatRight"><p>OR</p><form method="link" action="patients.php"><input type="submit" value="Login as Patient"></form></div>
 <?php
 if (isset($_SESSION['error'])) {
 	echo "<p class=\"error\">Error: Invalid username or password</p>";
@@ -187,8 +187,8 @@ if (isset($_SESSION['error'])) {
 }
 ?>
 <!-- end #mainContent -->
-<!-- end #container -->
 </div>
+<!-- end #container -->
 <div class="push"></div>
 </div>
 <!--Include the Website Footer-->
