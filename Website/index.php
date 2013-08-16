@@ -18,7 +18,7 @@ if (isset($_POST["username"])) {
 $username = "";
 $password = "";
 $db_uname = "root";
-$db_pw = "admin";
+$db_pw = "root";
 
 $host = "localhost";
 $db_name = "hospital";
