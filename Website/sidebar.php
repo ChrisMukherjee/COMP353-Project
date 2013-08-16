@@ -3,7 +3,6 @@
 		<br>
 	    <h2>Pages</h2>
         <ul>
-        	<li><a href="index.php">Home</a></li>
             <li><a href="patients.php">Patients</a></li>
             <li><a href="dir_admin.php">Directors/Administrators</a></li>
 			<li><a href="doctors.php">Doctors</a></li>

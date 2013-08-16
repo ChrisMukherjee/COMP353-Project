@@ -1,11 +1,129 @@
-﻿<?php session_start(); ?>
-<?php
-if (isset($_SESSION['login'])) {
+<?php session_start();
+ if (!isset($_SESSION['login'])) {
+
+if (isset($_POST["username"])) {
+
+$username = "";
+$password = "";
+$db_uname = "root";
+$db_pw = "admin";
+
+$host = "localhost";
+$db_name = "hospital";
+$tbl_name = "staff";
+
+// Connect to the local database and schema 'hospital'
+$con = mysql_connect("$host", "$db_uname", "$db_pw") or die("Error: Cannot connect to MySQL Server");
+mysql_select_db("$db_name")or die("Error: Cannot select database \"$db_name\"");
+
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+
+// To protect MySQL injection
+$username = stripslashes($username);
+$password = stripslashes($password);
+$username = mysql_real_escape_string($username);
+$password = mysql_real_escape_string($password);
+$sql="SELECT * FROM $tbl_name WHERE staffID='$username' and password='$password'";
+$result = mysql_query($sql) or die ('Unable to run query: '.mysql_error());
+
+$count = mysql_num_rows($result);
+
+if($count == 1) {
+	// Login successful
+	
+	$adm="SELECT * FROM administrators WHERE staffID='$username'";
+	$admCount = mysql_num_rows(mysql_query($adm));
+	
+	$dir="SELECT * FROM director WHERE staffID='$username'";
+	$dirCount = mysql_num_rows(mysql_query($dir));
+	
+	$res="SELECT * FROM residents WHERE staffID='$username'";
+	$resCount = mysql_num_rows(mysql_query($res));
+	
+	$int="SELECT * FROM interns WHERE staffID='$username'";
+	$intCount = mysql_num_rows(mysql_query($int));
+	
+	$doc="SELECT * FROM doctor WHERE staffID='$username'";
+	$docCount = mysql_num_rows(mysql_query($doc));
+	
+	$nur="SELECT * FROM nurse WHERE staffID='$username'";
+	$nurCount = mysql_num_rows(mysql_query($nur));
+	
+	$sup="SELECT * FROM supervisor WHERE staffID='$username'";
+	$supCount = mysql_num_rows(mysql_query($sup));
+	
+	if($admCount >= 1){
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: dir_admin.php');
+	exit;
+	}//End of administrators count
+	
+	elseif($dirCount >= 1){
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: dir_admin.php');
+	exit;
+	}//End of director count
+	
+	elseif($resCount >= 1){
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: res_int.php');
+	exit;
+	}//End of residents count
+	
+	elseif($intCount >= 1){
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: res_int.php');
+	exit;
+	}//End of interns count
+	
+	elseif($docCount >= 1){
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: doctors.php');
+	exit;
+	}//End of doctor count
+	
+	elseif($nurCount >= 1){
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: nurses.php');
+	exit;
+	}//End of nurse count
+	
+	elseif($supCount >= 1){
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: nurses_sup.php');
+	exit;
+	}//End of supervisor count
+	
+	else{
+	$_SESSION['userid'] = $result['staffID'];
+	$_SESSION['login']=true;
+	header('Location: patients.php');
+	exit;
+	}//End of default
+}
+
+else {
+	// Login unsuccessful
+	$_SESSION['error']=true;
+}
+
+mysql_close($con);
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <!--Favicon (favorite icon)-->
 <link rel="icon" type="image/ico" href="/images/tdxicon.ico"/>
 <!--Normalize CSS-->
@@ -24,44 +142,50 @@ if (isset($_SESSION['login'])) {
 /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
 </style>
 <![endif]-->
-<title>Starline Medical Center</title>
+<title>Starline Login</title>
 </head>
 
 <body>
 <!-- begin #container -->
 <div id="container">
 	<!--Include the Website Header-->
+	
 	<?php include 'header.php'; ?>
-	<!--Include the Website Sidebar-->
-	<?php include 'sidebar.php'; ?>
     <!-- begin #mainContent -->
-    <div id="mainContent">
-    	<p>
-        	<strong>All website template is released under a Creative Commons Attribution 2.5 License</strong><br /><br />
-We request you retain the full copyright notice below including the link to www.facebookpagetemplates.com. This not only gives respect to the large amount of time given freely by the developers but also helps build interest, traffic and use of our free and paid designs. If you cannot (for good reason) retain the full copyright we request you at least leave in place the Website Templates line, with Website Templates linked to www.facebookpagetemplates.com. If you refuse to include even this then support may be affected.<br /><br />
-
-<strong>You are allowed to use this design only if you agree to the following conditions:</strong><br />
-- You can not remove copyright notice from any our template without our permission.<br />
-- If you modify any our template it still should contain copyright because it is based on our work.<br />
-- You may copy, distribute, modify, etc. any our template as long as link to our website remains untouched.<br /><br />
-
-For support please visit www.cssmoban.com<br /><br /><br /><br />
-<strong>What does Flash Template mean?</strong><br /><br />
-
-Flash Template is a ready-made Flash Site that you can download and use for free! Flash Template was created by professional and independent designers for you. You need only to make your adjustments and your flash site is ready. If you open .fla file you can easily change the text information and graphics of the site. There's no need to make animation - our designers already did it. After your text and graphics adjustments you need only to upload .swf file to your server and enjoy your ready Flash Site! Using Free Flash Templates you can save your time and money! 
-        </p>
-    </div>
-    <!-- end #mainContent -->
+    	<p><br/>Please login below to access the Starline Medical Center Database</p>
+		<br/>
+<form method="post" onsubmit="window.location.reload()" action="?">
+<table>
+<tr>
+<td>User ID:</td>
+<td><input name="username" id="username" type="text" size="30"/></td>
+</tr>
+<tr>
+<td>Password:</td>
+<td><input name="password" id="password" type="password" size="30"/></td>
+</tr>
+<tr>
+<td><input type="submit" value="Login"/></td><td><form method="link" action="patients.php"><input type="submit" value="Patients"></form></td>
+</tr>
+</table>
+</form>
+<?php
+if (isset($_SESSION['error'])) {
+	echo '<p class="error">Error: Invalid username or password</p>';
+	UNSET($_SESSION['error']);
+}
+?>
+<!-- end #mainContent -->
 	<br class="clearfloat" />
 	<!--Include the Website Footer-->
 	<?php include 'footer.php'; ?>
-</div>
 <!-- end #container -->
 </body>
 </html>
 <?php
 }
 else {
-header("Location: login.php");
+	header("Location: index.php");
 }
+
 ?>

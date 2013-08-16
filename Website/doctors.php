@@ -32,7 +32,7 @@
 	<?php include 'header.php'; ?>
 	<!--Include the Website Sidebar-->
 	<?php include 'sidebar.php'; ?>
-
+	<?php include 'logout.php'; ?>
     <!-- begin #mainContent -->
     <div id="mainContent">
     	<p>
@@ -70,13 +70,13 @@
 
 					while($row = mysql_fetch_array($result))
 					  {
-					  echo "<tr>";
-					  echo "<td>" . $row['staffID'] . "</td>";
-					  echo "<td>" . $row['name'] . "</td>";
-					  echo "<td>" . $row['specialty'] . "</td>";
-					  echo "<td>" . $row['visits'] . "</td>";
-					  echo "<td>" . $row['operations'] . "</td>";
-					  echo "<td>" . $row['Schedule'] . "</td>";
+					  echo "<tr align=\"center\">";
+					  echo "<td width=\"100\">" . $row['staffID'] . "</td>";
+					  echo "<td width=\"100\">" . $row['name'] . "</td>";
+					  echo "<td width=\"100\">" . $row['specialty'] . "</td>";
+					  echo "<td width=\"100\">" . $row['visits'] . "</td>";
+					  echo "<td width=\"100\">" . $row['operations'] . "</td>";
+					  echo "<td width=\"100\">" . $row['Schedule'] . "</td>";
 					  echo "</tr>";
 					  }
 					echo "</table>";
