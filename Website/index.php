@@ -1,5 +1,17 @@
 <?php session_start();
- if (!isset($_SESSION['login'])) {
+
+// If the logout variable has been retrieved using the GET method:
+if (isset($_GET["logout"])) {
+	// Get logout value
+	$logout = $_GET['logout'];
+	// If logout is equal to 99, logout the user by destroying the session
+	if ($logout == 99) {
+		session_destroy();
+		unset($_SESSION["login"]);
+	}
+}
+
+if (!isset($_SESSION['login'])) {
 
 if (isset($_POST["username"])) {
 
@@ -18,7 +30,6 @@ mysql_select_db("$db_name")or die("Error: Cannot select database \"$db_name\"");
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-
 
 // To protect MySQL injection
 $username = stripslashes($username);
@@ -102,7 +113,6 @@ if($count == 1) {
 	header('Location: nurses_sup.php');
 	exit;
 	}//End of supervisor count
-	
 	else{
 	$_SESSION['userid'] = $result['staffID'];
 	$_SESSION['login']=true;
@@ -110,7 +120,6 @@ if($count == 1) {
 	exit;
 	}//End of default
 }
-
 else {
 	// Login unsuccessful
 	$_SESSION['error']=true;
@@ -125,7 +134,7 @@ mysql_close($con);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <!--Favicon (favorite icon)-->
-<link rel="icon" type="image/ico" href="/images/tdxicon.ico"/>
+<link rel="icon" type="image/ico" href="/images/starlinelogo.ico"/>
 <!--Normalize CSS-->
 <link rel="stylesheet" type="text/css" href="/normalize.css" />
 <!--External CSS-->
@@ -146,40 +155,44 @@ mysql_close($con);
 </head>
 
 <body>
+<div class="wrapper">
 <!-- begin #container -->
 <div id="container">
 	<!--Include the Website Header-->
-	
 	<?php include 'header.php'; ?>
-    <!-- begin #mainContent -->
-    	<p><br/>Please login below to access the Starline Medical Center Database</p>
-		<br/>
+<!-- begin #mainContent -->
+<h2><br/>Please login below to access the Starline Medical Center Database.<br/><br/></h2>
 <form method="post" onsubmit="window.location.reload()" action="?">
+<div class="floatLeft">
 <table>
 <tr>
 <td>User ID:</td>
-<td><input name="username" id="username" type="text" size="30"/></td>
+<td><input name="username" id="username" type="text" size="20"/></td>
 </tr>
 <tr>
 <td>Password:</td>
-<td><input name="password" id="password" type="password" size="30"/></td>
+<td><input name="password" id="password" type="password" size="20"/></td>
 </tr>
 <tr>
-<td><input type="submit" value="Login"/></td><td><form method="link" action="patients.php"><input type="submit" value="Patients"></form></td>
+<td><input type="submit" value="Login"/></td>
 </tr>
 </table>
+</div>
 </form>
+<div class="floatRight"><p>OR</p><form method="link" action="patients.php"><input type="submit" value="Login as Patient"></form></div>
 <?php
 if (isset($_SESSION['error'])) {
-	echo '<p class="error">Error: Invalid username or password</p>';
+	echo "<p class=\"error\">Error: Invalid username or password</p>";
 	UNSET($_SESSION['error']);
 }
 ?>
 <!-- end #mainContent -->
-	<br class="clearfloat" />
-	<!--Include the Website Footer-->
-	<?php include 'footer.php'; ?>
 <!-- end #container -->
+</div>
+<div class="push"></div>
+</div>
+<!--Include the Website Footer-->
+<?php include 'footer.php'; ?>
 </body>
 </html>
 <?php
@@ -187,5 +200,4 @@ if (isset($_SESSION['error'])) {
 else {
 	header("Location: index.php");
 }
-
 ?>
