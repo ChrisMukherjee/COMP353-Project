@@ -11,7 +11,6 @@ if (isset($_GET["logout"])) {
 	}
 }
 
-
 if (!isset($_SESSION['login'])) {
 
 if (isset($_POST["username"])) {
