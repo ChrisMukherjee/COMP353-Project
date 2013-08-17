@@ -1,6 +1,7 @@
 ﻿<?php session_start(); ?>
 <?php
 if (isset($_SESSION['login'])) {
+include 'login.php';
 ?>
 
 <!DOCTYPE html>
