@@ -1,13 +1,13 @@
 <?php session_start();
 
 // If the logout variable has been retrieved using the GET method:
-if (isset($_GET["logout"])) {
+if (isset($_GET['logout'])) {
 	// Get logout value
 	$logout = $_GET['logout'];
 	// If logout is equal to 99, logout the user by destroying the session
 	if ($logout == 99) {
 		session_destroy();
-		unset($_SESSION["login"]);
+		unset($_SESSION['login']);
 	}
 }
 
@@ -168,13 +168,13 @@ mysql_close($con);
 </table>
 </div>
 <div class="floatRight"><p>OR</p><input type="submit" value="Login as Patient"></div>
+</form>
 <?php
 if (isset($_SESSION['error'])) {
-	echo "<p class=\"error\">Error: Invalid username or password</p>";
+	echo '<div class="absolute"><p class="error"><br/><br/><br/><br/><br/>Error: Invalid username or password</p></div>';
 	UNSET($_SESSION['error']);
 }
 ?>
-</form>
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->
@@ -187,6 +187,6 @@ if (isset($_SESSION['error'])) {
 <?php
 }
 else {
-	header("Location: index.php");
+	header("Location: patients.php");
 }
 ?>

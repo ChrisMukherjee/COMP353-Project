@@ -6,8 +6,8 @@ $db_uname = "root";
 $db_pw = "root";
 
 $host = "localhost";
-$db_name = "hospital";
-$tbl_name = "staff";
+$db_name = "Hospital";
+$tbl_name = "Staff";
 
 // Connect to the local database and schema 'hospital'
 $con = mysql_connect("$host", "$db_uname", "$db_pw") or die("Error: Cannot connect to MySQL Server");
