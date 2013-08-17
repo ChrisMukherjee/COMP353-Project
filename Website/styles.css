@@ -194,3 +194,7 @@ table, tr, td {
 	position: absolute;
 	z-index: -1;
 }
+
+.spaced {
+	line-height: 150%
+}
