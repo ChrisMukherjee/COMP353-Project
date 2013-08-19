@@ -1,0 +1,3 @@
+Assumptions made regarding Relational Diagram:
+
+- 
