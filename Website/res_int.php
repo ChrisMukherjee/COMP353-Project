@@ -66,6 +66,6 @@ Flash Template is a ready-made Flash Site that you can download and use for free
 <?php
 }
 else {
-header("Location: login.php");
+header("Location: .php");
 }
 ?>
