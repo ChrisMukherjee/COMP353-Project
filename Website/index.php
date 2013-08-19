@@ -109,6 +109,10 @@ if($count == 1) {
 	exit;
 	}//End of default
 }
+else if (isset($_POST["Login as Patient"])) {
+	$_SESSION['login']=true;
+	header('Location: patients.php');
+}
 else {
 	// Login unsuccessful
 	$_SESSION['error']=true;
