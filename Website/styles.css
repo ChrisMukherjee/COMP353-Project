@@ -208,13 +208,11 @@ table, tr, td {
 .floatLeft {
 	float: left;
 	left: 0px;
-	position: absolute;
 	text-align: left;
 }
 
 .floatRight {
 	float: right;
 	right: 0px;
-	position: absolute;
 	text-align: right;
 }
