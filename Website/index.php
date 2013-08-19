@@ -175,7 +175,7 @@ if (!isset($_SESSION['login']))
 <!-- begin #mainContent -->
 <h2><br/>Please login below to access the Starline Medical Center Database.<br/><br/></h2>
 <form method="post" onsubmit="window.location.reload()" action="?">
-<div class="floatLeft">
+<div class="loginLeft">
 <table>
 <tr>
 <td>User ID:</td>
@@ -190,7 +190,7 @@ if (!isset($_SESSION['login']))
 </tr>
 </table>
 </div>
-<div class="floatRight"><p>OR</p><input type="submit" value="Login as Patient" name="LoginAsPatient" style="width: 100px"></div>
+<div class="loginRight"><p>OR</p><input type="submit" value="Login as Patient" name="LoginAsPatient" style="width: 100px"></div>
 </form>
 <?php
 if (isset($_SESSION['error'])) {

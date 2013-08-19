@@ -157,14 +157,14 @@ ul#navlist {
 	color: blue;
 }
 
-.floatLeft {
+.loginLeft {
 	float: left;
 	left: 200px;
 	position: absolute;
 	text-align: left;
 }
 
-.floatRight {
+.loginRight {
 	float: right;
 	right: 200px;
 	position: absolute;
@@ -203,4 +203,18 @@ table, tr, td {
 
 .whiteBack {
 	background:#ebebeb;
+}
+
+.floatLeft {
+	float: left;
+	left: 0px;
+	position: absolute;
+	text-align: left;
+}
+
+.floatRight {
+	float: right;
+	right: 0px;
+	position: absolute;
+	text-align: right;
 }
