@@ -40,58 +40,22 @@
 					<?php
 
 					 include 'login.php';
-					 include 'gettables.php';
-					
+					 					
 					 if (mysql_error())
 					  {
 					  echo "Failed to connect to MySQL: " . mysql_error();
 					  }
 
-					//$result = mysql_query("SELECT * FROM Doctors_View");
-				
-					
-					
-					
-					/*
-					echo "<table border='1'>
-					<tr>
-					<th>Staff ID</th>
-					<th>Name</th>
-					<th>Specialty</th>
-					<th>Visits</th>
-					</tr>";
-					*/
-					
-					//***************************************************
-					/*
-					$result = mysql_query("SHOW COLUMNS FROM users");
-					if (!$result) 
-					{
-						echo 'Could not run query: ' . mysql_error();
-						exit;
-					}
+					 $result = mysql_query("SELECT * FROM Doctors_View");
 
-					//  Scan through all the fields
-					while ($field = mysql_fetch_object($result)) 
-					{
-						echo "$field->Field: <input type=\"text\" name=\"$field->Field\" size=\"40\" maxlength=\"256\" /><br>";
-					}*/
-					//***************************************************
-						
-					
-					
-					
-					
-					
-					
-					while($data = mysql_fetch_array($result)) {
-						echo("<tr><td>$data[0]</td><td>$data[1]</td><td>$data[2]</td><td>$data[3]</td></tr>");
-					 }
-					  /*
-					echo "</table>";
-					*/
-					mysql_close($con);
+					 echo "<table border='1'><tr><th>Staff ID</th><th>Name</th><th>Specialty</th><th>Visits</th></tr>";
 
+					 while($data = mysql_fetch_array($result)) 
+					 	 echo("<tr><td>$data[0]</td><td>$data[1]</td><td>$data[2]</td><td>$data[3]</td></tr>");
+					 					  
+					 echo "</table>";
+					 
+					 mysql_close($con);
 					?>
 			</strong><br /><br />
 		</p>
