@@ -42,6 +42,22 @@ INSERT INTO `administrators` VALUES (1),(2),(6),(7),(11),(12);
 UNLOCK TABLES;
 
 --
+-- Temporary table structure for view `allstaff`
+--
+
+DROP TABLE IF EXISTS `allstaff`;
+/*!50001 DROP VIEW IF EXISTS `allstaff`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `allstaff` (
+  `unitName` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `salary` tinyint NOT NULL,
+  `numYears` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `director`
 --
 
@@ -110,9 +126,9 @@ CREATE TABLE `facility` (
   KEY `fk_Facility_Director1_idx` (`directorID`),
   KEY `fk_Facility_Admistrators1_idx` (`seniorAdminID1`),
   KEY `fk_Facility_Admistrators2_idx` (`seniorAdminID2`),
-  CONSTRAINT `fk_Facility_Director` FOREIGN KEY (`directorID`) REFERENCES `director` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Facility_Admistrators1` FOREIGN KEY (`seniorAdminID1`) REFERENCES `administrators` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Facility_Admistrators2` FOREIGN KEY (`seniorAdminID2`) REFERENCES `administrators` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Facility_Admistrators2` FOREIGN KEY (`seniorAdminID2`) REFERENCES `administrators` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Facility_Director` FOREIGN KEY (`directorID`) REFERENCES `director` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -272,10 +288,10 @@ CREATE TABLE `scheduledservices` (
   KEY `fk_Schedule_Services1_idx` (`serviceID`),
   KEY `fk_Schedule_Patients1_idx` (`patientsID`),
   KEY `fk_ScheduledServices_Staff1_idx` (`assistantID`),
-  CONSTRAINT `fk_Schedule_Staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Schedule_Services` FOREIGN KEY (`serviceID`) REFERENCES `services` (`serviceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ScheduledServices_Staff1` FOREIGN KEY (`assistantID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Schedule_Patients` FOREIGN KEY (`patientsID`) REFERENCES `patients` (`patientID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ScheduledServices_Staff1` FOREIGN KEY (`assistantID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Schedule_Services` FOREIGN KEY (`serviceID`) REFERENCES `services` (`serviceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Schedule_Staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -429,6 +445,114 @@ LOCK TABLES `technicians` WRITE;
 UNLOCK TABLES;
 
 --
+-- Temporary table structure for view `viewadmin`
+--
+
+DROP TABLE IF EXISTS `viewadmin`;
+/*!50001 DROP VIEW IF EXISTS `viewadmin`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewadmin` (
+  `unitName` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `salary` tinyint NOT NULL,
+  `numYears` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `viewdirectors`
+--
+
+DROP TABLE IF EXISTS `viewdirectors`;
+/*!50001 DROP VIEW IF EXISTS `viewdirectors`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewdirectors` (
+  `unitName` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `salary` tinyint NOT NULL,
+  `numYears` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `viewdoctors`
+--
+
+DROP TABLE IF EXISTS `viewdoctors`;
+/*!50001 DROP VIEW IF EXISTS `viewdoctors`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewdoctors` (
+  `unitName` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `salary` tinyint NOT NULL,
+  `numYears` tinyint NOT NULL,
+  `specialty` tinyint NOT NULL,
+  `visits` tinyint NOT NULL,
+  `operations` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `viewinterns`
+--
+
+DROP TABLE IF EXISTS `viewinterns`;
+/*!50001 DROP VIEW IF EXISTS `viewinterns`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewinterns` (
+  `unitName` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `salary` tinyint NOT NULL,
+  `numYears` tinyint NOT NULL,
+  `specialty` tinyint NOT NULL,
+  `visits` tinyint NOT NULL,
+  `operations` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `viewonlydoctors`
+--
+
+DROP TABLE IF EXISTS `viewonlydoctors`;
+/*!50001 DROP VIEW IF EXISTS `viewonlydoctors`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewonlydoctors` (
+  `unitName` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `salary` tinyint NOT NULL,
+  `numYears` tinyint NOT NULL,
+  `specialty` tinyint NOT NULL,
+  `visits` tinyint NOT NULL,
+  `operations` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `viewresidents`
+--
+
+DROP TABLE IF EXISTS `viewresidents`;
+/*!50001 DROP VIEW IF EXISTS `viewresidents`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewresidents` (
+  `unitName` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `salary` tinyint NOT NULL,
+  `numYears` tinyint NOT NULL,
+  `specialty` tinyint NOT NULL,
+  `visits` tinyint NOT NULL,
+  `operations` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `workhours`
 --
 
@@ -453,6 +577,139 @@ LOCK TABLES `workhours` WRITE;
 /*!40000 ALTER TABLE `workhours` DISABLE KEYS */;
 /*!40000 ALTER TABLE `workhours` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `allstaff`
+--
+
+/*!50001 DROP TABLE IF EXISTS `allstaff`*/;
+/*!50001 DROP VIEW IF EXISTS `allstaff`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `allstaff` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewadmin`
+--
+
+/*!50001 DROP TABLE IF EXISTS `viewadmin`*/;
+/*!50001 DROP VIEW IF EXISTS `viewadmin`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewadmin` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff` where `staff`.`staffID` in (select `administrators`.`staffID` from `administrators`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewdirectors`
+--
+
+/*!50001 DROP TABLE IF EXISTS `viewdirectors`*/;
+/*!50001 DROP VIEW IF EXISTS `viewdirectors`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewdirectors` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff` where `staff`.`staffID` in (select `director`.`staffID` from `director`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewdoctors`
+--
+
+/*!50001 DROP TABLE IF EXISTS `viewdoctors`*/;
+/*!50001 DROP VIEW IF EXISTS `viewdoctors`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewdoctors` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewinterns`
+--
+
+/*!50001 DROP TABLE IF EXISTS `viewinterns`*/;
+/*!50001 DROP VIEW IF EXISTS `viewinterns`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewinterns` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`))) where `doctor`.`staffID` in (select `interns`.`staffID` from `interns`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewonlydoctors`
+--
+
+/*!50001 DROP TABLE IF EXISTS `viewonlydoctors`*/;
+/*!50001 DROP VIEW IF EXISTS `viewonlydoctors`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewonlydoctors` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`))) where ((not(`doctor`.`staffID` in (select `residents`.`staffID` from `residents`))) and (not(`doctor`.`staffID` in (select `interns`.`staffID` from `interns`))))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewresidents`
+--
+
+/*!50001 DROP TABLE IF EXISTS `viewresidents`*/;
+/*!50001 DROP VIEW IF EXISTS `viewresidents`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewresidents` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`))) where `doctor`.`staffID` in (select `residents`.`staffID` from `residents`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -463,4 +720,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-08-19 15:19:34
+-- Dump completed on 2013-08-19 17:32:51
