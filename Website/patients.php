@@ -1,10 +1,4 @@
-﻿<?php session_start(); ?>
-<?php
-if (isset($_SESSION['login'])) {
-include 'login.php';
-?>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -33,25 +27,38 @@ include 'login.php';
 <!-- begin #container -->
 <div id="container">
 	<!--Include the Website Header-->
-	<?php include 'header.php'; ?>
+    	<!-- begin #header -->
+    <div id="header">
+    	<div id="logo">
+        	Starline Medical Center
+        </div>
+        <div id="author">
+        	
+        </div>
+</div>
 	<!--Include the Website Sidebar-->
-	<?php include 'sidebar.php'; ?>
-
+    <!-- begin #sidebar1 -->
+    <div id="sidebar1">
+		<br>
+	    <h2>Home</h2>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+			<li><a href="contact.php">Contact Us</a></li>        
+        </ul>
+        <br /><br />
+	
+        <h2>Team Members</h2>
+        <ul>
+        	<li> Christopher Mukherjee<br />6291929</li>
+            <li>Cheng Cheng <br />9718648</li>
+            <li>Alexander Vissa<br />6335241</li>
+            <li>Karim Kaidbey<br />6354726</li>
+        </ul>
+    </div>
     <!-- begin #mainContent -->
     <div id="mainContent">
     	<p>
-        	<strong>All website template is released under a Creative Commons Attribution 2.5 License</strong><br /><br />
-We request you retain the full copyright notice below including the link to www.facebookpagetemplates.com. This not only gives respect to the large amount of time given freely by the developers but also helps build interest, traffic and use of our free and paid designs. If you cannot (for good reason) retain the full copyright we request you at least leave in place the Website Templates line, with Website Templates linked to www.facebookpagetemplates.com. If you refuse to include even this then support may be affected.<br /><br />
-
-<strong>You are allowed to use this design only if you agree to the following conditions:</strong><br />
-- You can not remove copyright notice from any our template without our permission.<br />
-- If you modify any our template it still should contain copyright because it is based on our work.<br />
-- You may copy, distribute, modify, etc. any our template as long as link to our website remains untouched.<br /><br />
-
-For support please visit www.cssmoban.com<br /><br /><br /><br />
-<strong>What does Flash Template mean?</strong><br /><br />
-
-Flash Template is a ready-made Flash Site that you can download and use for free! Flash Template was created by professional and independent designers for you. You need only to make your adjustments and your flash site is ready. If you open .fla file you can easily change the text information and graphics of the site. There's no need to make animation - our designers already did it. After your text and graphics adjustments you need only to upload .swf file to your server and enjoy your ready Flash Site! Using Free Flash Templates you can save your time and money! 
+        
         </p>
     </div>
 <!-- end #mainContent -->
@@ -60,13 +67,6 @@ Flash Template is a ready-made Flash Site that you can download and use for free
 <div class="push"></div>
 </div>
 <!--Include the Website Footer-->
-<?php include 'footer.php'; ?>
+
 </body>
 </html>
-
-<?php
-}
-else {
-header("Location: contact.php");
-}
-?>
