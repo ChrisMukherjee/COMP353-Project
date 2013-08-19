@@ -50,8 +50,9 @@ DROP TABLE IF EXISTS `allstaff`;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE TABLE `allstaff` (
-  `unitName` tinyint NOT NULL,
+  `staffID` tinyint NOT NULL,
   `name` tinyint NOT NULL,
+  `unitName` tinyint NOT NULL,
   `salary` tinyint NOT NULL,
   `numYears` tinyint NOT NULL
 ) ENGINE=MyISAM */;
@@ -190,6 +191,7 @@ CREATE TABLE `nurses` (
 
 LOCK TABLES `nurses` WRITE;
 /*!40000 ALTER TABLE `nurses` DISABLE KEYS */;
+INSERT INTO `nurses` VALUES (17,0,0,0),(19,1,0,0),(20,0,0,0),(21,0,0,0),(25,0,0,0),(26,1,0,0);
 /*!40000 ALTER TABLE `nurses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,6 +216,7 @@ CREATE TABLE `nutritional` (
 
 LOCK TABLES `nutritional` WRITE;
 /*!40000 ALTER TABLE `nutritional` DISABLE KEYS */;
+INSERT INTO `nutritional` VALUES (13,'2013-08-19'),(14,'2013-08-19'),(15,'2013-08-19'),(16,'2013-08-19'),(17,'2013-08-19'),(18,'2013-08-19');
 /*!40000 ALTER TABLE `nutritional` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,7 +234,7 @@ CREATE TABLE `patients` (
   `medicationsTreatmentsEtc` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`patientID`),
   UNIQUE KEY `idPatients_UNIQUE` (`patientID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -240,6 +243,7 @@ CREATE TABLE `patients` (
 
 LOCK TABLES `patients` WRITE;
 /*!40000 ALTER TABLE `patients` DISABLE KEYS */;
+INSERT INTO `patients` VALUES (1,'Arletta',892187382,'In a coma'),(2,'Bertie',891673820,'Is too flexible'),(3,'Irene',891871763,'Is a hurricane'),(4,'Stephani',651265283,'Broken skull'),(5,'Peter',934087262,'Thinks hes peterpan'),(6,'Verda',891227634,'Loves nutella'),(7,'Tuan',435820234,'Is weird'),(8,'Sheron',27362784,'Sees in binary'),(9,'Zora',718394628,'Missing butt cheek'),(10,'Jessie',554283491,'Errectile disfunction');
 /*!40000 ALTER TABLE `patients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -320,7 +324,7 @@ CREATE TABLE `services` (
   UNIQUE KEY `serviceID_UNIQUE` (`serviceID`),
   KEY `fk_Services_Facility1_idx` (`unitName`),
   CONSTRAINT `fk_Services_Facility` FOREIGN KEY (`unitName`) REFERENCES `facility` (`unitName`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -329,6 +333,7 @@ CREATE TABLE `services` (
 
 LOCK TABLES `services` WRITE;
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
+INSERT INTO `services` VALUES (1,'nutrition','Palliative',10.0000),(2,'bathing','Palliative',25.0000),(3,'exercise','Palliative',100.0000),(4,'checkup','Childrens',10.0000),(5,'prescription','Childrens',50.0000),(6,'operation','Childrens',100.0000),(7,'follow up exam','Surgical',10.0000),(8,'surgery','Surgical',75.0000),(9,'recovery','Surgical',100.0000);
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -350,7 +355,7 @@ CREATE TABLE `staff` (
   UNIQUE KEY `staffID_UNIQUE` (`staffID`),
   KEY `fk_staff_facility1_idx` (`unitName`),
   CONSTRAINT `fk_Staff_Facility` FOREIGN KEY (`unitName`) REFERENCES `facility` (`unitName`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,7 +364,7 @@ CREATE TABLE `staff` (
 
 LOCK TABLES `staff` WRITE;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` VALUES (1,'Palliative','Steve',98000.0000,0,'pass123'),(2,'Palliative','Ben',98000.0000,0,'pass123'),(3,'Palliative','John',16.0000,0,'pass123'),(4,'Palliative','Karim',40000.0000,0,'pass123'),(5,'Childrens','Cheng',125000.0000,0,'pass123'),(6,'Childrens','Chris',98000.0000,0,'pass123'),(7,'Childrens','Alex',98000.0000,0,'pass123'),(8,'Childrens','Sarah',18.0000,0,'pass123'),(9,'Childrens','Sam',42000.0000,0,'pass123'),(10,'Surgical','Sora',125000.0000,0,'pass123'),(11,'Surgical','Ramzi',98000.0000,0,'pass123'),(12,'Surgical','Rayan',98000.0000,0,'pass123'),(13,'Surgical','Danny',17.0000,0,'pass123'),(14,'Surgical','Jude',16.0000,0,'pass123'),(15,'Palliative','Cami',44000.0000,0,'pass123'),(16,'Palliative','Jayna',46000.0000,0,'pass123'),(17,'Palliative','Alida',24.5000,0,'pass123'),(18,'Palliative','Sharri',0.0000,0,'pass123'),(19,'Palliative','Manuela',27.7500,0,'pass123'),(20,'Childrens','Neville',24.5000,0,'pass123'),(21,'Childrens','Lu',24.5000,0,'pass123'),(22,'Childrens','Zofia',44000.0000,0,'pass123'),(23,'Childrens','Liane',0.0000,0,'pass123'),(24,'Childrens','Gema',0.0000,0,'pass123'),(25,'Surgical','Elliot',24.5000,0,'pass123'),(26,'Surgical','Charles',27.2500,0,'pass123'),(27,'Surgical','Lettie',0.0000,0,'pass123'),(28,'Surgical','Denice',44000.0000,0,'pass123'),(29,'Surgical','Arcelia',0.0000,0,'pass123'),(30,'Palliative','Joe',125000.0000,0,'pass123');
+INSERT INTO `staff` VALUES (1,'Palliative','Steve',98000.0000,0,'pass123'),(2,'Palliative','Ben',98000.0000,0,'pass123'),(3,'Palliative','John',16.0000,0,'pass123'),(4,'Palliative','Karim',40000.0000,0,'pass123'),(5,'Childrens','Cheng',125000.0000,0,'pass123'),(6,'Childrens','Chris',98000.0000,0,'pass123'),(7,'Childrens','Alex',98000.0000,0,'pass123'),(8,'Childrens','Sarah',18.0000,0,'pass123'),(9,'Childrens','Sam',42000.0000,0,'pass123'),(10,'Surgical','Sora',125000.0000,0,'pass123'),(11,'Surgical','Ramzi',98000.0000,0,'pass123'),(12,'Surgical','Rayan',98000.0000,0,'pass123'),(13,'Surgical','Danny',17.0000,0,'pass123'),(14,'Surgical','Jude',16.0000,0,'pass123'),(15,'Palliative','Cami',44000.0000,0,'pass123'),(16,'Palliative','Jayna',46000.0000,0,'pass123'),(17,'Palliative','Alida',24.5000,0,'pass123'),(18,'Palliative','Sharri',0.0000,0,'pass123'),(19,'Palliative','Manuela',27.7500,0,'pass123'),(20,'Childrens','Neville',24.5000,0,'pass123'),(21,'Childrens','Lu',24.5000,0,'pass123'),(22,'Childrens','Zofia',44000.0000,0,'pass123'),(23,'Childrens','Liane',0.0000,0,'pass123'),(24,'Childrens','Gema',0.0000,0,'pass123'),(25,'Surgical','Elliot',24.5000,0,'pass123'),(26,'Surgical','Charles',27.2500,0,'pass123'),(27,'Surgical','Lettie',0.0000,0,'pass123'),(28,'Surgical','Denice',44000.0000,0,'pass123'),(29,'Surgical','Arcelia',0.0000,0,'pass123'),(30,'Palliative','Joe',125000.0000,0,'pass123'),(31,'Surgical','Xavier',18.5000,0,'pass123');
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -391,6 +396,7 @@ CREATE TABLE `supplies` (
 
 LOCK TABLES `supplies` WRITE;
 /*!40000 ALTER TABLE `supplies` DISABLE KEYS */;
+INSERT INTO `supplies` VALUES (1,'medical','medications','anti-inflammatory',2,10,13.0000,'Palliative'),(2,'medical','surgical equipment','injection needles',6,10,16.0000,'Palliative'),(3,'medical','medications','anti-psychotics',2,10,15.0000,'Childrens'),(4,'medical','supporting devices','wheelchairs',7,10,76.0000,'Childrens'),(5,'medical','medications','pain-killers',3,10,21.0000,'Surgical'),(6,'medical','surgical equipment','surgical staplers',2,10,52.0000,'Surgical'),(7,'nonmedical','administrative supplies','phones',7,10,23.0000,'Palliative'),(8,'nonmedical','basic patient materials','robes',4,10,10.0000,'Palliative'),(9,'nonmedical','administrative supplies','pencils',3,10,1.0000,'Childrens'),(10,'nonmedical','basic patient materials','pillows cases',7,10,12.0000,'Childrens'),(11,'nonmedical','administrative supplies','pens',8,10,2.0000,'Surgical'),(12,'nonmedical','basic patient materials','sheets',3,10,18.0000,'Surgical'),(13,'nutritional','fruit','apple',3,10,2.0000,'Palliative'),(14,'nutritional','vegetables','lettus',5,10,3.0000,'Palliative'),(15,'nutritional','cereal','corn pops',6,10,4.0000,'Childrens'),(16,'nutritional','fruit','pear',7,10,1.0000,'Childrens'),(17,'nutritional','cereal','frosted flakes',3,10,2.0000,'Surgical'),(18,'nutritional','vegetables','mushrooms',9,10,3.0000,'Surgical');
 /*!40000 ALTER TABLE `supplies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -416,6 +422,7 @@ CREATE TABLE `supplyroomstock` (
 
 LOCK TABLES `supplyroomstock` WRITE;
 /*!40000 ALTER TABLE `supplyroomstock` DISABLE KEYS */;
+INSERT INTO `supplyroomstock` VALUES (1,1),(2,2),(3,1),(4,2),(5,1),(6,1),(7,2),(8,1),(9,2),(10,1),(11,1),(12,1);
 /*!40000 ALTER TABLE `supplyroomstock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -441,6 +448,7 @@ CREATE TABLE `technicians` (
 
 LOCK TABLES `technicians` WRITE;
 /*!40000 ALTER TABLE `technicians` DISABLE KEYS */;
+INSERT INTO `technicians` VALUES (3,'pediatric',0),(8,'computer',0),(13,'blood work',0),(14,'sterilization',0),(31,'x-ray',0);
 /*!40000 ALTER TABLE `technicians` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -453,8 +461,9 @@ DROP TABLE IF EXISTS `viewadmin`;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE TABLE `viewadmin` (
-  `unitName` tinyint NOT NULL,
+  `staffID` tinyint NOT NULL,
   `name` tinyint NOT NULL,
+  `unitName` tinyint NOT NULL,
   `salary` tinyint NOT NULL,
   `numYears` tinyint NOT NULL
 ) ENGINE=MyISAM */;
@@ -469,8 +478,9 @@ DROP TABLE IF EXISTS `viewdirectors`;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE TABLE `viewdirectors` (
-  `unitName` tinyint NOT NULL,
+  `staffID` tinyint NOT NULL,
   `name` tinyint NOT NULL,
+  `unitName` tinyint NOT NULL,
   `salary` tinyint NOT NULL,
   `numYears` tinyint NOT NULL
 ) ENGINE=MyISAM */;
@@ -485,8 +495,9 @@ DROP TABLE IF EXISTS `viewdoctors`;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE TABLE `viewdoctors` (
-  `unitName` tinyint NOT NULL,
+  `staffID` tinyint NOT NULL,
   `name` tinyint NOT NULL,
+  `unitName` tinyint NOT NULL,
   `salary` tinyint NOT NULL,
   `numYears` tinyint NOT NULL,
   `specialty` tinyint NOT NULL,
@@ -504,8 +515,9 @@ DROP TABLE IF EXISTS `viewinterns`;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE TABLE `viewinterns` (
-  `unitName` tinyint NOT NULL,
+  `staffID` tinyint NOT NULL,
   `name` tinyint NOT NULL,
+  `unitName` tinyint NOT NULL,
   `salary` tinyint NOT NULL,
   `numYears` tinyint NOT NULL,
   `specialty` tinyint NOT NULL,
@@ -523,8 +535,9 @@ DROP TABLE IF EXISTS `viewonlydoctors`;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE TABLE `viewonlydoctors` (
-  `unitName` tinyint NOT NULL,
+  `staffID` tinyint NOT NULL,
   `name` tinyint NOT NULL,
+  `unitName` tinyint NOT NULL,
   `salary` tinyint NOT NULL,
   `numYears` tinyint NOT NULL,
   `specialty` tinyint NOT NULL,
@@ -542,8 +555,9 @@ DROP TABLE IF EXISTS `viewresidents`;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE TABLE `viewresidents` (
-  `unitName` tinyint NOT NULL,
+  `staffID` tinyint NOT NULL,
   `name` tinyint NOT NULL,
+  `unitName` tinyint NOT NULL,
   `salary` tinyint NOT NULL,
   `numYears` tinyint NOT NULL,
   `specialty` tinyint NOT NULL,
@@ -564,7 +578,7 @@ CREATE TABLE `workhours` (
   `date` date NOT NULL,
   `shiftStart` time NOT NULL,
   `shiftEnd` time NOT NULL,
-  PRIMARY KEY (`staffID`),
+  KEY `fk_WorkHours_Staff` (`staffID`),
   CONSTRAINT `fk_WorkHours_Staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -575,6 +589,7 @@ CREATE TABLE `workhours` (
 
 LOCK TABLES `workhours` WRITE;
 /*!40000 ALTER TABLE `workhours` DISABLE KEYS */;
+INSERT INTO `workhours` VALUES (17,'2013-08-19','06:00:00','18:00:00'),(19,'2013-08-19','06:00:00','18:00:00'),(20,'2013-08-19','06:00:00','18:00:00'),(21,'2013-08-19','06:00:00','18:00:00'),(25,'2013-08-19','06:00:00','18:00:00'),(26,'2013-08-19','06:00:00','18:00:00'),(17,'2013-08-20','06:00:00','18:00:00'),(19,'2013-08-21','06:00:00','18:00:00'),(20,'2013-08-20','06:00:00','18:00:00'),(21,'2013-08-21','06:00:00','18:00:00'),(25,'2013-08-20','06:00:00','18:00:00'),(26,'2013-08-21','06:00:00','18:00:00'),(17,'2013-08-22','06:00:00','18:00:00'),(19,'2013-08-23','06:00:00','18:00:00'),(20,'2013-08-22','06:00:00','18:00:00'),(21,'2013-08-23','06:00:00','18:00:00'),(25,'2013-08-22','06:00:00','18:00:00'),(26,'2013-08-23','06:00:00','18:00:00');
 /*!40000 ALTER TABLE `workhours` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -592,7 +607,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `allstaff` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff`) */;
+/*!50001 VIEW `allstaff` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff`) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -611,7 +626,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `viewadmin` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff` where `staff`.`staffID` in (select `administrators`.`staffID` from `administrators`)) */;
+/*!50001 VIEW `viewadmin` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff` where `staff`.`staffID` in (select `administrators`.`staffID` from `administrators`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -630,7 +645,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `viewdirectors` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff` where `staff`.`staffID` in (select `director`.`staffID` from `director`)) */;
+/*!50001 VIEW `viewdirectors` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff` where `staff`.`staffID` in (select `director`.`staffID` from `director`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -649,7 +664,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `viewdoctors` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`)))) */;
+/*!50001 VIEW `viewdoctors` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`)))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -668,7 +683,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `viewinterns` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`))) where `doctor`.`staffID` in (select `interns`.`staffID` from `interns`)) */;
+/*!50001 VIEW `viewinterns` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`))) where `doctor`.`staffID` in (select `interns`.`staffID` from `interns`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -687,7 +702,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `viewonlydoctors` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`))) where ((not(`doctor`.`staffID` in (select `residents`.`staffID` from `residents`))) and (not(`doctor`.`staffID` in (select `interns`.`staffID` from `interns`))))) */;
+/*!50001 VIEW `viewonlydoctors` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`))) where ((not(`doctor`.`staffID` in (select `residents`.`staffID` from `residents`))) and (not(`doctor`.`staffID` in (select `interns`.`staffID` from `interns`))))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -706,7 +721,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `viewresidents` AS (select `staff`.`unitName` AS `unitName`,`staff`.`name` AS `name`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`))) where `doctor`.`staffID` in (select `residents`.`staffID` from `residents`)) */;
+/*!50001 VIEW `viewresidents` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`))) where `doctor`.`staffID` in (select `residents`.`staffID` from `residents`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -720,4 +735,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-08-19 17:32:51
+-- Dump completed on 2013-08-19 19:11:10
