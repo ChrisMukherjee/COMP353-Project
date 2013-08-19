@@ -57,7 +57,8 @@ Flash Template is a ready-made Flash Site that you can download and use for free
     <!-- end #mainContent -->
 	<br class="clearfloat" />
     <!--Include the Website Footer-->
-	<?php include 'footer.php'; ?>
+	<?php 
+	include 'footer.php'; ?>
 </div>
 <!-- end #container -->
 </body>

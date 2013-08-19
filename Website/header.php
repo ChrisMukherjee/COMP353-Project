@@ -10,7 +10,7 @@
 $currpage = $_SERVER['PHP_SELF'];
 if (strpos($currpage, 'index.php') == FALSE) {
 	echo '<div class="floatRight whiteBack">';
-	echo '<p>Welcome '.$userid.'| <a href="index.php?logout=99">Logout</a></p>';
+	echo '<p>Welcome '.$_SESSION['uName'].'| <a href="index.php?logout=99">Logout</a></p>';
 }
 ?>
 </div>
