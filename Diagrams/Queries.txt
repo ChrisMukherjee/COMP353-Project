@@ -28,3 +28,15 @@ SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Doctor.specialt
 
 /* Select all doctors(excluding interns and residents)  */
 SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Doctor.specialty, Doctor.visits, Doctor.operations FROM Staff JOIN Doctor ON (Doctor.staffID=Staff.staffID) WHERE Doctor.staffID NOT IN ((Select staffID FROM Residents) AND (Select staffID FROM Interns));
+
+/* Select all supplies  */
+SELECT category, subcategory, name, stock, capacity, cost FROM Supplies;
+
+/* Select all Supply Room Stock  */
+SELECT Supplies.category, Supplies.subcategory, Supplies.name, Supplies.stock, Supplies.capacity, Supplies.cost, SupplyRoomStock.roomFloor FROM Supplies JOIN SupplyRoomStock ON (Supplies.supplyID=SupplyRoomStock.supplyID);
+
+/* Select all Nutritional Supply  */
+SELECT Supplies.category, Supplies.subcategory, Supplies.name, Supplies.stock, Supplies.capacity, Supplies.cost, Nutritional.purchaseDate FROM Supplies JOIN Nutritional ON (Supplies.supplyID=Nutritional.supplyID);
+
+/* Select all Scheduled services  */
+SELECT date, startTime, endTime, roomNumber FROM ScheduledServices;
