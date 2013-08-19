@@ -40,36 +40,56 @@
 					<?php
 
 					 include 'login.php';
+					 include 'gettables.php';
 					
 					 if (mysql_error())
 					  {
 					  echo "Failed to connect to MySQL: " . mysql_error();
 					  }
 
-					$result = mysql_query("SELECT * FROM staff INNER JOIN doctor WHERE staff.staffID = doctor.staffID");
+					//$result = mysql_query("SELECT * FROM Doctors_View");
+				
+					
+					
+					
+					/*
 					echo "<table border='1'>
 					<tr>
 					<th>Staff ID</th>
 					<th>Name</th>
 					<th>Specialty</th>
 					<th>Visits</th>
-					<th>Operaions</th>
-					<th>Schedule</th>
 					</tr>";
+					*/
+					
+					//***************************************************
+					/*
+					$result = mysql_query("SHOW COLUMNS FROM users");
+					if (!$result) 
+					{
+						echo 'Could not run query: ' . mysql_error();
+						exit;
+					}
 
-					while($row = mysql_fetch_array($result))
-					  {
-					  echo "<tr align=\"center\">";
-					  echo "<td width=\"100\">" . $row['staffID'] . "</td>";
-					  echo "<td width=\"100\">" . $row['name'] . "</td>";
-					  echo "<td width=\"100\">" . $row['specialty'] . "</td>";
-					  echo "<td width=\"100\">" . $row['visits'] . "</td>";
-					  echo "<td width=\"100\">" . $row['operations'] . "</td>";
-					  echo "<td width=\"100\">" . $row['Schedule'] . "</td>";
-					  echo "</tr>";
-					  }
+					//  Scan through all the fields
+					while ($field = mysql_fetch_object($result)) 
+					{
+						echo "$field->Field: <input type=\"text\" name=\"$field->Field\" size=\"40\" maxlength=\"256\" /><br>";
+					}*/
+					//***************************************************
+						
+					
+					
+					
+					
+					
+					
+					while($data = mysql_fetch_array($result)) {
+						echo("<tr><td>$data[0]</td><td>$data[1]</td><td>$data[2]</td><td>$data[3]</td></tr>");
+					 }
+					  /*
 					echo "</table>";
-
+					*/
 					mysql_close($con);
 
 					?>
