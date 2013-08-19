@@ -1,125 +1,144 @@
 <?php session_start();
-
 // If the logout variable has been retrieved using the GET method:
-if (isset($_GET['logout'])) {
+if (isset($_GET['logout'])) 
+{
 	// Get logout value
 	$logout = $_GET['logout'];
+	
 	// If logout is equal to 99, logout the user by destroying the session
-	if ($logout == 99) {
-		session_destroy();
-		unset($_SESSION['login']);
+	if ($logout == 99) 
+	{
+		 session_destroy();
+		 unset($_SESSION['login']);
 	}
 }
 
-if (!isset($_SESSION['login'])) {
+if (!isset($_SESSION['login'])) 
+{
+	if (isset($_POST["username"])) 
+	{
+	 //Include login credentials for the MySQL Server
+	 include 'login.php';
+	
+	 //Gets user name and password from user
+	 $username = $_POST['username'];
+	 $password = $_POST['password'];
 
-if (isset($_POST["username"])) {
+	 // To protect MySQL injection
+	 $username = stripslashes($username);
+	 $password = stripslashes($password);
+	 $username = mysql_real_escape_string($username);
+	 $password = mysql_real_escape_string($password);
+	 $sql="SELECT * FROM $tbl_name WHERE staffID='$username' and password='$password'";
+	 $result = mysql_query($sql) or die ('Unable to run query: '.mysql_error());
 
-include 'login.php';
+	 $count = mysql_num_rows($result);
+	
+     // Login successful
+	 if($count == 1) {
+	 
+		 //Counts the number of times "staffID" appears in each table (should only be 1 ID in 1 table)
+		 $adm="SELECT * FROM administrators WHERE staffID='$username'";
+		 $admCount = mysql_num_rows(mysql_query($adm));
+		
+		 $dir="SELECT * FROM director WHERE staffID='$username'";
+		 $dirCount = mysql_num_rows(mysql_query($dir));
+		
+		 $res="SELECT * FROM residents WHERE staffID='$username'";
+		 $resCount = mysql_num_rows(mysql_query($res));
+		
+		 $int="SELECT * FROM interns WHERE staffID='$username'";
+		 $intCount = mysql_num_rows(mysql_query($int));
+		
+		 $doc="SELECT * FROM doctor WHERE staffID='$username'";
+		 $docCount = mysql_num_rows(mysql_query($doc));
+		
+		 $nur="SELECT * FROM nurse WHERE staffID='$username'";
+		 $nurCount = mysql_num_rows(mysql_query($nur));
+		
+		 $sup="SELECT * FROM supervisor WHERE staffID='$username'";
+		 $supCount = mysql_num_rows(mysql_query($sup));
+		
+		 //Determines which table has the "staffID" and redirects to the appropriate page
+		 if($admCount >= 1)
+		 {
+			 $_SESSION['userid'] = $result['staffID'];
+			 $_SESSION['login']=true;
+			 header('Location: dir_admin.php');
+			 exit;
+		 }//End of administrators count
+		
+		 else if($dirCount >= 1)
+		 {
+			 $_SESSION['userid'] = $result['staffID'];
+			 $_SESSION['login']=true;
+		     header('Location: dir_admin.php');
+		 	 exit;
+		 }//End of director count
+		
+		 else if($resCount >= 1)
+		 {
+			 $_SESSION['userid'] = $result['staffID'];
+			 $_SESSION['login']=true;
+			 header('Location: res_int.php');
+			 exit;
+		 }//End of residents count
+		
+		 else if($intCount >= 1)
+		 {
+			 $_SESSION['userid'] = $result['staffID'];
+			 $_SESSION['login']=true;
+			 header('Location: res_int.php');
+			 exit;
+		 }//End of interns count
+		
+		 else if($docCount >= 1)
+		 {
+			 $_SESSION['userid'] = $result['staffID'];
+			 $_SESSION['login']=true;
+			 header('Location: doctors.php');
+			 exit;
+		 }//End of doctor count
+		
+		 else if($nurCount >= 1)
+		 {
+			 $_SESSION['userid'] = $result['staffID'];
+			 $_SESSION['login']=true;
+			 header('Location: nurses.php');
+			 exit;
+		 }//End of nurse count
+		
+		 else if($supCount >= 1)
+		 {
+			 $_SESSION['userid'] = $result['staffID'];
+			 $_SESSION['login']=true;
+			 header('Location: nurses_sup.php');
+			 exit;
+		 }//End of supervisor count
+		
+		 else
+		 {
+			 $_SESSION['userid'] = $result['staffID'];
+			 $_SESSION['login']=true;
+			 header('Location: patients.php');
+			 exit;
+		 }//End of default
+	 }//End of if($count == 1)
+	 
+	 else if(isset($_POST['LoginAsPatient'])) 
+	 {
+		 $_SESSION['login']=true;
+		 header('Location: patients.php');
+	 }//End of else if(isset($_POST["Login as Patient"])) 
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+	 else 
+	 {
+		// Login unsuccessful
+		$_SESSION['error']=true;
+	 }//End of else
 
-// To protect MySQL injection
-$username = stripslashes($username);
-$password = stripslashes($password);
-$username = mysql_real_escape_string($username);
-$password = mysql_real_escape_string($password);
-$sql="SELECT * FROM $tbl_name WHERE staffID='$username' and password='$password'";
-$result = mysql_query($sql) or die ('Unable to run query: '.mysql_error());
-
-$count = mysql_num_rows($result);
-
-if($count == 1) {
-	// Login successful
-	
-	$adm="SELECT * FROM administrators WHERE staffID='$username'";
-	$admCount = mysql_num_rows(mysql_query($adm));
-	
-	$dir="SELECT * FROM director WHERE staffID='$username'";
-	$dirCount = mysql_num_rows(mysql_query($dir));
-	
-	$res="SELECT * FROM residents WHERE staffID='$username'";
-	$resCount = mysql_num_rows(mysql_query($res));
-	
-	$int="SELECT * FROM interns WHERE staffID='$username'";
-	$intCount = mysql_num_rows(mysql_query($int));
-	
-	$doc="SELECT * FROM doctor WHERE staffID='$username'";
-	$docCount = mysql_num_rows(mysql_query($doc));
-	
-	$nur="SELECT * FROM nurse WHERE staffID='$username'";
-	$nurCount = mysql_num_rows(mysql_query($nur));
-	
-	$sup="SELECT * FROM supervisor WHERE staffID='$username'";
-	$supCount = mysql_num_rows(mysql_query($sup));
-	
-	if($admCount >= 1){
-	$_SESSION['userid'] = $result['staffID'];
-	$_SESSION['login']=true;
-	header('Location: dir_admin.php');
-	exit;
-	}//End of administrators count
-	
-	elseif($dirCount >= 1){
-	$_SESSION['userid'] = $result['staffID'];
-	$_SESSION['login']=true;
-	header('Location: dir_admin.php');
-	exit;
-	}//End of director count
-	
-	elseif($resCount >= 1){
-	$_SESSION['userid'] = $result['staffID'];
-	$_SESSION['login']=true;
-	header('Location: res_int.php');
-	exit;
-	}//End of residents count
-	
-	elseif($intCount >= 1){
-	$_SESSION['userid'] = $result['staffID'];
-	$_SESSION['login']=true;
-	header('Location: res_int.php');
-	exit;
-	}//End of interns count
-	
-	elseif($docCount >= 1){
-	$_SESSION['userid'] = $result['staffID'];
-	$_SESSION['login']=true;
-	header('Location: doctors.php');
-	exit;
-	}//End of doctor count
-	
-	elseif($nurCount >= 1){
-	$_SESSION['userid'] = $result['staffID'];
-	$_SESSION['login']=true;
-	header('Location: nurses.php');
-	exit;
-	}//End of nurse count
-	
-	elseif($supCount >= 1){
-	$_SESSION['userid'] = $result['staffID'];
-	$_SESSION['login']=true;
-	header('Location: nurses_sup.php');
-	exit;
-	}//End of supervisor count
-	else{
-	$_SESSION['userid'] = $result['staffID'];
-	$_SESSION['login']=true;
-	header('Location: patients.php');
-	exit;
-	}//End of default
-}
-else if (isset($_POST["Login as Patient"])) {
-	$_SESSION['login']=true;
-	header('Location: patients.php');
-}
-else {
-	// Login unsuccessful
-	$_SESSION['error']=true;
-}
-
-mysql_close($con);
-}
+	 mysql_close($con);
+}//End of if (isset($_POST["username"]))
 ?>
 <!DOCTYPE html>
 <html>
@@ -171,7 +190,7 @@ mysql_close($con);
 </tr>
 </table>
 </div>
-<div class="floatRight"><p>OR</p><input type="submit" value="Login as Patient"></div>
+<div class="floatRight"><p>OR</p><input type="submit" value="Login as Patient" name="LoginAsPatient" style="width: 100px"></div>
 </form>
 <?php
 if (isset($_SESSION['error'])) {
@@ -191,6 +210,6 @@ if (isset($_SESSION['error'])) {
 <?php
 }
 else {
-	header("Location: patients.php");
+	header("Location: contact.php");
 }
 ?>
