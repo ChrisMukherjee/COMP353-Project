@@ -167,7 +167,7 @@ mysql_close($con);
 </tr>
 </table>
 </div>
-<div class="floatRight"><p>OR</p><input type="submit" value="Login as Patient"></div>
+<div class="floatRight"><p>OR</p><input type="button" value="Login as Patient"  onclick="location.href='patients.php';"></div>
 </form>
 <?php
 if (isset($_SESSION['error'])) {
