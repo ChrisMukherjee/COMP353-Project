@@ -1,0 +1,42 @@
+/*--------------------------*/
+/* Queries to select Staff  */
+/*--------------------------*/
+
+/* Select all staff members */
+SELECT unitName, name, salary, numYears FROM Staff;
+
+/* Select all administrators  */
+SELECT unitName, name, salary, numYears FROM Staff WHERE staffID IN (SELECT staffID FROM Administrators);
+
+/* Select all Directors  */
+SELECT unitName, name, salary, numYears FROM Staff WHERE staffID IN (SELECT staffID FROM Director);
+
+/* Select all nurses  */
+SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Nurses.isShiftSupervisor, Nurses.overtimeHours, Nurses.partimeHours FROM Staff JOIN Nurses ON (Nurses.staffID=Staff.staffID);
+
+/* Select all technicians members */
+SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Technicians.specialization, Technicians.overtimeHours FROM Staff JOIN Technicians ON (Technicians.staffID=Staff.staffID);
+
+/* Select all doctors(including interns and residents)  */
+SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Doctor.specialty, Doctor.visits, Doctor.operations FROM Staff JOIN Doctor ON (Doctor.staffID=Staff.staffID);
+
+/* Select all interns  */
+SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Doctor.specialty, Doctor.visits, Doctor.operations FROM Staff JOIN Doctor ON (Doctor.staffID=Staff.staffID) WHERE Doctor.staffID IN (Select staffID FROM Interns);
+
+/* Select all residents  */
+SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Doctor.specialty, Doctor.visits, Doctor.operations FROM Staff JOIN Doctor ON (Doctor.staffID=Staff.staffID) WHERE Doctor.staffID IN (Select staffID FROM Residents);
+
+/* Select all doctors(excluding interns and residents)  */
+SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Doctor.specialty, Doctor.visits, Doctor.operations FROM Staff JOIN Doctor ON (Doctor.staffID=Staff.staffID) WHERE Doctor.staffID NOT IN ((Select staffID FROM Residents) AND (Select staffID FROM Interns));
+
+/* Select all supplies  */
+SELECT category, subcategory, name, stock, capacity, cost FROM Supplies;
+
+/* Select all Supply Room Stock  */
+SELECT Supplies.category, Supplies.subcategory, Supplies.name, Supplies.stock, Supplies.capacity, Supplies.cost, SupplyRoomStock.roomFloor FROM Supplies JOIN SupplyRoomStock ON (Supplies.supplyID=SupplyRoomStock.supplyID);
+
+/* Select all Nutritional Supply  */
+SELECT Supplies.category, Supplies.subcategory, Supplies.name, Supplies.stock, Supplies.capacity, Supplies.cost, Nutritional.purchaseDate FROM Supplies JOIN Nutritional ON (Supplies.supplyID=Nutritional.supplyID);
+
+/* Select all Scheduled services  */
+SELECT date, startTime, endTime, roomNumber FROM ScheduledServices;

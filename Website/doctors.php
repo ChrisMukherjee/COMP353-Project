@@ -39,20 +39,9 @@
         	<strong>
 					<?php
 
-					$username = "";
-					$password = "";
-					$db_uname = "root";
-					$db_pw = "admin";
-
-					$host = "localhost";
-					$db_name = "hospital";
-					$tbl_name = "staff";
-
-
-					$con = mysql_connect("$host", "$db_uname", "$db_pw") or die("Error: Cannot connect to MySQL Server");
-					mysql_select_db("$db_name")or die("Error: Cannot select database \"$db_name\"");
-					// Check connection
-					if (mysql_error())
+					 include 'login.php';
+					
+					 if (mysql_error())
 					  {
 					  echo "Failed to connect to MySQL: " . mysql_error();
 					  }

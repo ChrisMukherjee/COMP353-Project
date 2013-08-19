@@ -1,13 +1,13 @@
 <?php session_start();
 
 // If the logout variable has been retrieved using the GET method:
-if (isset($_GET["logout"])) {
+if (isset($_GET['logout'])) {
 	// Get logout value
 	$logout = $_GET['logout'];
 	// If logout is equal to 99, logout the user by destroying the session
 	if ($logout == 99) {
 		session_destroy();
-		unset($_SESSION["login"]);
+		unset($_SESSION['login']);
 	}
 }
 
@@ -15,18 +15,7 @@ if (!isset($_SESSION['login'])) {
 
 if (isset($_POST["username"])) {
 
-$username = "";
-$password = "";
-$db_uname = "root";
-$db_pw = "root";
-
-$host = "localhost";
-$db_name = "hospital";
-$tbl_name = "staff";
-
-// Connect to the local database and schema 'hospital'
-$con = mysql_connect("$host", "$db_uname", "$db_pw") or die("Error: Cannot connect to MySQL Server");
-mysql_select_db("$db_name")or die("Error: Cannot select database \"$db_name\"");
+include 'login.php';
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -182,7 +171,7 @@ mysql_close($con);
 </form>
 <?php
 if (isset($_SESSION['error'])) {
-	echo "<p class=\"error\">Error: Invalid username or password</p>";
+	echo '<div class="absolute"><p class="error"><br/><br/><br/><br/><br/>Error: Invalid username or password</p></div>';
 	UNSET($_SESSION['error']);
 }
 ?>
@@ -198,6 +187,6 @@ if (isset($_SESSION['error'])) {
 <?php
 }
 else {
-	header("Location: index.php");
+	header("Location: patients.php");
 }
 ?>

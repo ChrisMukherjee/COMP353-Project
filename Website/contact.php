@@ -39,12 +39,12 @@ if (isset($_SESSION['login'])) {
     <!-- begin #mainContent -->
     <div id="mainContent">
     	<p>
-                If you have questions , please do not hestitate to contact us!<br/>
+                If you have questions , please do not hestitate to contact us!<br/><br/>
                 <strong>
-                <p>Karim Kaidbey - <a href="mailto:kkaidbey@yahoo.ca">kkaidbey@yahoo.ca</a></p>
-                <p>Alexander Vissa - <a href="mailto:alexvissa@gmail.com">alexvissa@gmail.com</a></p>
-                <p>Christopher Mukherjee - <a href="mailto:chris.mukherjee@gmail.com">chris.mukherjee@gmail.com</a></p>
-                <p>Cheng Cheng - <a href="mailto:cheng.cheng@hotmail.ca">cheng.cheng@hotmail.ca</a></p>
+                <p class="spaced">Karim Kaidbey - <a href="mailto:kkaidbey@yahoo.ca">kkaidbey@yahoo.ca</a><br/>
+                Alexander Vissa - <a href="mailto:alexvissa@gmail.com">alexvissa@gmail.com</a><br/>
+                Christopher Mukherjee - <a href="mailto:chris.mukherjee@gmail.com">chris.mukherjee@gmail.com</a><br/>
+                Cheng Cheng - <a href="mailto:cheng.cheng@hotmail.ca">cheng.cheng@hotmail.ca</a></p>
 				</strong>
 
                
