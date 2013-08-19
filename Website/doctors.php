@@ -26,14 +26,12 @@
 </head>
 
 <body>
-<!-- begin #container -->
+
 <div id="container">
-	<!--Include the Website Header-->
 	<?php include 'header.php'; ?>
-	<!--Include the Website Sidebar-->
 	<?php include 'sidebar.php'; ?>
 	<?php include 'logout.php'; ?>
-    <!-- begin #mainContent -->
+
     <div id="mainContent">
     	<p>
         	<strong>

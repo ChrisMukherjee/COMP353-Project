@@ -130,7 +130,7 @@ ul#navlist {
 	background:url(images/pp.jpg) no-repeat left 4px;
 	margin:10px 0;
 }
-#mainContent { 
+#mainContent {
 	margin: 0 0 0 210px;  
 	min-height: 400px;
 	background:#ebebeb;
@@ -157,16 +157,18 @@ ul#navlist {
 	color: blue;
 }
 
-.floatLeft {
+.loginLeft {
 	float: left;
 	left: 200px;
 	position: absolute;
+	text-align: left;
 }
 
-.floatRight {
+.loginRight {
 	float: right;
 	right: 200px;
 	position: absolute;
+	text-align: right;
 }
 
 .wrapper {
@@ -197,4 +199,18 @@ table, tr, td {
 
 .spaced {
 	line-height: 150%
+}
+
+.floatLeft {
+	float: left;
+	left: 0px;
+	position: absolute;
+	text-align: left;
+}
+
+.floatRight {
+	float: right;
+	right: 0px;
+	position: absolute;
+	text-align: right;
 }

@@ -9,8 +9,12 @@
 <?php
 $currpage = $_SERVER['PHP_SELF'];
 if (strpos($currpage, 'index.php') == FALSE) {
-	echo '<div id="floatRight">';
-	echo '<p>Welcome <a href="index.php?logout=99">Logout</a></p>';
+	echo '<div class="floatRight whiteBack">';
+	 if(isset($_SESSION['uName']))
+	 	 echo '<p>Welcome '.$_SESSION['uName'].' | <a href="index.php?logout=99">Logout</a></p>';
+
+	 else
+		 echo '<p>Welcome Patient | <a href="index.php?logout=99">Logout</a></p>';
 }
 ?>
 </div>
