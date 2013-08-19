@@ -57,7 +57,38 @@
     </div>
     <!-- begin #mainContent -->
     <div id="mainContent">
-    	<p>
+   <p>
+   <?php
+$con = mysql_connect("localhost","root","");
+if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+
+mysql_select_db("hospital", $con);
+
+$result = mysql_query("SELECT * FROM staff");
+
+echo "<table border='1'>
+<tr>
+<th>unitname</th>
+<th>name</th>
+</tr>";
+
+while($row = mysql_fetch_array($result))
+  {
+  echo "<tr>";
+  echo "<td>" . $row['unitName'] . "</td>";
+  echo "<td>" . $row['name'] . "</td>";
+  echo "</tr>";
+  }
+echo "</table>";
+
+mysql_close($con);
+?>
+        
+        
+        
         
         </p>
     </div>
