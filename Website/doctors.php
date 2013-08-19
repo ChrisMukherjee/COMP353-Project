@@ -30,7 +30,6 @@
 <div id="container">
 	<?php include 'header.php'; ?>
 	<?php include 'sidebar.php'; ?>
-	<?php include 'logout.php'; ?>
 
     <div id="mainContent">
     	<p>
@@ -43,15 +42,66 @@
 					  {
 					  echo "Failed to connect to MySQL: " . mysql_error();
 					  }
+					  
+					 //Doctors Table 
+					 $result = mysql_query("SELECT * FROM viewonlydoctors");
 
-					 $result = mysql_query("SELECT * FROM Doctors_View");
-
-					 echo "<table border='1'><tr><th>Staff ID</th><th>Name</th><th>Specialty</th><th>Visits</th></tr>";
+					 echo "<h2>Doctors Table</h2><br>";
+					 echo "<table border='2'>
+								 <tr>	<th>Staff ID</th>
+										<th>Name</th>
+										<th>Unit Name</th>
+										<th>Salary</th>
+										<th>Years</th>
+										<th>Specialty</th>
+										<th>Visits</th>
+										<th>Operations</th>
+								 </tr>";
 
 					 while($data = mysql_fetch_array($result)) 
-					 	 echo("<tr><td>$data[0]</td><td>$data[1]</td><td>$data[2]</td><td>$data[3]</td></tr>");
+					 	 echo("<tr>
+								 <td width=\"70\">$data[0]</td>
+								 <td width=\"70\">$data[1]</td>
+								 <td width=\"70\">$data[2]</td>
+								 <td width=\"70\">$data[3]</td>
+								 <td width=\"70\">$data[4]</td>
+								 <td width=\"70\">$data[5]</td>
+								 <td width=\"70\">$data[6]</td>
+								 <td width=\"70\">$data[7]</td>
+							   </tr>");
 					 					  
 					 echo "</table>";
+					  
+					 //Doctors/Interns/Residents Table
+					 $result2 = mysql_query("SELECT * FROM viewdoctors");
+
+					 echo "<br><br><br><br><br><hr><br>";
+					 echo "<h2>Doctors / Interns / Residents</h2><br>";
+					 echo "<table border='2'>
+								 <tr>	<th>Staff ID</th>
+										<th>Name</th>
+										<th>Unit Name</th>
+										<th>Salary</th>
+										<th>Years</th>
+										<th>Specialty</th>
+										<th>Visits</th>
+										<th>Operations</th>
+								 </tr>";
+
+					 while($data = mysql_fetch_array($result2)) 
+					 	 echo("<tr>
+								 <td width=\"70\">$data[0]</td>
+								 <td width=\"70\">$data[1]</td>
+								 <td width=\"70\">$data[2]</td>
+								 <td width=\"70\">$data[3]</td>
+								 <td width=\"70\">$data[4]</td>
+								 <td width=\"70\">$data[5]</td>
+								 <td width=\"70\">$data[6]</td>
+								 <td width=\"70\">$data[7]</td>
+							   </tr>");
+					 					  
+					 echo "</table>";
+					 
 					 
 					 mysql_close($con);
 					?>

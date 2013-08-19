@@ -40,20 +40,92 @@ include 'login.php';
     <!-- begin #mainContent -->
     <div id="mainContent">
     	<p>
-        	<strong>All website template is released under a Creative Commons Attribution 2.5 License</strong><br /><br />
-We request you retain the full copyright notice below including the link to www.facebookpagetemplates.com. This not only gives respect to the large amount of time given freely by the developers but also helps build interest, traffic and use of our free and paid designs. If you cannot (for good reason) retain the full copyright we request you at least leave in place the Website Templates line, with Website Templates linked to www.facebookpagetemplates.com. If you refuse to include even this then support may be affected.<br /><br />
+        	<strong>
+					<?php
 
-<strong>You are allowed to use this design only if you agree to the following conditions:</strong><br />
-- You can not remove copyright notice from any our template without our permission.<br />
-- If you modify any our template it still should contain copyright because it is based on our work.<br />
-- You may copy, distribute, modify, etc. any our template as long as link to our website remains untouched.<br /><br />
+					 include 'login.php';
+					 					
+					 if (mysql_error())
+					  {
+					  echo "Failed to connect to MySQL: " . mysql_error();
+					  }
+					 
+					 //Directors Table
+					 $result = mysql_query("SELECT * FROM viewdirectors");
 
-For support please visit www.cssmoban.com<br /><br /><br /><br />
-<strong>What does Flash Template mean?</strong><br /><br />
+					 echo "<h2>Directors Table</h2><br>";
+					 echo "<table border='2'>
+								 <tr>	<th>Staff ID</th>
+										<th>Name</th>
+										<th>Unit Name</th>
+										<th>Salary</th>
+										<th>Years</th>
+								 </tr>";
 
-Flash Template is a ready-made Flash Site that you can download and use for free! Flash Template was created by professional and independent designers for you. You need only to make your adjustments and your flash site is ready. If you open .fla file you can easily change the text information and graphics of the site. There's no need to make animation - our designers already did it. After your text and graphics adjustments you need only to upload .swf file to your server and enjoy your ready Flash Site! Using Free Flash Templates you can save your time and money! 
-        </p>
-    </div>
+					 while($data = mysql_fetch_array($result)) 
+					 	 echo("<tr>
+								 <td width=\"70\">$data[0]</td>
+								 <td width=\"70\">$data[1]</td>
+								 <td width=\"70\">$data[2]</td>
+								 <td width=\"70\">$data[3]</td>
+								 <td width=\"70\">$data[4]</td>
+							   </tr>");
+					 					  
+					 echo "</table>";
+					 
+					 //Administrators Table
+					 $result2 = mysql_query("SELECT * FROM viewadmin");
+					 
+					 echo "<br><br><br><br><br><hr><br>";
+					 echo "<h2>Administrators Table</h2><br>";
+					 echo "<table border='2'>
+								 <tr>	<th>Staff ID</th>
+										<th>Name</th>
+										<th>Unit Name</th>
+										<th>Salary</th>
+										<th>Years</th>
+								 </tr>";
+
+					 while($data = mysql_fetch_array($result2)) 
+					 	 echo("<tr>
+								 <td width=\"70\">$data[0]</td>
+								 <td width=\"70\">$data[1]</td>
+								 <td width=\"70\">$data[2]</td>
+								 <td width=\"70\">$data[3]</td>
+								 <td width=\"70\">$data[4]</td>
+							   </tr>");
+					 					  
+					 echo "</table>";
+					 
+					 //All Staff Members Table
+					 $result3 = mysql_query("SELECT * FROM allstaff");
+					 
+					 echo "<br><br><br><br><br><hr><br>";
+					 echo "<h2>All Staff Members  Table</h2><br>";
+					 echo "<table border='2'>
+								 <tr>	<th>Staff ID</th>
+										<th>Name</th>
+										<th>Unit Name</th>
+										<th>Salary</th>
+										<th>Years</th>
+								 </tr>";
+
+					 while($data = mysql_fetch_array($result3)) 
+					 	 echo("<tr>
+								 <td width=\"70\">$data[0]</td>
+								 <td width=\"70\">$data[1]</td>
+								 <td width=\"70\">$data[2]</td>
+								 <td width=\"70\">$data[3]</td>
+								 <td width=\"70\">$data[4]</td>
+							   </tr>");
+					 					  
+					 echo "</table>";
+					 
+					 mysql_close($con);
+					?>
+			</strong><br /><br />
+		</p>
+	</div>
     <!-- end #mainContent -->
 	<br class="clearfloat" />
     <!--Include the Website Footer-->
