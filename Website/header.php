@@ -9,7 +9,7 @@
 <?php
 $currpage = $_SERVER['PHP_SELF'];
 if (strpos($currpage, 'index.php') == FALSE) {
-	echo '<div id="floatRight">';
+	echo '<div class="floatRight whiteBack">';
 	echo '<p>Welcome <a href="index.php?logout=99">Logout</a></p>';
 }
 ?>
