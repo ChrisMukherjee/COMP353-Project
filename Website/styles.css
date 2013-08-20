@@ -168,7 +168,7 @@ ul#navlist {
 	float: right;
 	right: 200px;
 	position: absolute;
-	text-align: right;
+	text-align: left;
 }
 
 .wrapper {
