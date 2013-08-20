@@ -27,7 +27,7 @@ SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Doctor.specialt
 SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Doctor.specialty, Doctor.visits, Doctor.operations FROM Staff JOIN Doctor ON (Doctor.staffID=Staff.staffID) WHERE Doctor.staffID IN (Select staffID FROM Residents);
 
 /* Select all doctors(excluding interns and residents)  */
-SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Doctor.specialty, Doctor.visits, Doctor.operations FROM Staff JOIN Doctor ON (Doctor.staffID=Staff.staffID) WHERE Doctor.staffID NOT IN ((Select staffID FROM Residents) AND (Select staffID FROM Interns));
+SELECT Staff.unitName, Staff.name, Staff.salary, Staff.numYears, Doctor.specialty, Doctor.visits, Doctor.operations FROM Staff JOIN Doctor ON (Doctor.staffID=Staff.staffID) WHERE (Doctor.staffID NOT IN (Select staffID FROM Residents)) AND (Doctor.staffID NOT IN (Select staffID FROM Residents));
 
 /* Select all supplies  */
 SELECT category, subcategory, name, stock, capacity, cost FROM Supplies;
