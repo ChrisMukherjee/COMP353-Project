@@ -15,6 +15,7 @@ Karim Kaidbey:
 	- Modified Relational Diagram
 	    - added non-identifying & identifying relationships
 	- Finalized Relational Diagram
+	- Wrote assumptions text for Relational Diagram
 	- Created/modified database tables
 	    - modified table attributes
 	- Created database views
@@ -31,6 +32,7 @@ Christopher Mukherjee:
 	- Edited header and footer of website
 	- Edited HTML/CSS of contact us page
 	- Created initial login page with POST method form
+	    - on unsuccessful login, display red error message using PHP
 	- Added redirect code to enforce proper login
 	    - if a user tries to manually get to a page without logging in, redirect to login screen
 	    - if a user tries to manually return to login page (without logging out), redirect to contact us page

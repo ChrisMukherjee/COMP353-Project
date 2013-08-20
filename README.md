@@ -17,24 +17,25 @@ Create relational diagram - **DONE**<br>
 Describe assumptions made regarding design - **DONE**
 </p>
 
-<h2>PART 2: </h2>
+<h2>PART 2: Web Interface</h2>
 
 <h3>Due 19-08-2013</h3>
-Generate data records using Sourceforge Spawner<br><br>
+Generate data records using Sourceforge Spawner - **DONE**<br><br>
 
-Create DB View for Directors/Administrators<br>
-Create DB View for Doctors<br>
-Create DB View for Residents and Interns<br>
-Create DB View for Nurse Shift Supervisor<br>
-Create DB View for Nurse
+Create DB View for Directors/Administrators - **ONGOING**<br>
+Create DB View for Doctors - **ONGOING**<br>
+Create DB View for Residents and Interns - **ONGOING**<br>
+Create DB View for Nurse Shift Supervisor - **ONGOING**<br>
+Create DB View for Nurse - **ONGOING**
 </p>
 
 <h3>Due 21-08-2013</h3>
 <p>
-Create website:<br>
+Create website: - **ONGOING**<br>
 Create login/logout function - **DONE**<br>
-Create pages for each staff member to view, and limit access based on login<br>
-Call views using PHP<br>
+Create pages for each staff member to view - **DONE**<br>
+Call views using PHP - **ONGOING**<br>
+Limit access based on login<br>
 Allow some views/tables to be updated from website<br>
 Finalize website
 </p>
@@ -47,6 +48,6 @@ NOTE: All contents for demo should be stored on a CD/DVD/USB key:<br>
 1) PHP source code<br>
 2) Series of screen shots showing what the system does<br>
 3) Sample output from major reports<br>
-4) Relational diagrams<br>
-5) README file: lists the contributions of each member along with other important information<br>
+4) Relational diagrams - **DONE**<br>
+5) README file: lists the contributions of each member along with other important information - **ONGOING**<br>
 </p>
