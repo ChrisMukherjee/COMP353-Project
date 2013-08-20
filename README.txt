@@ -8,6 +8,9 @@ Contributions:
 * Cheng Cheng:
 
 * Karim Kaidbey:
+    Created database tables
+    Created database views
+    Generate database test data
 
 * Christopher Mukherjee:
 
