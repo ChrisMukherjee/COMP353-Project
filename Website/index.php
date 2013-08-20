@@ -194,11 +194,6 @@ if (!isset($_SESSION['login']))
 </tr>
 </table>
 </div>
-<<<<<<< HEAD
-=======
-<div class="loginRight"><p>OR</p><input type="submit" value="Login as Patient" name="LoginAsPatient" style="width: 100px"></div>
->>>>>>> 0b2005635a7df2f8c263f1025ec0c3f91f89ef5b
-</form>
 <div class="floatRight"> <p>OR</p> 
 <form action="patients.php"> 
 <input value="Patients&Vistors" type="submit">
