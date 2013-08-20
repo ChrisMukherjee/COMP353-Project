@@ -194,10 +194,7 @@ if (!isset($_SESSION['login']))
 </tr>
 </table>
 </div>
-<div class="floatRight"> <p>OR</p> 
-<form action="patients.php"> 
-<input value="Patients&Vistors" type="submit">
-<? header('Location: patients.php'); ?> </form> </div>
+<div class="loginRight"><p>OR</p><input type="submit" value="Login as Patient" name="LoginAsPatient" style="width: 100px"></div>
 <?php
 if (isset($_SESSION['error'])) {
 	echo '<div class="absolute"><p class="error"><br/><br/><br/><br/><br/>Error: Invalid username or password</p></div>';
