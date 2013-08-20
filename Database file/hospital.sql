@@ -4,7 +4,7 @@ USE `hospital`;
 --
 -- Host: localhost    Database: hospital
 -- ------------------------------------------------------
--- Server version	5.6.12-enterprise-commercial-advanced
+-- Server version	5.6.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -42,6 +42,21 @@ INSERT INTO `administrators` VALUES (1),(2),(6),(7),(11),(12);
 UNLOCK TABLES;
 
 --
+-- Temporary table structure for view `allservices`
+--
+
+DROP TABLE IF EXISTS `allservices`;
+/*!50001 DROP VIEW IF EXISTS `allservices`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `allservices` (
+  `Service Name` tinyint NOT NULL,
+  `Unit Name` tinyint NOT NULL,
+  `cost` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Temporary table structure for view `allstaff`
 --
 
@@ -55,6 +70,25 @@ SET character_set_client = utf8;
   `unitName` tinyint NOT NULL,
   `salary` tinyint NOT NULL,
   `numYears` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `allsupplies`
+--
+
+DROP TABLE IF EXISTS `allsupplies`;
+/*!50001 DROP VIEW IF EXISTS `allsupplies`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `allsupplies` (
+  `name` tinyint NOT NULL,
+  `category` tinyint NOT NULL,
+  `subcategory` tinyint NOT NULL,
+  `stock` tinyint NOT NULL,
+  `capacity` tinyint NOT NULL,
+  `cost` tinyint NOT NULL,
+  `unitName` tinyint NOT NULL
 ) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
@@ -221,6 +255,26 @@ INSERT INTO `nutritional` VALUES (13,'2013-08-19'),(14,'2013-08-19'),(15,'2013-0
 UNLOCK TABLES;
 
 --
+-- Temporary table structure for view `nutritionalsupplies`
+--
+
+DROP TABLE IF EXISTS `nutritionalsupplies`;
+/*!50001 DROP VIEW IF EXISTS `nutritionalsupplies`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `nutritionalsupplies` (
+  `name` tinyint NOT NULL,
+  `category` tinyint NOT NULL,
+  `subcategory` tinyint NOT NULL,
+  `stock` tinyint NOT NULL,
+  `capacity` tinyint NOT NULL,
+  `cost` tinyint NOT NULL,
+  `unitName` tinyint NOT NULL,
+  `purchaseDate` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `patients`
 --
 
@@ -305,7 +359,7 @@ CREATE TABLE `scheduledservices` (
 
 LOCK TABLES `scheduledservices` WRITE;
 /*!40000 ALTER TABLE `scheduledservices` DISABLE KEYS */;
-INSERT INTO `scheduledservices` VALUES (1,2,3,4,'2013-08-08','06:00:00','07:00:00','12'),(3,4,1,1,'2013-08-19','06:00:00','07:00:00','12'),(1,4,1,1,'2013-08-19','06:00:00','07:00:00','12'),(5,9,4,3,'2013-08-20','07:00:00','08:00:00','4'),(7,9,4,3,'2013-08-20','08:00:00','09:00:00','3'),(8,9,4,2,'2013-08-20','08:00:00','09:00:00','4'),(18,15,5,8,'2013-08-20','08:00:00','09:00:00','4'),(27,22,5,9,'2013-08-20','08:00:00','09:00:00','7'),(29,22,5,9,'2013-08-23','08:00:00','09:00:00','2'),(24,16,6,9,'2013-08-23','08:00:00','09:00:00','8'),(24,16,2,9,'2013-08-23','08:00:00','09:00:00','8');
+INSERT INTO `scheduledservices` VALUES (3,4,1,1,'2013-08-19','06:00:00','07:00:00','1'),(1,NULL,1,1,'2013-08-20','07:00:00','07:30:00','2'),(5,9,4,3,'2013-08-20','07:00:00','08:00:00','4'),(7,NULL,4,3,'2013-08-20','08:00:00','09:00:00','3'),(8,9,4,2,'2013-08-21','08:00:00','09:00:00','4'),(18,15,5,8,'2013-08-20','08:00:00','09:00:00','4'),(27,22,5,9,'2013-08-20','08:00:00','09:00:00','7'),(29,NULL,5,9,'2013-08-22','08:00:00','09:00:00','2'),(24,NULL,6,9,'2013-08-23','08:00:00','09:00:00','8'),(24,16,2,9,'2013-08-23','08:00:00','09:00:00','8');
 /*!40000 ALTER TABLE `scheduledservices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,6 +393,25 @@ INSERT INTO `services` VALUES (1,'nutrition','Palliative',10.0000),(2,'bathing',
 UNLOCK TABLES;
 
 --
+-- Temporary table structure for view `serviceschedule`
+--
+
+DROP TABLE IF EXISTS `serviceschedule`;
+/*!50001 DROP VIEW IF EXISTS `serviceschedule`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `serviceschedule` (
+  `Staff` tinyint NOT NULL,
+  `Service` tinyint NOT NULL,
+  `Patient Name` tinyint NOT NULL,
+  `date` tinyint NOT NULL,
+  `startTime` tinyint NOT NULL,
+  `endTime` tinyint NOT NULL,
+  `roomNumber` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `staff`
 --
 
@@ -368,6 +441,26 @@ LOCK TABLES `staff` WRITE;
 INSERT INTO `staff` VALUES (1,'Palliative','Steve',98000.0000,0,'pass123'),(2,'Palliative','Ben',98000.0000,0,'pass123'),(3,'Palliative','John',16.0000,0,'pass123'),(4,'Palliative','Karim',40000.0000,0,'pass123'),(5,'Childrens','Cheng',125000.0000,0,'pass123'),(6,'Childrens','Chris',98000.0000,0,'pass123'),(7,'Childrens','Alex',98000.0000,0,'pass123'),(8,'Childrens','Sarah',18.0000,0,'pass123'),(9,'Childrens','Sam',42000.0000,0,'pass123'),(10,'Surgical','Sora',125000.0000,0,'pass123'),(11,'Surgical','Ramzi',98000.0000,0,'pass123'),(12,'Surgical','Rayan',98000.0000,0,'pass123'),(13,'Surgical','Danny',17.0000,0,'pass123'),(14,'Surgical','Jude',16.0000,0,'pass123'),(15,'Palliative','Cami',44000.0000,0,'pass123'),(16,'Palliative','Jayna',46000.0000,0,'pass123'),(17,'Palliative','Alida',24.5000,0,'pass123'),(18,'Palliative','Sharri',0.0000,0,'pass123'),(19,'Palliative','Manuela',27.7500,0,'pass123'),(20,'Childrens','Neville',24.5000,0,'pass123'),(21,'Childrens','Lu',24.5000,0,'pass123'),(22,'Childrens','Zofia',44000.0000,0,'pass123'),(23,'Childrens','Liane',0.0000,0,'pass123'),(24,'Childrens','Gema',0.0000,0,'pass123'),(25,'Surgical','Elliot',24.5000,0,'pass123'),(26,'Surgical','Charles',27.2500,0,'pass123'),(27,'Surgical','Lettie',0.0000,0,'pass123'),(28,'Surgical','Denice',44000.0000,0,'pass123'),(29,'Surgical','Arcelia',0.0000,0,'pass123'),(30,'Palliative','Joe',125000.0000,0,'pass123'),(31,'Surgical','Xavier',18.5000,0,'pass123');
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `stockroominventyory`
+--
+
+DROP TABLE IF EXISTS `stockroominventyory`;
+/*!50001 DROP VIEW IF EXISTS `stockroominventyory`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `stockroominventyory` (
+  `name` tinyint NOT NULL,
+  `category` tinyint NOT NULL,
+  `subcategory` tinyint NOT NULL,
+  `stock` tinyint NOT NULL,
+  `capacity` tinyint NOT NULL,
+  `cost` tinyint NOT NULL,
+  `unitName` tinyint NOT NULL,
+  `roomFloor` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `supplies`
@@ -528,6 +621,25 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `viewnurses`
+--
+
+DROP TABLE IF EXISTS `viewnurses`;
+/*!50001 DROP VIEW IF EXISTS `viewnurses`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewnurses` (
+  `staffID` tinyint NOT NULL,
+  `Name` tinyint NOT NULL,
+  `Unit Name` tinyint NOT NULL,
+  `Salary` tinyint NOT NULL,
+  `Years Worked` tinyint NOT NULL,
+  `Part-time Hours` tinyint NOT NULL,
+  `Overtime Hours` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Temporary table structure for view `viewonlydoctors`
 --
 
@@ -548,6 +660,21 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `viewpatients`
+--
+
+DROP TABLE IF EXISTS `viewpatients`;
+/*!50001 DROP VIEW IF EXISTS `viewpatients`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewpatients` (
+  `patientName` tinyint NOT NULL,
+  `medicareCard` tinyint NOT NULL,
+  `medicationsTreatmentsEtc` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Temporary table structure for view `viewresidents`
 --
 
@@ -564,6 +691,41 @@ SET character_set_client = utf8;
   `specialty` tinyint NOT NULL,
   `visits` tinyint NOT NULL,
   `operations` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `viewtechnicians`
+--
+
+DROP TABLE IF EXISTS `viewtechnicians`;
+/*!50001 DROP VIEW IF EXISTS `viewtechnicians`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewtechnicians` (
+  `staffID` tinyint NOT NULL,
+  `Name` tinyint NOT NULL,
+  `Unit Name` tinyint NOT NULL,
+  `Salary` tinyint NOT NULL,
+  `Years Worked` tinyint NOT NULL,
+  `Specialization` tinyint NOT NULL,
+  `Overtime Hours` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `viewworkhours`
+--
+
+DROP TABLE IF EXISTS `viewworkhours`;
+/*!50001 DROP VIEW IF EXISTS `viewworkhours`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewworkhours` (
+  `name` tinyint NOT NULL,
+  `date` tinyint NOT NULL,
+  `shiftStart` tinyint NOT NULL,
+  `shiftEnd` tinyint NOT NULL
 ) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
@@ -595,6 +757,25 @@ INSERT INTO `workhours` VALUES (17,'2013-08-19','06:00:00','18:00:00'),(19,'2013
 UNLOCK TABLES;
 
 --
+-- Final view structure for view `allservices`
+--
+
+/*!50001 DROP TABLE IF EXISTS `allservices`*/;
+/*!50001 DROP VIEW IF EXISTS `allservices`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `allservices` AS (select `services`.`serviceName` AS `Service Name`,`services`.`unitName` AS `Unit Name`,`services`.`cost` AS `cost` from `services`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `allstaff`
 --
 
@@ -609,6 +790,82 @@ UNLOCK TABLES;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `allstaff` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `allsupplies`
+--
+
+/*!50001 DROP TABLE IF EXISTS `allsupplies`*/;
+/*!50001 DROP VIEW IF EXISTS `allsupplies`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `allsupplies` AS (select `supplies`.`name` AS `name`,`supplies`.`category` AS `category`,`supplies`.`subcategory` AS `subcategory`,`supplies`.`stock` AS `stock`,`supplies`.`capacity` AS `capacity`,`supplies`.`cost` AS `cost`,`supplies`.`unitName` AS `unitName` from `supplies`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nutritionalsupplies`
+--
+
+/*!50001 DROP TABLE IF EXISTS `nutritionalsupplies`*/;
+/*!50001 DROP VIEW IF EXISTS `nutritionalsupplies`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nutritionalsupplies` AS (select `supplies`.`name` AS `name`,`supplies`.`category` AS `category`,`supplies`.`subcategory` AS `subcategory`,`supplies`.`stock` AS `stock`,`supplies`.`capacity` AS `capacity`,`supplies`.`cost` AS `cost`,`supplies`.`unitName` AS `unitName`,`nutritional`.`purchaseDate` AS `purchaseDate` from (`supplies` join `nutritional` on((`nutritional`.`supplyID` = `supplies`.`supplyID`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `serviceschedule`
+--
+
+/*!50001 DROP TABLE IF EXISTS `serviceschedule`*/;
+/*!50001 DROP VIEW IF EXISTS `serviceschedule`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `serviceschedule` AS (select `staff`.`name` AS `Staff`,`services`.`serviceName` AS `Service`,`patients`.`patientName` AS `Patient Name`,`scheduledservices`.`date` AS `date`,`scheduledservices`.`startTime` AS `startTime`,`scheduledservices`.`endTime` AS `endTime`,`scheduledservices`.`roomNumber` AS `roomNumber` from (((`scheduledservices` join `staff` on((`staff`.`staffID` = `scheduledservices`.`staffID`))) join `services` on((`services`.`serviceID` = `scheduledservices`.`serviceID`))) join `patients` on((`patients`.`patientID` = `scheduledservices`.`patientsID`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `stockroominventyory`
+--
+
+/*!50001 DROP TABLE IF EXISTS `stockroominventyory`*/;
+/*!50001 DROP VIEW IF EXISTS `stockroominventyory`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `stockroominventyory` AS (select `supplies`.`name` AS `name`,`supplies`.`category` AS `category`,`supplies`.`subcategory` AS `subcategory`,`supplies`.`stock` AS `stock`,`supplies`.`capacity` AS `capacity`,`supplies`.`cost` AS `cost`,`supplies`.`unitName` AS `unitName`,`supplyroomstock`.`roomFloor` AS `roomFloor` from (`supplies` join `supplyroomstock` on((`supplyroomstock`.`supplyID` = `supplies`.`supplyID`)))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -690,6 +947,25 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `viewnurses`
+--
+
+/*!50001 DROP TABLE IF EXISTS `viewnurses`*/;
+/*!50001 DROP VIEW IF EXISTS `viewnurses`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewnurses` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `Name`,`staff`.`unitName` AS `Unit Name`,`staff`.`salary` AS `Salary`,`staff`.`numYears` AS `Years Worked`,`nurses`.`parttimeHours` AS `Part-time Hours`,`nurses`.`overtimeHours` AS `Overtime Hours` from (`staff` join `nurses` on((`nurses`.`staffID` = `staff`.`staffID`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `viewonlydoctors`
 --
 
@@ -704,6 +980,25 @@ UNLOCK TABLES;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `viewonlydoctors` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears`,`doctor`.`specialty` AS `specialty`,`doctor`.`visits` AS `visits`,`doctor`.`operations` AS `operations` from (`staff` join `doctor` on((`doctor`.`staffID` = `staff`.`staffID`))) where ((not(`doctor`.`staffID` in (select `residents`.`staffID` from `residents`))) and (not(`doctor`.`staffID` in (select `interns`.`staffID` from `interns`))))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewpatients`
+--
+
+/*!50001 DROP TABLE IF EXISTS `viewpatients`*/;
+/*!50001 DROP VIEW IF EXISTS `viewpatients`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewpatients` AS (select `patients`.`patientName` AS `patientName`,`patients`.`medicareCard` AS `medicareCard`,`patients`.`medicationsTreatmentsEtc` AS `medicationsTreatmentsEtc` from `patients`) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -726,6 +1021,44 @@ UNLOCK TABLES;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewtechnicians`
+--
+
+/*!50001 DROP TABLE IF EXISTS `viewtechnicians`*/;
+/*!50001 DROP VIEW IF EXISTS `viewtechnicians`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewtechnicians` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `Name`,`staff`.`unitName` AS `Unit Name`,`staff`.`salary` AS `Salary`,`staff`.`numYears` AS `Years Worked`,`technicians`.`specialization` AS `Specialization`,`technicians`.`overtimeHours` AS `Overtime Hours` from (`staff` join `technicians` on((`technicians`.`staffID` = `staff`.`staffID`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewworkhours`
+--
+
+/*!50001 DROP TABLE IF EXISTS `viewworkhours`*/;
+/*!50001 DROP VIEW IF EXISTS `viewworkhours`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewworkhours` AS (select `staff`.`name` AS `name`,`workhours`.`date` AS `date`,`workhours`.`shiftStart` AS `shiftStart`,`workhours`.`shiftEnd` AS `shiftEnd` from (`workhours` join `staff` on((`staff`.`staffID` = `workhours`.`staffID`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -736,4 +1069,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-08-19 19:50:33
+-- Dump completed on 2013-08-20  4:05:09
