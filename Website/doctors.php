@@ -1,8 +1,7 @@
 ﻿<?php session_start();
 
-//if (isset($_SESSION['login'])) {
+if (isset($_SESSION['login'])) {
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,18 +32,12 @@
 <div id="container">
 	<?php include 'header.php'; ?>
 	<?php include 'sidebar.php'; ?>
-
-    <div id="mainContent">
+<div id="mainContent">
     	<p>
         	<strong>
 					<?php
 
 					include 'login.php';
-					 					
-					 if (mysql_error())
-					  {
-					  echo "Failed to connect to MySQL: " . mysql_error();
-					  }
 					  
 					 //Doctors Table 
 					 $result = mysql_query("SELECT * FROM viewonlydoctors");
@@ -119,11 +112,9 @@
 <!-- end #container -->
 </body>
 </html>
-
 <?php
-/*
-else {
-header("Location: login.php");
 }
-*/
+else {
+header("Location: index.php");
+}
 ?>
