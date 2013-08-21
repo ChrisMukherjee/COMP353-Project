@@ -1,5 +1,3 @@
-if ($_SESSION['uType'] != 'director') {
-
     <!-- begin #sidebar1 -->
     <div id="sidebar1">
 		<br>

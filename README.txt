@@ -33,12 +33,14 @@ Christopher Mukherjee:
 	- Edited HTML/CSS of contact us page
 	- Created initial login page with POST method form
 	    - on unsuccessful login, display red error message using PHP
-	- Added redirect code to enforce proper login
+	- Added PHP redirect code to enforce proper login
 	    - if a user tries to manually get to a page without logging in, redirect to login screen
 	    - if a user tries to manually return to login page (without logging out), redirect to contact us page
 	- Created "login as patient" option that does not require a userID
 	- Added logout function
 	- Added Welcome text that displays user's name (supported Alexander)
+	- Added PHP code to limit access to pages
+	    - users can only view certain pages based on their staff type
 
 Alexander Vissa:
 	- Modified Relational Diagram
