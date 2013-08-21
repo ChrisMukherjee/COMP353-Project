@@ -21,7 +21,7 @@ Generate data records using Sourceforge Spawner - **DONE**<br><br>
 Create DB View for Directors/Administrators - **Ongoing**<br>
 Create DB View for Doctors - **Ongoing**<br>
 Create DB View for Residents and Interns - **DONE**<br>
-Create DB View for Nurse Shift Supervisor - **Ongoing**<br>
+Create DB View for Nurse Shift Supervisor - ** NOT DONE - NEED TO WORK ON DEFINING THE PATIENTS LIST AND SERVICES LIST - LIST OF NURSES COMES UP THOUGH **<br>
 Create DB View for Nurse - **DONE**
 
 
