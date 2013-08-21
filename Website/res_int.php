@@ -2,6 +2,12 @@
 <?php
 if (isset($_SESSION['login'])) {
 include 'login.php';
+
+if ($_SESSION['uType'] != 'resident' && $_SESSION['uType'] != 'intern') {
+	header("Location: index.php");
+}
+else
+{
 ?>
 
 <!DOCTYPE html>
@@ -91,7 +97,8 @@ include 'login.php';
 
 <?php
 }
+}
 else {
-header("Location: .php");
+header("Location: index.php");
 }
 ?>

@@ -4,7 +4,7 @@
 	    <h2>Pages</h2>
         <ul>
         <?php
-			if ($_SESSION['uType'] = 'admin' || $_SESSION['uType'] = 'director') {
+			if ($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
 				echo '<li><a href="dir_admin.php">Directors/Administrators</a></li>';
 				echo'<li><a href="doctors.php">Doctors</a></li>';
 				echo '<li><a href="res_int.php">Residents/Interns</a></li>';
@@ -13,22 +13,22 @@
 				echo '<li><a href="patients.php">Patients</a></li>';
 				echo '<li><a href="contact.php">Contact Us</a></li>';
 			}
-			else if ($_SESSION['uType'] = 'doctor') {
+			else if ($_SESSION['uType'] == 'doctor') {
 				echo'<li><a href="doctors.php">Doctors</a></li>';
 				echo '<li><a href="res_int.php">Residents/Interns</a></li>';
 				echo '<li><a href="patients.php">Patients</a></li>';
 				echo '<li><a href="contact.php">Contact Us</a></li>';
 			}
-			else if ($_SESSION['uType'] = 'resident' || $_SESSION['uType'] = 'intern') {
+			else if ($_SESSION['uType'] == 'resident' || $_SESSION['uType'] == 'intern') {
 				echo '<li><a href="res_int.php">Residents/Interns</a></li>';
 				echo '<li><a href="contact.php">Contact Us</a></li>';
 			}
-			else if ($_SESSION['uType'] = 'nurse') {
+			else if ($_SESSION['uType'] == 'nurse') {
 				echo '<li><a href="nurses.php">Nurses</a></li>';
 				echo '<li><a href="patients.php">Patients</a></li>';
 				echo '<li><a href="contact.php">Contact Us</a></li>';
 			}
-			else if ($_SESSION['uType'] = 'supnurse') {
+			else if ($_SESSION['uType'] == 'supnurse') {
 				echo '<li><a href="nurses.php">Nurses</a></li>';
 				echo '<li><a href="nurses_sup.php">Nurse - Shift Supervisor</a></li>';
 				echo '<li><a href="patients.php">Patients</a></li>';
@@ -38,6 +38,7 @@
 				echo '<li><a href="patients.php">Patients</a></li>';
 				echo '<li><a href="contact.php">Contact Us</a></li>';
 			}
+		?>
 			</ul>
         <br /><br />
 	
