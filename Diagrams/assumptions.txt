@@ -1,9 +1,9 @@
 Assumptions made regarding Relational Diagram:
 
 - All Nutritional supplies are kept in a kitchen in each facility
-- Services are scheduled every time they need to be done (not weekly,daily,monthly)
-- All staff members are legal age to be working in a hospital (we don't take their age)
+- Services are scheduled every time they need to be done (not on a weekly, daily, monthly basis)
+- All staff members are legal age to be working in a hospital (we don't keep their age in any of the tables)
 - Every staff member's ID will exist in one of the following tables: Director, Administrators, Nurses, Technicians, Doctor, Interns, or Residents.
-- That there will never be a 4th facility (would require additional choices the ENUM)
+- There will never be a 4th facility (this would require additional choices for the ENUM)
 - All patients have a medicare card
 - No more than 3 directors will be added into the Director table
