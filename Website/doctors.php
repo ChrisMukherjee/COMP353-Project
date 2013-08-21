@@ -1,4 +1,7 @@
-﻿<?php session_start(); ?>
+﻿<?php session_start();
+
+if (isset($_SESSION['login'])) {
+?>
 
 <!DOCTYPE html>
 <html>
@@ -36,7 +39,7 @@
         	<strong>
 					<?php
 
-					 include 'login.php';
+					// include 'login.php';
 					 					
 					 if (mysql_error())
 					  {
