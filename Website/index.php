@@ -66,6 +66,7 @@ if (!isset($_SESSION['login']))
 		 //Determines which table has the "staffID" and redirects to the appropriate page
 		 if($admCount >= 1)
 		 {
+			 $_SESSION['uType'] = 'admin';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['login']=true;
 			 header('Location: dir_admin.php');
@@ -74,6 +75,7 @@ if (!isset($_SESSION['login']))
 		
 		 else if($dirCount >= 1)
 		 {
+			 $_SESSION['uType'] = 'director';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['login']=true;
 		     header('Location: dir_admin.php');
@@ -82,6 +84,7 @@ if (!isset($_SESSION['login']))
 		
 		 else if($resCount >= 1)
 		 {
+			 $_SESSION['uType'] = 'resident';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['login']=true;
 			 header('Location: res_int.php');
@@ -90,6 +93,7 @@ if (!isset($_SESSION['login']))
 		
 		 else if($intCount >= 1)
 		 {
+			 $_SESSION['uType'] = 'intern';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['login']=true;
 			 header('Location: res_int.php');
@@ -98,6 +102,7 @@ if (!isset($_SESSION['login']))
 		
 		 else if($docCount >= 1)
 		 {
+			 $_SESSION['uType'] = 'doctor';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['login']=true;
 			 header('Location: doctors.php');
@@ -106,6 +111,7 @@ if (!isset($_SESSION['login']))
 		
 		 else if($nurCount >= 1)
 		 {
+			 $_SESSION['uType'] = 'nurse';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['login']=true;
 			 header('Location: nurses.php');
@@ -114,6 +120,7 @@ if (!isset($_SESSION['login']))
 		
 		 else if($supCount >= 1)
 		 {
+			 $_SESSION['uType'] = 'supnurse';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['login']=true;
 			 header('Location: nurses_sup.php');
@@ -122,6 +129,7 @@ if (!isset($_SESSION['login']))
 		
 		 else
 		 {
+			 $_SESSION['uType'] = 'patient';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['login']=true;
 			 header('Location: patients.php');
