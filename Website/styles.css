@@ -140,12 +140,6 @@ ul#navlist {
 	text-align:center;
 	padding:20px 0;
 } 
-.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
-	clear:both;
-    height:0;
-    font-size: 1px;
-    line-height: 0px;
-}
 
 .error {
 	font-weight: bold;
@@ -197,7 +191,7 @@ table, tr, td {
 }
 
 .spaced {
-	line-height: 150%
+	line-height: 200%
 }
 
 .floatLeft {
