@@ -1,14 +1,17 @@
 ﻿<?php session_start();
 
+// ** NOT DONE - NEED TO WORK ON DEFINING THE PATIENTS LIST AND SERVICES LIST - LIST OF NURSES COMES UP THOUGH **
+
 if (isset($_SESSION['login'])) {
 include 'login.php';
 
-if ($_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'supnurse') {
+if ($_SESSION['uType'] != 'supnurse' && $_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'doctor') {
 	header("Location: index.php");
 }
 else
 {
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +34,7 @@ else
 /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
 </style>
 <![endif]-->
-<title>Starline - Technicians</title>
+<title>Starline - Nurse Supervisor</title>
 </head>
 
 <body>
@@ -41,23 +44,52 @@ else
 	<?php include 'header.php'; ?>
 	<!--Include the Website Sidebar-->
 	<?php include 'sidebar.php'; ?>
-<!-- begin #mainContent -->
-<div id="mainContent">
+
+    <!-- begin #mainContent -->
+    <div id="mainContent">
     	<p>
-        	<strong>All website template is released under a Creative Commons Attribution 2.5 License</strong><br /><br />
-We request you retain the full copyright notice below including the link to www.facebookpagetemplates.com. This not only gives respect to the large amount of time given freely by the developers but also helps build interest, traffic and use of our free and paid designs. If you cannot (for good reason) retain the full copyright we request you at least leave in place the Website Templates line, with Website Templates linked to www.facebookpagetemplates.com. If you refuse to include even this then support may be affected.<br /><br />
+        	<strong>
+					<?php
 
-<strong>You are allowed to use this design only if you agree to the following conditions:</strong><br />
-- You can not remove copyright notice from any our template without our permission.<br />
-- If you modify any our template it still should contain copyright because it is based on our work.<br />
-- You may copy, distribute, modify, etc. any our template as long as link to our website remains untouched.<br /><br />
+					 include 'login.php';
+					 					
+					 if (mysql_error())
+					  {
+					  echo "Failed to connect to MySQL: " . mysql_error();
+					  }
 
-For support please visit www.cssmoban.com<br /><br /><br /><br />
-<strong>What does Flash Template mean?</strong><br /><br />
+					 //Intern Table
+					 $result = mysql_query("SELECT * FROM nurse_patients");
+					 
+					 echo "<h2>Patients' List<br> $uName - ID#: $uID</h2><br>";
+					 echo "<table border='2'>
+								 <tr>	<th>Nurse ID</th>
+										<th>Patient Name</th>
+										<th>Service</th>
+										<th>Date</th>
+										<th>Start Time</th>
+										<th>End Time</th>
+										<th>Room Number</th>
+								 </tr>";
 
-Flash Template is a ready-made Flash Site that you can download and use for free! Flash Template was created by professional and independent designers for you. You need only to make your adjustments and your flash site is ready. If you open .fla file you can easily change the text information and graphics of the site. There's no need to make animation - our designers already did it. After your text and graphics adjustments you need only to upload .swf file to your server and enjoy your ready Flash Site! Using Free Flash Templates you can save your time and money! 
-        </p>
-    </div>
+					 while($data = mysql_fetch_array($result)) 
+					 	 echo("<tr>
+								 <td width=\"90\">$data[0]</td>
+								 <td width=\"90\">$data[1]</td>
+								 <td width=\"90\">$data[2]</td>
+								 <td width=\"90\">$data[3]</td>
+								 <td width=\"90\">$data[4]</td>
+								 <td width=\"90\">$data[5]</td>
+								 <td width=\"90\">$data[6]</td>
+							   </tr>");
+					 					  
+					 echo "</table>";
+				 
+					 mysql_close($con);
+					?>
+			</strong><br /><br />
+		</p>
+	</div>
     <!-- end #mainContent -->
 	<br class="clearfloat" />
     <!--Include the Website Footer-->
@@ -66,6 +98,7 @@ Flash Template is a ready-made Flash Site that you can download and use for free
 <!-- end #container -->
 </body>
 </html>
+
 <?php
 }
 }

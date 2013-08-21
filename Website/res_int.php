@@ -34,7 +34,7 @@ else
 /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
 </style>
 <![endif]-->
-<title>Starline - Administrator</title>
+<title>Starline - Intern/Resident</title>
 </head>
 
 <body>
@@ -63,8 +63,8 @@ else
 					 
 					 echo "<h2>Schedule<br> $uName - ID#: $uID</h2><br>";
 					 echo "<table border='2'>
-								 <tr>	<th>Service</th>
-										<th>Patient Name</th>
+								 <tr>	<th>Patient Name</th>
+										<th>Service</th>
 										<th>Date</th>
 										<th>Start Time</th>
 										<th>End Time</th>

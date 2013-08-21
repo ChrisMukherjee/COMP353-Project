@@ -54,10 +54,10 @@ if (!isset($_SESSION['login']))
 		 $doc="SELECT * FROM doctor WHERE staffID='$username'";
 		 $docCount = mysql_num_rows(mysql_query($doc));
 		
-		 $nur="SELECT * FROM nurse WHERE staffID='$username'";
+		 $nur="SELECT * FROM nurses WHERE staffID='$username' AND isShiftSupervisor = 0";
 		 $nurCount = mysql_num_rows(mysql_query($nur));
 		
-		 $sup="SELECT * FROM supervisor WHERE staffID='$username'";
+		 $sup="SELECT * FROM nurses WHERE staffID='$username' AND isShiftSupervisor = 1";
 		 $supCount = mysql_num_rows(mysql_query($sup));
 		 
 		 //Gets Username's Name
