@@ -19,7 +19,7 @@ if (!isset($_SESSION['login']))
 	{
 	 //Include login credentials for the MySQL Server
 	 include 'login.php';
-	
+			
 	 //Gets user name and password from user
 	 $username = $_POST['username'];
 	 $password = $_POST['password'];
@@ -29,11 +29,12 @@ if (!isset($_SESSION['login']))
 	 $password = stripslashes($password);
 	 $username = mysql_real_escape_string($username);
 	 $password = mysql_real_escape_string($password);
-	 $sql="SELECT * FROM $tbl_name WHERE staffID='$username' and password='$password'";
+	 
+	 $sql="SELECT * FROM $tbl_name WHERE staffID = '$username' and password = '$password'";
 	 $result = mysql_query($sql) or die ('Unable to run query: '.mysql_error());
-
 	 $count = mysql_num_rows($result);
 	
+	 $_SESSION['uID'] = $username;
      // Login successful
 	 if($count == 1) {
 	 

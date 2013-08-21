@@ -39,7 +39,7 @@
         	<strong>
 					<?php
 
-					// include 'login.php';
+					include 'login.php';
 					 					
 					 if (mysql_error())
 					  {

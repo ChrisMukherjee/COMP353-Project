@@ -51,7 +51,7 @@ include 'login.php';
 					  }
 
 					 //Intern Table
-					 $result = mysql_query("SELECT * FROM viewinterns");
+					 $result = mysql_query("SELECT * FROM viewinterns WHERE staffID = '$uID'");
 					 
 					 echo "<h2>Interns Table</h2><br>";
 					 echo "<table border='2'>
