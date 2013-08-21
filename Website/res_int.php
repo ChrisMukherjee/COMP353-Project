@@ -51,67 +51,30 @@ include 'login.php';
 					  }
 
 					 //Intern Table
-					 $result = mysql_query("SELECT * FROM viewinterns WHERE staffID = '$uID'");
+					 $result = mysql_query("SELECT * FROM int_res_schedule  WHERE staff = '$uID'");
 					 
-					 echo "<h2>Interns Table</h2><br>";
+					 echo "<h2>Schedule<br> $uName - ID#: $uID</h2><br>";
 					 echo "<table border='2'>
-								 <tr>	<th>Staff ID</th>
-										<th>Name</th>
-										<th>Unit Name</th>
-										<th>Salary</th>
-										<th>Years</th>
-										<th>Specialty</th>
-										<th>Visits</th>
-										<th>Operations</th>
+								 <tr>	<th>Service</th>
+										<th>Patient Name</th>
+										<th>Date</th>
+										<th>Start Time</th>
+										<th>End Time</th>
+										<th>Room Number</th>
 								 </tr>";
 
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
-								 <td width=\"70\">$data[0]</td>
-								 <td width=\"70\">$data[1]</td>
-								 <td width=\"70\">$data[2]</td>
-								 <td width=\"70\">$data[3]</td>
-								 <td width=\"70\">$data[4]</td>
-								 <td width=\"70\">$data[5]</td>
-								 <td width=\"70\">$data[6]</td>
-								 <td width=\"70\">$data[7]</td>
+								 <td width=\"90\">$data[1]</td>
+								 <td width=\"90\">$data[2]</td>
+								 <td width=\"90\">$data[3]</td>
+								 <td width=\"90\">$data[4]</td>
+								 <td width=\"90\">$data[5]</td>
+								 <td width=\"90\">$data[6]</td>
 							   </tr>");
 					 					  
 					 echo "</table>";
-					 
-					 
-					 //Resident Table
-					 $result2 = mysql_query("SELECT * FROM viewresidents");
-
-					 echo "<br><br><br><br><br><hr><br>";
-					 echo "<h2>Residents Table</h2><br>";
-					 echo "<table border='2'>
-								 <tr>	<th>Staff ID</th>
-										<th>Name</th>
-										<th>Unit Name</th>
-										<th>Salary</th>
-										<th>Years</th>
-										<th>Specialty</th>
-										<th>Visits</th>
-										<th>Operations</th>
-								 </tr>";
-
-					 while($data = mysql_fetch_array($result2)) 
-					 	 echo("<tr>
-								 <td width=\"70\">$data[0]</td>
-								 <td width=\"70\">$data[1]</td>
-								 <td width=\"70\">$data[2]</td>
-								 <td width=\"70\">$data[3]</td>
-								 <td width=\"70\">$data[4]</td>
-								 <td width=\"70\">$data[5]</td>
-								 <td width=\"70\">$data[6]</td>
-								 <td width=\"70\">$data[7]</td>
-							   </tr>");
-					 					  
-					 echo "</table>";
-					 
-					 
-					 
+				 
 					 mysql_close($con);
 					?>
 			</strong><br /><br />
