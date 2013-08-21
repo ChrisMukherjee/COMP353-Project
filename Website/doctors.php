@@ -37,13 +37,7 @@ else
 
 <div id="container">
 	<?php include 'header.php'; ?>
-	    <li> <form action=""> <input type="submit" value="Patients Info" style="width: 100px"></form></li>
-            <li><form action=""> <input type="submit" value="Patients Report" style="width: 100px"></form></li>
-            <li><form action=""> <input type="submit" value="Schedule" style="width: 100px"></form></li>
-	    <li><form action=""> <input type="submit" value="Surgery" style="width: 100px"></form></li>
-	    <li><form action=""> <input type="submit" value="Interns&Resident Info" style="width: 100px"></form></li>
-	    <li><form action=""> <input type="submit" value="LoginAsPatient" style="width: 100px"></form></li>
-			<li><form action=""> <input type="submit" value="LoginAsPatient" style="width: 100px"></form></li>     
+	<?php include 'sidebar.php'; ?>
 <div id="mainContent">
     	<p>
         	<strong>
