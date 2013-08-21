@@ -22,7 +22,7 @@ Create DB View for Directors/Administrators - **Ongoing**<br>
 Create DB View for Doctors - **Ongoing**<br>
 Create DB View for Residents and Interns - **DONE**<br>
 Create DB View for Nurse Shift Supervisor - **Ongoing**<br>
-Create DB View for Nurse - **Ongoing**
+Create DB View for Nurse - **DONE**
 
 
 <h3>Due 21-08-2013</h3><hr>
