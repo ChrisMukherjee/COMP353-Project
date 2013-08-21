@@ -1,9 +1,8 @@
-﻿<?php session_start(); ?>
-<?php
+﻿<?php session_start();
+
 if (isset($_SESSION['login'])) {
 include 'login.php';
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,9 +35,8 @@ include 'login.php';
 	<?php include 'header.php'; ?>
 	<!--Include the Website Sidebar-->
 	<?php include 'sidebar.php'; ?>
-
-    <!-- begin #mainContent -->
-    <div id="mainContent">
+<!-- begin #mainContent -->
+<div id="mainContent">
     	<p>
         	<strong>All website template is released under a Creative Commons Attribution 2.5 License</strong><br /><br />
 We request you retain the full copyright notice below including the link to www.facebookpagetemplates.com. This not only gives respect to the large amount of time given freely by the developers but also helps build interest, traffic and use of our free and paid designs. If you cannot (for good reason) retain the full copyright we request you at least leave in place the Website Templates line, with Website Templates linked to www.facebookpagetemplates.com. If you refuse to include even this then support may be affected.<br /><br />
@@ -62,10 +60,9 @@ Flash Template is a ready-made Flash Site that you can download and use for free
 <!-- end #container -->
 </body>
 </html>
-
 <?php
 }
 else {
-header("Location: login.php");
+header("Location: index.php");
 }
 ?>

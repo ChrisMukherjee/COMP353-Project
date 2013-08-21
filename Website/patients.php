@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<?php session_start();
+
+if (isset($_SESSION['login'])) {
+include 'login.php';
+?>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -58,14 +63,7 @@
     <!-- begin #mainContent -->
     <div id="mainContent">
    <p>
-   <?php
-$con = mysql_connect("localhost","root","");
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-
-mysql_select_db("hospital", $con);
+<?php
 
 $result = mysql_query("SELECT * FROM staff");
 
@@ -86,11 +84,7 @@ echo "</table>";
 
 mysql_close($con);
 ?>
-        
-        
-        
-        
-        </p>
+</p>
     </div>
 <!-- end #mainContent -->
 </div>
@@ -101,4 +95,9 @@ mysql_close($con);
 
 </body>
 </html>
-
+<?php
+}
+else {
+header("Location: index.php");
+}
+?>

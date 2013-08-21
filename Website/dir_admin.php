@@ -2,7 +2,6 @@
 
 if (isset($_SESSION['login'])) {
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,9 +34,8 @@ if (isset($_SESSION['login'])) {
 	<?php include 'header.php'; ?>
 	<!--Include the Website Sidebar-->
 	<?php include 'sidebar.php'; ?>
-
-    <!-- begin #mainContent -->
-    <div id="mainContent">
+<!-- begin #mainContent -->
+<div id="mainContent">
     	<p>
         	<strong>
 					<?php
@@ -134,10 +132,9 @@ if (isset($_SESSION['login'])) {
 <!-- end #container -->
 </body>
 </html>
-
 <?php
 }
 else {
-header("Location: login.php");
+header("Location: index.php");
 }
 ?>
