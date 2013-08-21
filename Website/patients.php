@@ -32,34 +32,9 @@ include 'login.php';
 <!-- begin #container -->
 <div id="container">
 	<!--Include the Website Header-->
-    	<!-- begin #header -->
-    <div id="header">
-    	<div id="logo">
-        	Starline Medical Center
-        </div>
-        <div id="author">
-        	
-        </div>
-</div>
+	<?php include 'header.php'; ?>
 	<!--Include the Website Sidebar-->
-    <!-- begin #sidebar1 -->
-    <div id="sidebar1">
-		<br>
-	    <h2>Home</h2>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-			<li><a href="contact.php">Contact Us</a></li>        
-        </ul>
-        <br /><br />
-	
-        <h2>Team Members</h2>
-        <ul>
-        	<li> Christopher Mukherjee<br />6291929</li>
-            <li>Cheng Cheng <br />9718648</li>
-            <li>Alexander Vissa<br />6335241</li>
-            <li>Karim Kaidbey<br />6354726</li>
-        </ul>
-    </div>
+	<?php include 'sidebar.php'; ?>
     <!-- begin #mainContent -->
     <div id="mainContent">
    <p>
@@ -85,14 +60,13 @@ echo "</table>";
 mysql_close($con);
 ?>
 </p>
-    </div>
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->
 <div class="push"></div>
 </div>
 <!--Include the Website Footer-->
-
+<?php include 'footer.php'; ?>
 </body>
 </html>
 <?php

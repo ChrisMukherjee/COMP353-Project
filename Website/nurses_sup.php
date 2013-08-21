@@ -44,7 +44,6 @@ else
 	<?php include 'header.php'; ?>
 	<!--Include the Website Sidebar-->
 	<?php include 'sidebar.php'; ?>
-
     <!-- begin #mainContent -->
     <div id="mainContent">
     	<p>
@@ -89,16 +88,15 @@ else
 					?>
 			</strong><br /><br />
 		</p>
-	</div>
-    <!-- end #mainContent -->
-	<br class="clearfloat" />
-    <!--Include the Website Footer-->
-	<?php include 'footer.php'; ?>
+<!-- end #mainContent -->
 </div>
 <!-- end #container -->
+<div class="push"></div>
+</div>
+<!--Include the Website Footer-->
+<?php include 'footer.php'; ?>
 </body>
 </html>
-
 <?php
 }
 }
