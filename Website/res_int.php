@@ -1,9 +1,11 @@
-﻿<?php session_start(); ?>
-<?php
+﻿<?php session_start();
+
+// ** THIS PAGE IS DONE! **
+
 if (isset($_SESSION['login'])) {
 include 'login.php';
 
-if ($_SESSION['uType'] != 'resident' && $_SESSION['uType'] != 'intern') {
+if ($_SESSION['uType'] != 'resident' && $_SESSION['uType'] != 'intern' && $_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'doctor') {
 	header("Location: index.php");
 }
 else

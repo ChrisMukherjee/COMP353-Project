@@ -1,6 +1,12 @@
 ﻿<?php session_start();
 
 if (isset($_SESSION['login'])) {
+	
+if ($_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'doctor') {
+	header("Location: index.php");
+}
+else
+{
 ?>
 <!DOCTYPE html>
 <html>
@@ -113,6 +119,7 @@ if (isset($_SESSION['login'])) {
 </body>
 </html>
 <?php
+}
 }
 else {
 header("Location: index.php");

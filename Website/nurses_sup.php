@@ -2,6 +2,12 @@
 
 if (isset($_SESSION['login'])) {
 include 'login.php';
+
+if ($_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'supnurse') {
+	header("Location: index.php");
+}
+else
+{
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,6 +67,7 @@ Flash Template is a ready-made Flash Site that you can download and use for free
 </body>
 </html>
 <?php
+}
 }
 else {
 header("Location: index.php");
