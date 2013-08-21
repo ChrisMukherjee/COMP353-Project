@@ -4,7 +4,7 @@ USE `hospital`;
 --
 -- Host: localhost    Database: hospital
 -- ------------------------------------------------------
--- Server version	5.6.12
+-- Server version	5.6.12-enterprise-commercial-advanced
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -438,7 +438,7 @@ CREATE TABLE `staff` (
 
 LOCK TABLES `staff` WRITE;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` VALUES (1,'Palliative','Steve',98000.0000,0,'pass123'),(2,'Palliative','Ben',98000.0000,0,'pass123'),(3,'Palliative','John',16.0000,0,'pass123'),(4,'Palliative','Karim',40000.0000,0,'pass123'),(5,'Childrens','Cheng',125000.0000,0,'pass123'),(6,'Childrens','Chris',98000.0000,0,'pass123'),(7,'Childrens','Alex',98000.0000,0,'pass123'),(8,'Childrens','Sarah',18.0000,0,'pass123'),(9,'Childrens','Sam',42000.0000,0,'pass123'),(10,'Surgical','Sora',125000.0000,0,'pass123'),(11,'Surgical','Ramzi',98000.0000,0,'pass123'),(12,'Surgical','Rayan',98000.0000,0,'pass123'),(13,'Surgical','Danny',17.0000,0,'pass123'),(14,'Surgical','Jude',16.0000,0,'pass123'),(15,'Palliative','Cami',44000.0000,0,'pass123'),(16,'Palliative','Jayna',46000.0000,0,'pass123'),(17,'Palliative','Alida',24.5000,0,'pass123'),(18,'Palliative','Sharri',0.0000,0,'pass123'),(19,'Palliative','Manuela',27.7500,0,'pass123'),(20,'Childrens','Neville',24.5000,0,'pass123'),(21,'Childrens','Lu',24.5000,0,'pass123'),(22,'Childrens','Zofia',44000.0000,0,'pass123'),(23,'Childrens','Liane',0.0000,0,'pass123'),(24,'Childrens','Gema',0.0000,0,'pass123'),(25,'Surgical','Elliot',24.5000,0,'pass123'),(26,'Surgical','Charles',27.2500,0,'pass123'),(27,'Surgical','Lettie',0.0000,0,'pass123'),(28,'Surgical','Denice',44000.0000,0,'pass123'),(29,'Surgical','Arcelia',0.0000,0,'pass123'),(30,'Palliative','Joe',125000.0000,0,'pass123'),(31,'Surgical','Xavier',18.5000,0,'pass123');
+INSERT INTO `staff` VALUES (1,'Palliative','Steve',98000.0000,0,'pass123'),(2,'Palliative','Ben',98000.0000,0,'pass123'),(3,'Palliative','John',16.0000,3,'pass123'),(4,'Palliative','Karim',40000.0000,0,'pass123'),(5,'Childrens','Cheng',125000.0000,0,'pass123'),(6,'Childrens','Chris',98000.0000,0,'pass123'),(7,'Childrens','Alex',98000.0000,0,'pass123'),(8,'Childrens','Sarah',18.0000,5,'pass123'),(9,'Childrens','Sam',42000.0000,1,'pass123'),(10,'Surgical','Sora',125000.0000,0,'pass123'),(11,'Surgical','Ramzi',98000.0000,0,'pass123'),(12,'Surgical','Rayan',98000.0000,0,'pass123'),(13,'Surgical','Danny',17.0000,7,'pass123'),(14,'Surgical','Jude',16.0000,3,'pass123'),(15,'Palliative','Cami',44000.0000,2,'pass123'),(16,'Palliative','Jayna',46000.0000,3,'pass123'),(17,'Palliative','Alida',24.5000,0,'pass123'),(18,'Palliative','Sharri',0.0000,7,'pass123'),(19,'Palliative','Manuela',27.7500,0,'pass123'),(20,'Childrens','Neville',24.5000,0,'pass123'),(21,'Childrens','Lu',24.5000,0,'pass123'),(22,'Childrens','Zofia',44000.0000,2,'pass123'),(23,'Childrens','Liane',0.0000,4,'pass123'),(24,'Childrens','Gema',0.0000,8,'pass123'),(25,'Surgical','Elliot',24.5000,0,'pass123'),(26,'Surgical','Charles',27.2500,0,'pass123'),(27,'Surgical','Lettie',0.0000,7,'pass123'),(28,'Surgical','Denice',44000.0000,2,'pass123'),(29,'Surgical','Arcelia',0.0000,5,'pass123'),(30,'Palliative','Joe',125000.0000,0,'pass123'),(31,'Surgical','Xavier',18.5000,2,'pass123');
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -752,7 +752,7 @@ CREATE TABLE `workhours` (
 
 LOCK TABLES `workhours` WRITE;
 /*!40000 ALTER TABLE `workhours` DISABLE KEYS */;
-INSERT INTO `workhours` VALUES (17,'2013-08-19','06:00:00','18:00:00'),(19,'2013-08-19','06:00:00','18:00:00'),(20,'2013-08-19','06:00:00','18:00:00'),(21,'2013-08-19','06:00:00','18:00:00'),(25,'2013-08-19','06:00:00','18:00:00'),(26,'2013-08-19','06:00:00','18:00:00'),(17,'2013-08-20','06:00:00','18:00:00'),(19,'2013-08-21','06:00:00','18:00:00'),(20,'2013-08-20','06:00:00','18:00:00'),(21,'2013-08-21','06:00:00','18:00:00'),(25,'2013-08-20','06:00:00','18:00:00'),(26,'2013-08-21','06:00:00','18:00:00'),(17,'2013-08-22','06:00:00','18:00:00'),(19,'2013-08-23','06:00:00','18:00:00'),(20,'2013-08-22','06:00:00','18:00:00'),(21,'2013-08-23','06:00:00','18:00:00'),(25,'2013-08-22','06:00:00','18:00:00'),(26,'2013-08-23','06:00:00','18:00:00');
+INSERT INTO `workhours` VALUES (17,'2013-08-19','06:00:00','18:00:00'),(19,'2013-08-19','06:00:00','18:00:00'),(20,'2013-08-19','06:00:00','18:00:00'),(21,'2013-08-19','06:00:00','18:00:00'),(25,'2013-08-19','06:00:00','18:00:00'),(26,'2013-08-19','06:00:00','18:00:00'),(17,'2013-08-20','06:00:00','18:00:00'),(19,'2013-08-21','06:00:00','18:00:00'),(20,'2013-08-20','06:00:00','18:00:00'),(21,'2013-08-21','06:00:00','18:00:00'),(25,'2013-08-20','06:00:00','18:00:00'),(26,'2013-08-21','06:00:00','18:00:00'),(17,'2013-08-22','06:00:00','18:00:00'),(19,'2013-08-23','06:00:00','18:00:00'),(20,'2013-08-22','06:00:00','18:00:00'),(21,'2013-08-23','06:00:00','18:00:00'),(25,'2013-08-22','06:00:00','18:00:00'),(26,'2013-08-23','06:00:00','18:00:00'),(31,'2013-08-19','08:00:00','15:30:00'),(31,'2013-08-20','08:00:00','15:30:00'),(31,'2013-08-21','08:00:00','15:30:00'),(31,'2013-08-22','08:00:00','15:30:00'),(31,'2013-08-23','08:00:00','15:30:00'),(14,'2013-08-19','08:00:00','15:30:00'),(14,'2013-08-20','08:00:00','15:30:00'),(14,'2013-08-21','08:00:00','15:30:00'),(14,'2013-08-22','08:00:00','15:30:00'),(14,'2013-08-23','08:00:00','15:30:00'),(13,'2013-08-19','08:00:00','15:30:00'),(13,'2013-08-20','08:00:00','15:30:00'),(13,'2013-08-21','08:00:00','15:30:00'),(13,'2013-08-22','08:00:00','15:30:00'),(13,'2013-08-23','08:00:00','15:30:00'),(3,'2013-08-19','08:00:00','15:30:00'),(3,'2013-08-20','08:00:00','15:30:00'),(3,'2013-08-21','08:00:00','15:30:00'),(3,'2013-08-22','08:00:00','15:30:00'),(3,'2013-08-23','08:00:00','15:30:00'),(8,'2013-08-19','08:00:00','15:30:00'),(8,'2013-08-20','08:00:00','15:30:00'),(8,'2013-08-21','08:00:00','15:30:00'),(8,'2013-08-22','08:00:00','15:30:00'),(8,'2013-08-23','08:00:00','15:30:00');
 /*!40000 ALTER TABLE `workhours` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -789,7 +789,8 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `allstaff` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff`) */;
+/*!50001 VIEW `allstaff` AS (select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`staff`.`unitName` AS `unitName`,`staff`.`salary` AS `salary`,`staff`.`numYears` AS `numYears` from `staff`) */
+/*!50002 WITH CASCADED CHECK OPTION */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1069,4 +1070,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-08-20  4:05:09
+-- Dump completed on 2013-08-21 12:28:33
