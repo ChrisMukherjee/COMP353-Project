@@ -30,7 +30,7 @@ else
 /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
 </style>
 <![endif]-->
-<title>Starline - Administrator</title>
+<title>Starline - Administrators/Directors</title>
 </head>
 
 <body>
@@ -47,13 +47,8 @@ else
 					<?php
 
 					 include 'login.php';
-					 					
-					 if (mysql_error())
-					  {
-					  echo "Failed to connect to MySQL: " . mysql_error();
-					  }
-					 
-					 //Directors Table
+
+					 //Admin/Directors Table
 					 $result = mysql_query("SELECT * FROM viewdirectors");
 
 					 echo "<h2>Directors Table</h2><br>";

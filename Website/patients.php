@@ -41,13 +41,8 @@ if (isset($_SESSION['login']))
 <?php
 
 					 include 'login.php';
-					 					
-					 if (mysql_error())
-					 {
-					  echo "Failed to connect to MySQL: " . mysql_error();
-					 }
-					  
-					 //Nurse Table
+
+					 //Patients Table
 					 $result = mysql_query("SELECT * FROM viewpatients");
 					 
 					 echo "<h2>Patients' List</h2><br>";

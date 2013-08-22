@@ -33,7 +33,7 @@ else
 /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
 </style>
 <![endif]-->
-<title>Starline - Nurse</title>
+<title>Starline - Nurses</title>
 </head>
 
 <body>
@@ -50,11 +50,6 @@ else
 					<?php
 
 					 include 'login.php';
-					 					
-					 if (mysql_error())
-					  {
-					  echo "Failed to connect to MySQL: " . mysql_error();
-					  }
 
 					 //Nurse Table
 					 $result = mysql_query("SELECT * FROM nurse_patients  WHERE staff = '$uID'");

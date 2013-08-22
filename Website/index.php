@@ -177,7 +177,7 @@ if (!isset($_SESSION['login']))
 /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
 </style>
 <![endif]-->
-<title>Starline Login</title>
+<title>Starline - Login</title>
 </head>
 
 <body>
