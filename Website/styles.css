@@ -30,84 +30,17 @@ a:hover {
 	text-decoration:none;
 }
 #container { 
-	width: 800px;  
+	width: 1200px;  
 	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
 	display: block;
 	position: relative;
 } 
 #header {
-	width:800px;
+	width:1200px;
 	background:url(images/hospital.png) no-repeat left top;
 }
 #menu {
 	padding:20px 0;
-}
-ul#navlist {
-	margin-left: 0;
-	padding-left: 0;
-	white-space: nowrap;
-}
-
-#navlist li {
-	display: inline;
-	list-style-type: none;
-    
-}
-
-#navlist a { 
-	padding: 13px 20px; 
-    
-}
-
-#navlist a:link, #navlist a:visited {
-	color: #778899 ;
-	text-decoration: none;
-	font-size:36px;
-	background:url(images/p.jpg) no-repeat 22px top;
-}
-
-#navlist a:hover {
-	color: #20B2AA  ;
-	text-decoration: none;
-	font-size:36px;
-	/*background:url(images/pActive.jpg) no-repeat 22px top;*/
-}
-#navlist #active a {
-	
-	text-decoration: none;
-	font-size:20px;
-	background:url(images/pActive.jpg) no-repeat 22px top;
-}
-
-#navlist #active1 a {
-	
-	text-decoration: none;
-	font-size:18px;
-	background:url(images/pActive.jpg) no-repeat 22px top;
-}
-#navlist #active2 a {
-	
-	text-decoration: none;
-	font-size:18px;
-	background:url(images/pActive.jpg) no-repeat 22px top;
-}
-#navlist #active3 a {
-	
-	text-decoration: none;
-	font-size:18px;
-	background:url(images/pActive.jpg) no-repeat 22px top;
-}
-#navlist #active4 a {
-	
-	text-decoration: none;
-	font-size:18px;
-	background:url(images/pActive.jpg) no-repeat 22px top;
-}
-#navlist #active5  a {
-	
-	text-decoration: none;
-	font-size:18px;
-	background:url(images/pActive.jpg) no-repeat 22px top;
 }
 
 #logo {
@@ -124,6 +57,7 @@ ul#navlist {
 	background-color: white;
 	float: left; /* since this element is floated, a width must be given */
 	width: 210px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	min-height: 500px;
 }
 #sidebar1 li {
 	list-style:none;
@@ -153,14 +87,14 @@ ul#navlist {
 
 .loginLeft {
 	float: left;
-	left: 200px;
+	left: 400px;
 	position: absolute;
 	text-align: left;
 }
 
 .loginRight {
 	float: right;
-	right: 200px;
+	right: 400px;
 	position: absolute;
 }
 

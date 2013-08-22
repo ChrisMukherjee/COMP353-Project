@@ -32,9 +32,7 @@ else
 <![endif]-->
 <title>Starline - Doctors</title>
 </head>
-
 <body>
-
 <div id="container">
 	<?php include 'header.php'; ?>
 	<?php include 'sidebar.php'; ?>
@@ -44,69 +42,59 @@ else
 					<?php
 
 					include 'login.php';
+					
+					  if(isset($_POST['update'])) 
+					 { 
+						 $updateOP = $_POST['operSel'];
+						 $updateAsst = $_POST['asstSel'];
+						 $update = mysql_query("UPDATE scheduledservices SET assistantID = '$updateAsst'  WHERE serviceNb = '$updateOP'") or die(mysql_error());
+						 unset($_SESSION['update']);
+					 } 
+					 
+					 else if(isset($_POST['cancel'])) 
+					 {
+						 $cancelop = $_POST['operSel'];
+						 $cancel = mysql_query("DELETE FROM scheduledservices WHERE serviceNb = '$cancelop'") or die(mysql_error());
+						 unset($_SESSION['cancel']);
+					 }
 					  
-					 //Doctors Table 
-					 $result = mysql_query("SELECT * FROM viewonlydoctors");
+					 //Patient's List Table 
+					 $result = mysql_query("SELECT * FROM doctor_patient WHERE DoctorID = '$uID'");
 
-					 echo "<h2>Doctors Table</h2><br>";
+					 echo "<h2>Your Patients List<br>$uName - ID#: $uID</h2><br>";
 					 echo "<table border='2'>
-								 <tr>	<th>Staff ID</th>
-										<th>Name</th>
-										<th>Unit Name</th>
-										<th>Salary</th>
-										<th>Years</th>
-										<th>Specialty</th>
-										<th>Visits</th>
-										<th>Operations</th>
+								 <tr>	<th>Service Number</th>
+										<th>Patient's Name</th>
+										<th>Service</th>
+										<th>AssistantID</th>
+										<th>Date</th>
+										<th>Start Time</th>
+										<th>End Time</th>
 								 </tr>";
 
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
-								 <td width=\"70\">$data[0]</td>
-								 <td width=\"70\">$data[1]</td>
-								 <td width=\"70\">$data[2]</td>
-								 <td width=\"70\">$data[3]</td>
-								 <td width=\"70\">$data[4]</td>
-								 <td width=\"70\">$data[5]</td>
-								 <td width=\"70\">$data[6]</td>
-								 <td width=\"70\">$data[7]</td>
+								 <td width=\"150\">$data[1]</td>
+								 <td width=\"150\">$data[2]</td>
+								 <td width=\"150\">$data[3]</td>
+								 <td width=\"150\">$data[4]</td>
+								 <td width=\"150\">$data[5]</td>
+								 <td width=\"150\">$data[6]</td>
+								 <td width=\"150\">$data[7]</td>
 							   </tr>");
 					 					  
 					 echo "</table>";
-					  
-					 //Doctors/Interns/Residents Table
-					 $result2 = mysql_query("SELECT * FROM viewdoctors");
-
-					 echo "<br><br><br><br><br><hr><br>";
-					 echo "<h2>Doctors / Interns / Residents</h2><br>";
-					 echo "<table border='2'>
-								 <tr>	<th>Staff ID</th>
-										<th>Name</th>
-										<th>Unit Name</th>
-										<th>Salary</th>
-										<th>Years</th>
-										<th>Specialty</th>
-										<th>Visits</th>
-										<th>Operations</th>
-								 </tr>";
-
-					 while($data = mysql_fetch_array($result2)) 
-					 	 echo("<tr>
-								 <td width=\"70\">$data[0]</td>
-								 <td width=\"70\">$data[1]</td>
-								 <td width=\"70\">$data[2]</td>
-								 <td width=\"70\">$data[3]</td>
-								 <td width=\"70\">$data[4]</td>
-								 <td width=\"70\">$data[5]</td>
-								 <td width=\"70\">$data[6]</td>
-								 <td width=\"70\">$data[7]</td>
-							   </tr>");
-					 					  
-					 echo "</table>";
-					 
-					 
+				 
 					 mysql_close($con);
 					?>
+			 <br><div align="right">
+			 <form name="form" action="" method="post">
+			 Service Number: <input name="operSel" id="operSel" type="text" size="10"/><br>
+			 Assistant ID: <input name="asstSel" id="asstSel" type="text" size="10"/><br>
+			 <input type="submit" name="update" value="Update"/>
+			 <input type="submit" name="cancel" value="Cancel Operation"/>
+			 </div>
+			 </form>
 			</strong><br /><br />
 		</p>
 <!-- end #mainContent -->

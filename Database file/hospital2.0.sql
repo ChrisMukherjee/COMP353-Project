@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `hospital` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `hospital`;
--- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: hospital
 -- ------------------------------------------------------
--- Server version	5.6.12
+-- Server version	5.6.12-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -144,6 +144,24 @@ LOCK TABLES `doctor` WRITE;
 INSERT INTO `doctor` VALUES (4,'Dentist',2,5),(9,'Cardiologists',7,6),(15,'Dermatologist',3,2),(16,'Neurologists',2,4),(18,'Radiologists',6,8),(22,'Pediatrics',2,3),(23,'Physicians',8,7),(24,'Venereologists‎',4,4),(27,'Surgeon',6,6),(28,'Surgeon',8,4),(29,'Surgeon',9,2),(38,'Surgeon',2,5),(39,'Pediatrics',2,1);
 /*!40000 ALTER TABLE `doctor` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `doctor_patient`
+--
+
+DROP TABLE IF EXISTS `doctor_patient`;
+/*!50001 DROP VIEW IF EXISTS `doctor_patient`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `doctor_patient` (
+  `DoctorID` tinyint NOT NULL,
+  `Patient's Name` tinyint NOT NULL,
+  `Service` tinyint NOT NULL,
+  `Date` tinyint NOT NULL,
+  `Start Time` tinyint NOT NULL,
+  `End Time` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `facility`
@@ -372,6 +390,7 @@ DROP TABLE IF EXISTS `scheduledservices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `scheduledservices` (
+  `serviceNb` int(11) NOT NULL AUTO_INCREMENT,
   `staffID` int(11) NOT NULL,
   `assistantID` int(11) NOT NULL,
   `serviceID` int(11) NOT NULL,
@@ -380,6 +399,8 @@ CREATE TABLE `scheduledservices` (
   `startTime` time NOT NULL,
   `endTime` time NOT NULL,
   `roomNumber` varchar(15) NOT NULL,
+  PRIMARY KEY (`serviceNb`),
+  UNIQUE KEY `serviceNb_UNIQUE` (`serviceNb`),
   KEY `fk_Schedule_Staff1_idx` (`staffID`),
   KEY `fk_Schedule_Services1_idx` (`serviceID`),
   KEY `fk_Schedule_Patients1_idx` (`patientsID`),
@@ -388,7 +409,7 @@ CREATE TABLE `scheduledservices` (
   CONSTRAINT `fk_Schedule_Patients` FOREIGN KEY (`patientsID`) REFERENCES `patients` (`patientID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Schedule_Services` FOREIGN KEY (`serviceID`) REFERENCES `services` (`serviceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Schedule_Staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -397,7 +418,7 @@ CREATE TABLE `scheduledservices` (
 
 LOCK TABLES `scheduledservices` WRITE;
 /*!40000 ALTER TABLE `scheduledservices` DISABLE KEYS */;
-INSERT INTO `scheduledservices` VALUES (3,4,1,1,'2013-08-19','06:00:00','07:00:00','1'),(17,4,1,1,'2013-08-20','07:00:00','07:30:00','2'),(19,4,1,1,'2013-08-20','07:00:00','07:30:00','2'),(20,4,1,1,'2013-08-20','07:00:00','07:30:00','2'),(21,4,1,1,'2013-08-20','07:00:00','07:30:00','2'),(5,9,4,3,'2013-08-20','07:00:00','08:00:00','4'),(7,9,4,3,'2013-08-20','08:00:00','09:00:00','3'),(8,9,4,2,'2013-08-21','08:00:00','09:00:00','4'),(18,15,5,8,'2013-08-20','08:00:00','09:00:00','4'),(27,22,5,9,'2013-08-20','08:00:00','09:00:00','7'),(29,22,5,9,'2013-08-22','08:00:00','09:00:00','2'),(24,15,6,9,'2013-08-23','08:00:00','09:00:00','8'),(24,16,2,9,'2013-08-23','08:00:00','09:00:00','8');
+INSERT INTO `scheduledservices` VALUES (1,3,4,1,1,'2013-08-19','06:00:00','07:00:00','1'),(2,17,4,1,1,'2013-08-20','07:00:00','07:30:00','2'),(3,19,4,1,1,'2013-08-20','07:00:00','07:30:00','2'),(4,20,4,1,1,'2013-08-20','07:00:00','07:30:00','2'),(5,21,4,1,1,'2013-08-20','07:00:00','07:30:00','2'),(6,5,9,4,3,'2013-08-20','07:00:00','08:00:00','4'),(7,7,9,4,3,'2013-08-20','08:00:00','09:00:00','3'),(8,8,9,4,2,'2013-08-21','08:00:00','09:00:00','4'),(9,18,15,5,8,'2013-08-20','08:00:00','09:00:00','4'),(10,27,22,5,9,'2013-08-20','08:00:00','09:00:00','7'),(11,29,22,5,9,'2013-08-22','08:00:00','09:00:00','2'),(12,24,15,6,9,'2013-08-23','08:00:00','09:00:00','8'),(13,24,16,2,9,'2013-08-23','08:00:00','09:00:00','8');
 /*!40000 ALTER TABLE `scheduledservices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -853,6 +874,25 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `doctor_patient`
+--
+
+/*!50001 DROP TABLE IF EXISTS `doctor_patient`*/;
+/*!50001 DROP VIEW IF EXISTS `doctor_patient`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `doctor_patient` AS select `doctor`.`staffID` AS `DoctorID`,`patients`.`patientName` AS `Patient's Name`,`services`.`serviceName` AS `Service`,`scheduledservices`.`date` AS `Date`,`scheduledservices`.`startTime` AS `Start Time`,`scheduledservices`.`endTime` AS `End Time` from (((`scheduledservices` join `doctor` on((`scheduledservices`.`staffID` = `doctor`.`staffID`))) join `patients` on((`scheduledservices`.`patientsID` = `patients`.`patientID`))) join `services`) where (`scheduledservices`.`serviceID` = `services`.`serviceID`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `int_res_schedule`
 --
 
@@ -1146,4 +1186,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2013-08-22 15:30:32
+=======
+-- Dump completed on 2013-08-22 15:31:52
+>>>>>>> Changed a whole bunch of stuff

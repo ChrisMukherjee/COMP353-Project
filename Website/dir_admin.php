@@ -62,11 +62,11 @@ else
 
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
-								 <td width=\"70\">$data[0]</td>
-								 <td width=\"70\">$data[1]</td>
-								 <td width=\"70\">$data[2]</td>
-								 <td width=\"70\">$data[3]</td>
-								 <td width=\"70\">$data[4]</td>
+								 <td width=\"150\">$data[0]</td>
+								 <td width=\"150\">$data[1]</td>
+								 <td width=\"150\">$data[2]</td>
+								 <td width=\"150\">$data[3]</td>
+								 <td width=\"150\">$data[4]</td>
 							   </tr>");
 					 					  
 					 echo "</table>";
@@ -86,11 +86,11 @@ else
 
 					 while($data = mysql_fetch_array($result2)) 
 					 	 echo("<tr>
-								 <td width=\"70\">$data[0]</td>
-								 <td width=\"70\">$data[1]</td>
-								 <td width=\"70\">$data[2]</td>
-								 <td width=\"70\">$data[3]</td>
-								 <td width=\"70\">$data[4]</td>
+								 <td width=\"150\">$data[0]</td>
+								 <td width=\"150\">$data[1]</td>
+								 <td width=\"150\">$data[2]</td>
+								 <td width=\"150\">$data[3]</td>
+								 <td width=\"150\">$data[4]</td>
 							   </tr>");
 					 					  
 					 echo "</table>";
@@ -110,11 +110,11 @@ else
 
 					 while($data = mysql_fetch_array($result3)) 
 					 	 echo("<tr>
-								 <td width=\"70\">$data[0]</td>
-								 <td width=\"70\">$data[1]</td>
-								 <td width=\"70\">$data[2]</td>
-								 <td width=\"70\">$data[3]</td>
-								 <td width=\"70\">$data[4]</td>
+								 <td width=\"150\">$data[0]</td>
+								 <td width=\"150\">$data[1]</td>
+								 <td width=\"150\">$data[2]</td>
+								 <td width=\"150\">$data[3]</td>
+								 <td width=\"150\">$data[4]</td>
 							   </tr>");
 					 					  
 					 echo "</table>";

@@ -13,7 +13,7 @@ $tbl_name = "staff";
 $con = mysql_connect("$host", "$db_uname", "$db_pw") or die("Error: Cannot connect to MySQL Server");
 mysql_select_db("$db_name")or die("Error: Cannot select database \"$db_name\"");
 
-if ($_SESSION['uType'] != 'patient') {
+if (isset($_SESSION['uType']) && $_SESSION['uType'] != 'patient') {
 	$uID = $_SESSION['uID'];
 	$uName = $_SESSION['uName'];
 }

@@ -148,6 +148,7 @@ if (!isset($_SESSION['login']))
 	 else 
 	 {
 		// Login unsuccessful
+		//$_SESSION['uType'] = 'patient';
 		$_SESSION['error']=true;
 	 }//End of else
 
