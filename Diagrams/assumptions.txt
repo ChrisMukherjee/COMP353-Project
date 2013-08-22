@@ -7,3 +7,4 @@ Assumptions made regarding Relational Diagram:
 - There will never be a 4th facility (this would require additional choices for the ENUM)
 - All patients have a medicare card
 - No more than 3 directors will be added into the Director table
+- Doctors can have a maximum of one assistant per surgery

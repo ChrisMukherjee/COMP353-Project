@@ -7,7 +7,7 @@ Contributions:
 
 Cheng Cheng:
 	- Created preliminary Diagram (without table relations)
-	- Created database tables
+	- Created initial database tables
 	- Found and modified HTML/CSS template
 	- Created contact us page
 
@@ -17,15 +17,13 @@ Karim Kaidbey:
 	- Finalized Relational Diagram
 	- Wrote assumptions text for Relational Diagram
 	- Created/modified database tables
-	    - modified table attributes
-	- Created database views
+	- Created generic database views
 	- Generated database test data
 
 Christopher Mukherjee:
 	- Modified Relational Diagram
 	    - added non-identifying & identifying relationships
 	- Created/modified database tables
-	    - modified table attributes
 	- Converted pure HTML template to PHP/HTML blend
 	    - added PHP includes for header, footer, and sidebar
 	    - removed redundant blocks of HTML
@@ -38,24 +36,24 @@ Christopher Mukherjee:
 	    - if a user tries to manually return to login page (without logging out), redirect to contact us page
 	- Created "login as patient" option that does not require a userID
 	- Added logout function
+	- Established PHP interface connection to MySQL server and database schema (supported Alexander)
 	- Added Welcome text that displays user's name (supported Alexander)
 	- Added PHP code to limit access to pages
-	    - users can only view certain pages based on their staff type
+	    - sidebar will only display links to certain pages, based on the user's staff type
+	    - if a user tries to manually access a page that they should not have access to, redirect to contact us page
 
 Alexander Vissa:
 	- Modified Relational Diagram
 	    - added non-identifying & identifying relationships
 	- Created/modified database tables
-	    - modified table attributes
 	- Added coloured layers to database diagram as visual aid for the "segments/zones" of the database
 	- Established PHP interface connection to MySQL server and database schema
 	- Edited sidebar
 	- Created authentication system for login page
 	    - get userID and password from form using POST method
-	    - get staffID and password from tables using SQL queries
+	    - get staffID and password from database tables using SQL queries
 	    - check form values against database values
 	    - on successful login, redirect staff member to appropriate page using PHP
-	- Created database views (supported Karim)
+	- Created specific database views
 	- Created PHP code and SQL queries to retrieve and display appropriate views on each of the staff pages
 	- Added Welcome text that displays user's name
-  
