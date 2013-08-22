@@ -1,7 +1,7 @@
 ﻿<?php session_start();
 
-if (isset($_SESSION['login'])) {
-include 'login.php';
+if (isset($_SESSION['login'])) 
+{
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,7 @@ include 'login.php';
 /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
 </style>
 <![endif]-->
-<title>Starline - Director</title>
+<title>Starline - Patients</title>
 </head>
 
 <body>
@@ -40,24 +40,33 @@ include 'login.php';
    <p>
 <?php
 
-$result = mysql_query("SELECT * FROM staff");
+					 include 'login.php';
+					 					
+					 if (mysql_error())
+					 {
+					  echo "Failed to connect to MySQL: " . mysql_error();
+					 }
+					  
+					 //Nurse Table
+					 $result = mysql_query("SELECT * FROM viewpatients");
+					 
+					 echo "<h2>Patients' List</h2><br>";
+					 echo "<table border='2'>
+								 <tr>	<th>Patient Name</th>
+										<th>Medicare Card #</th>
+										<th>Symptoms/Treatment</th>
+								 </tr>";
 
-echo "<table border='1'>
-<tr>
-<th>unitname</th>
-<th>name</th>
-</tr>";
-
-while($row = mysql_fetch_array($result))
-  {
-  echo "<tr>";
-  echo "<td>" . $row['unitName'] . "</td>";
-  echo "<td>" . $row['name'] . "</td>";
-  echo "</tr>";
-  }
-echo "</table>";
-
-mysql_close($con);
+					 while($data = mysql_fetch_array($result)) 
+					 	 echo("<tr>
+								 <td width=\"150\">$data[0]</td>
+								 <td width=\"150\">$data[1]</td>
+								 <td width=\"150\">$data[2]</td>
+							   </tr>");
+					 					  
+					 echo "</table>";
+				 
+					 mysql_close($con);
 ?>
 </p>
 <!-- end #mainContent -->

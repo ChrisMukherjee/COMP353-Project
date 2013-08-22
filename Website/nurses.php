@@ -3,7 +3,6 @@
 // ** THIS PAGE IS DONE! **
 
 if (isset($_SESSION['login'])) {
-include 'login.php';
 
 if ($_SESSION['uType'] != 'nurse' && $_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'doctor') {
 	header("Location: index.php");
@@ -57,7 +56,7 @@ else
 					  echo "Failed to connect to MySQL: " . mysql_error();
 					  }
 
-					 //Intern Table
+					 //Nurse Table
 					 $result = mysql_query("SELECT * FROM nurse_patients  WHERE staff = '$uID'");
 					 
 					 echo "<h2>Patients' List<br> $uName - ID#: $uID</h2><br>";

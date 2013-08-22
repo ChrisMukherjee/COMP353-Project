@@ -140,6 +140,7 @@ if (!isset($_SESSION['login']))
 	 
 	 else if(isset($_POST['LoginAsPatient'])) 
 	 {
+		 $_SESSION['uType'] = 'patient';
 		 $_SESSION['login']=true;
 		 header('Location: patients.php');
 	 }//End of else if(isset($_POST["Login as Patient"])) 
