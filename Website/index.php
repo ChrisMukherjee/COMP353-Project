@@ -227,7 +227,6 @@ if (isset($_SESSION['error'])) {
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->
-<div class="push"></div>
 </div>
 <!--Include the Website Footer-->
 <?php include 'footer.php'; ?>

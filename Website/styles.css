@@ -14,6 +14,14 @@ body  {
 	z-index: 999;
 }
 
+.wrapper {
+	position: relative;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin-bottom: -50px;
+}
+
 html {
 	width: 100%;
 	height: 100%;
@@ -59,7 +67,7 @@ a:hover {
 	background-color: white;
 	float: left; /* since this element is floated, a width must be given */
 	width: 210px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
-	min-height: 500px;
+	min-height: 400px;
 }
 
 #sidebar1 li {
@@ -75,10 +83,19 @@ a:hover {
 } 
 
 #footer {
-	text-align:center;
 	padding:20px 0;
-	background:url(images/hospital_footer.png) no-repeat left bottom;
+	background:url(images/hospital_footer.png) no-repeat center bottom;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	display: block;
 } 
+
+#footText {
+	width: 200px;
+	text-align:center;
+	background:#ebebeb;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	display: block;
+}
 
 .error {
 	font-weight: bold;
@@ -96,18 +113,6 @@ a:hover {
 	float: right;
 	right: 400px;
 	position: absolute;
-}
-
-.wrapper {
-	position: relative;
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin-bottom: -50px;
-}
-
-.push {
-	height: 50px;
 }
 
 table, tr, td {

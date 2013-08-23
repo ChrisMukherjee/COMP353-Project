@@ -46,17 +46,13 @@ if (isset($_SESSION['login'])) {
                 Christopher Mukherjee - <a href="mailto:chris.mukherjee@gmail.com">chris.mukherjee@gmail.com</a><br/>
                 Cheng Cheng - <a href="mailto:cheng.cheng@hotmail.ca">cheng.cheng@hotmail.ca</a></p>
 				</strong>
-
-               
         </p>
-    </div>
-    <!-- end #mainContent -->
-	<br class="clearfloat" />
-    
-    <!--Include the Website Footer-->
-	<?php include 'footer.php'; ?>
+<!-- end #mainContent -->
 </div>
 <!-- end #container -->
+</div>
+<!--Include the Website Footer-->
+<?php include 'footer.php'; ?>
 </body>
 </html>
 
