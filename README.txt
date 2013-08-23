@@ -42,6 +42,8 @@ Christopher Mukherjee:
 	- Added PHP code to limit access to pages
 	    - sidebar will only display links to certain pages, based on the user's staff type
 	    - if a user tries to manually access a page that they should not have access to, redirect to contact us page
+	- Created required database views (supported Alexander)
+	- Created PHP code and SQL queries to retrieve and display appropriate views on some of the staff pages (supported Alexander)
 	- Wrote README.txt (contributions for myself, Karim, and Cheng)
 
 Alexander Vissa:
@@ -56,7 +58,7 @@ Alexander Vissa:
 	    - get staffID and password from database tables using SQL queries
 	    - check form values against database values
 	    - on successful login, redirect staff member to appropriate page using PHP
-	- Created specific database views
-	- Created PHP code and SQL queries to retrieve and display appropriate views on each of the staff pages
 	- Added Welcome text that displays user's name
+	- Created required database views
+	- Created PHP code and SQL queries to retrieve and display appropriate views on each of the staff pages
 	- Wrote README.txt (contributions for myself)

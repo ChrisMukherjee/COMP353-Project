@@ -171,7 +171,7 @@ if (!isset($_SESSION['login'])) {
 <?php include 'header.php'; ?>
 <!-- begin #mainContent -->
 <h2><br/>Please login below to access the Starline Medical Center Database.<br/><br/></h2>
-<form method="post" onsubmit="window.location.reload()" action="">
+<form method="post" onsubmit="window.location.reload()" action="?">
 <div class="loginLeft">
 <table>
 <tr>
