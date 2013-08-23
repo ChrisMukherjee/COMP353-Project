@@ -131,7 +131,7 @@ a:hover {
 table, tr, td {
 	border: none;
 	padding: 2px;
-	text-align: left;
+	text-align: center;
 	z-index: 999;
 }
 

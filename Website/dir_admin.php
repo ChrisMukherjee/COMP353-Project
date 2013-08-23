@@ -52,16 +52,12 @@ else {
 								 <tr>	<th>Staff ID</th>
 										<th>Name</th>
 										<th>Unit Name</th>
-										<th>Salary</th>
-										<th>Years</th>
 								 </tr>";
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
 								 <td width=\"150\">$data[0]</td>
 								 <td width=\"150\">$data[1]</td>
 								 <td width=\"150\">$data[2]</td>
-								 <td width=\"150\">$data[3]</td>
-								 <td width=\"150\">$data[4]</td>
 							   </tr>");		  
 					 echo "</table>";
 					 
@@ -73,16 +69,12 @@ else {
 								 <tr>	<th>Staff ID</th>
 										<th>Name</th>
 										<th>Unit Name</th>
-										<th>Salary</th>
-										<th>Years</th>
 								 </tr>";
 					 while($data = mysql_fetch_array($result2)) 
 					 	 echo("<tr>
 								 <td width=\"150\">$data[0]</td>
 								 <td width=\"150\">$data[1]</td>
 								 <td width=\"150\">$data[2]</td>
-								 <td width=\"150\">$data[3]</td>
-								 <td width=\"150\">$data[4]</td>
 							   </tr>");
 					 echo "</table>";
 					 mysql_close($con);

@@ -41,15 +41,15 @@ else {
 <?php include 'sidebar.php'; ?>
 <!-- begin #mainContent -->
 <div id="mainContent" align="center">
-    	<p>
-        	<strong>
+    <p>
+       	<strong>
 					<?php
 					 include 'login.php';
 
 					 //Nurse Table
 					if($_SESSION['uType'] == 'doctor' || $_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
 						 $result = mysql_query("SELECT * FROM nurse_patients");
-						 echo "<h2>All Nurses &amp; their schedules</h2><br>";
+						 echo "<h2>All Nurses &amp; their Schedules</h2><br>";
 						 echo "<table border='2'>
 								 <tr>	<th>Staff ID</th>
 										<th>Name</th>
@@ -125,13 +125,11 @@ else {
 					  }
 					 mysql_close($con);
 					?>
-			</strong><br /><br />
-		</p>
-	</div>
+		</strong><br /><br />
+	</p>
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->
-<div class="push"></div>
 </div>
 <!--Include the Website Footer-->
 <?php include 'footer.php'; ?>

@@ -44,7 +44,7 @@ if (isset($_SESSION['login']))
 
 					 //Patients Table
 					 $result = mysql_query("SELECT * FROM patients_schedule");
-					 echo "<h2>All Patients &amp; their schedules</h2><br>";
+					 echo "<h2>All Patients &amp; their Schedules</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Patient Name</th>
 										<th>Medicare Card #</th>
@@ -71,8 +71,8 @@ if (isset($_SESSION['login']))
 					 echo "</table>";
 					 mysql_close($con);
 					?>
-			</strong><br /><br />
-		</p>
+		</strong><br /><br />
+	</p>
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->

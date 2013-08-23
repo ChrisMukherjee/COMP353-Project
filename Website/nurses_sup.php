@@ -40,15 +40,15 @@ else {
 <?php include 'sidebar.php'; ?>
 <!-- begin #mainContent -->
 <div id="mainContent" align="center">
-    	<p>
-        	<strong>
+   	<p>
+       	<strong>
 					<?php
 					 include 'login.php';
-						
+
 					 //Nurse Supervisor Table
 					if($_SESSION['uType'] == 'doctor' || $_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
 					 $result = mysql_query("SELECT * FROM viewsupnurse");
-					 echo "<h2>All Nurse Shift Supervisors &amp; their schedules</h2><br>";
+					 echo "<h2>All Nurse Shift Supervisors &amp; their Schedules</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Nurse ID</th>
 										<th>Nurse Name</th>
@@ -98,8 +98,8 @@ else {
 					 }
 					 mysql_close($con);
 					?>
-			</strong><br /><br />
-		</p>
+		</strong><br /><br />
+	</p>
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->

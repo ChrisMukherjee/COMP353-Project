@@ -46,20 +46,18 @@ else {
 					 include 'login.php';
 
 					 //Technician Table
-					 $result = mysql_query("SELECT * FROM alltechnicians");
+					 $result = mysql_query("SELECT * FROM viewtechnicians");
 					 echo "<h2>All Technicians</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Staff ID</th>
 										<th>Name</th>
 										<th>Specialization</th>
-										<th>Overtime Hours</th>
 								 </tr>";
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
 								 <td width=\"90\">$data[0]</td>
 								 <td width=\"150\">$data[1]</td>
 								 <td width=\"150\">$data[2]</td>
-								 <td width=\"120\">$data[3]</td>
 							   </tr>");
 					 echo "</table>";
 					 mysql_close($con);

@@ -49,7 +49,7 @@ else {
 					 //Intern Table
 					 if ($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director' || $_SESSION['uType'] == 'doctor') {
 						 $result = mysql_query("SELECT * FROM viewinterns");
-					 echo "<h2>All Interns &amp; their schedules</h2><br>";
+					 echo "<h2>All Interns &amp; their Schedules</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Staff ID</th>
 										<th>Name</th>

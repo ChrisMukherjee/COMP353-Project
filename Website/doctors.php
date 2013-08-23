@@ -46,13 +46,33 @@ else {
 					  if(isset($_POST['update'])) { 
 						 $updateop = $_POST['operSel'];
 						 $updateAsst = $_POST['asstSel'];
-						 $update = mysql_query("UPDATE scheduledservices SET assistantID = '$updateAsst'  WHERE serviceNum = '$updateop'") or die(mysql_error());
+						 $update = mysql_query("UPDATE scheduledservices SET assistantID = '$updateAsst' WHERE serviceNum = '$updateop'") or die(mysql_error());
 						 unset($_POST['update']);
-					 } 
+					 }
 					 else if(isset($_POST['cancel'])) {
 						 $cancelop = $_POST['cancelSel'];
 						 $cancel = mysql_query("DELETE FROM scheduledservices WHERE serviceNum = '$cancelop'") or die(mysql_error());
 						 unset($_POST['cancel']);
+					 }
+					 else if(isset($_POST['schedUpdate'])) {
+						 $schedNew = $_POST['schedSel'];
+						 if(isset($_POST['schedDate']) && $_POST['schedDate'] != "") {
+							 $newDate = $_POST['schedDate'];
+							 $update1 = mysql_query("UPDATE scheduledservices SET date = '$newDate' WHERE serviceNum = '$schedNew'") or die(mysql_error());
+						 }
+						 if(isset($_POST['schedSTime']) && $_POST['schedSTime'] != "") {
+							 $newSTime = $_POST['schedSTime'];
+							 $update2 = mysql_query("UPDATE scheduledservices SET startTime = '$newSTime' WHERE serviceNum = '$schedNew'") or die(mysql_error());
+						 }
+						 if(isset($_POST['schedETime']) && $_POST['schedETime'] != "") {
+							 $newETime = $_POST['schedETime'];
+							 $update3 = mysql_query("UPDATE scheduledservices SET endTime = '$newETime' WHERE serviceNum = '$schedNew'") or die(mysql_error());
+						 }
+						 if(isset($_POST['schedRoom']) && $_POST['schedRoom'] != "") {
+							 $newRoom = $_POST['schedRoom'];
+							 $update4 = mysql_query("UPDATE scheduledservices SET roomNumber = '$newRoom' WHERE serviceNum = '$schedNew'") or die(mysql_error());
+						 }
+						 unset($_POST['schedUpdate']);
 					 }
 					  
 					 //Doctor Table
@@ -84,7 +104,7 @@ else {
 					 }
 					 else if($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
 						 $result2 = mysql_query("SELECT * FROM doctor_patient");
-						 echo "<h2>All Doctors &amp; their schedules</h2><br>";
+						 echo "<h2>All Doctors &amp; their Schedules</h2><br>";
 						 echo "<table border='2'>
 									 <tr>	<th>Staff ID</th>
 											<th>Name</th>
@@ -116,14 +136,23 @@ else {
 					?>
 			 <br><div class="center">
 <br><br><br><br><br><hr><br>
+<?php
+if($_SESSION['uType'] == 'doctor') {
+?>
 <form name="form" action="?" method="post">
 <p class="spaced">Use the option below to select an intern or resident to work with you:</p>
 <div class="centerTable">
 <table style="margin: 0px auto;">
 <tr>
-<td class="center spaced">Service Number: <input name="operSel" id="operSel" type="text" size="10"/><br>
-Assistant ID: <input name="asstSel" id="asstSel" type="text" size="10"/><br>
-<input type="submit" name="update" value="Update"/></td>
+<td class="center spaced">Service Number:</td>
+<td class="center spaced"><input name="operSel" id="operSel" type="text" size="10"/></td>
+</tr>
+<tr>
+<td class="center spaced">Assistant ID:</td>
+<td class="center spaced"><input name="asstSel" id="asstSel" type="text" size="10"/></td>
+</tr>
+<tr>
+<td class="center spaced"><input type="submit" name="update" value="Update"/></td>
 </tr>
 </table>
 </div>
@@ -131,13 +160,52 @@ Assistant ID: <input name="asstSel" id="asstSel" type="text" size="10"/><br>
 <p class="spaced"><br/>Use the option below to cancel a service:</p>
 <table style="margin: 0px auto;">
 <tr>
-<td class="center spaced">Service Number: <input name="cancelSel" id="cancelSel" type="text" size="10"/><br>
-<input type="submit" name="cancel" value="Cancel Operation"/></td>
+<td class="center spaced">Service Number:</td>
+<td class="center spaced"><input name="cancelSel" id="cancelSel" type="text" size="10"/></td>
+</tr>
+<tr>
+<td class="center spaced"><input type="submit" name="cancel" value="Cancel Operation"/></td>
 </tr>
 </table>
 </div>
 </form>
+<?php
+}
+else if($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
+?>
+<form name="form" action="?" method="post">
+<p class="spaced">Use the option below to reschedule a service:</p>
+<div class="centerTable">
+<table style="margin: 0px auto;">
+<tr>
+<td class="center spaced">Service Number:</td>
+<td class="center spaced"><input name="schedSel" id="schedSel" type="text" size="10"/></td>
+</tr>
+<tr>
+<td class="center spaced">New date:</td>
+<td class="center spaced"><input name="schedDate" id="schedDate" type="text" size="10"/></td>
+</tr>
+<tr>
+<td class="center spaced">New start time:</td>
+<td class="center spaced"><input name="schedSTime" id="schedSTime" type="text" size="10"/></td>
+</tr>
+<tr>
+<td class="center spaced">New end time:</td>
+<td class="center spaced"><input name="schedETime" id="schedETime" type="text" size="10"/></td>
+</tr>
+<tr>
+<td class="center spaced">New room:</td>
+<td class="center spaced"><input name="schedRoom" id="schedRoom" type="text" size="10"/></td>
+</tr>
+<tr>
+<td class="center spaced"><input type="submit" name="schedUpdate" value="Update"/></td>
+</tr>
+</table>
 </div>
+</form>
+<?php
+}
+?>
 		</strong><br/><br/>
 	</p>
 <!-- end #mainContent -->
