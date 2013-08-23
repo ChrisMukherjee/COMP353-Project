@@ -36,7 +36,7 @@ else
 <div id="container">
 	<?php include 'header.php'; ?>
 	<?php include 'sidebar.php'; ?>
-<div id="mainContent">
+	<div id="mainContent" align="center">
     	<p>
         	<strong>
 					<?php
@@ -58,34 +58,72 @@ else
 						 unset($_SESSION['cancel']);
 					 }
 					  
-					 //Patient's List Table 
-					 $result = mysql_query("SELECT * FROM doctor_patient WHERE DoctorID = '$uID'");
+					 //Patient's List Table 					 	 
+					if($_SESSION['uType'] == 'doctor')
+					 {
+						 $result = mysql_query("SELECT * FROM doctor_patient WHERE DoctorID = '$uID'");
 
-					 echo "<h2>Your Patients List<br>$uName - ID#: $uID</h2><br>";
-					 echo "<table border='2'>
-								 <tr>	<th>Service Number</th>
-										<th>Patient's Name</th>
-										<th>Service</th>
-										<th>Assistant ID</th>
-										<th>Date</th>
-										<th>Start Time</th>
-										<th>End Time</th>
-										<th>Room Number</th>
-								 </tr>";
-
-					 while($data = mysql_fetch_array($result)) 
-					 	 echo("<tr>
-								 <td width=\"150\">$data[1]</td>
-								 <td width=\"150\">$data[2]</td>
-								 <td width=\"150\">$data[3]</td>
-								 <td width=\"150\">$data[4]</td>
-								 <td width=\"150\">$data[5]</td>
-								 <td width=\"150\">$data[6]</td>
-								 <td width=\"150\">$data[7]</td>
-								 <td width=\"150\">$data[8]</td>
-							   </tr>");
-					 					  
-					 echo "</table>";
+						 echo "<h2>Your Patients List<br>$uName - ID#: $uID</h2><br>";
+						 echo "<table border='2'>
+									 <tr>	<th>Service Number</th>
+											<th>Patient's Name</th>
+											<th>Service</th>
+											<th>Assistant ID</th>
+											<th>Date</th>
+											<th>Start Time</th>
+											<th>End Time</th>
+											<th>Room Number</th>
+									 </tr>";
+						 while($data = mysql_fetch_array($result))		 
+							 echo("<tr>
+									 <td width=\"150\">$data[2]</td>
+									 <td width=\"150\">$data[3]</td>
+									 <td width=\"150\">$data[4]</td>
+									 <td width=\"150\">$data[5]</td>
+									 <td width=\"150\">$data[6]</td>
+									 <td width=\"150\">$data[7]</td>
+									 <td width=\"150\">$data[8]</td>
+									 <td width=\"150\">$data[9]</td>
+								   </tr>");
+										  
+						 echo "</table>";
+					 }//End of if statement
+					 
+					 elseif($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director')
+					 {
+						 $result2 = mysql_query("SELECT * FROM doctor_patient");
+						 
+						 echo "<h2>Doctors/Patients List<br>$uName - ID#: $uID</h2><br>";
+						 echo "<table border='2'>
+									 <tr>	<th>Doctor ID</th>
+											<th>Doctor Name</th>
+											<th>Service Number</th>
+											<th>Patient's Name</th>
+											<th>Service</th>
+											<th>Assistant ID</th>
+											<th>Date</th>
+											<th>Start Time</th>
+											<th>End Time</th>
+											<th>Room Number</th>
+									 </tr>";
+						 while($data = mysql_fetch_array($result2))		 
+							 echo("<tr>
+									 <td width=\"100\">$data[0]</td>
+									 <td width=\"150\">$data[1]</td>
+									 <td width=\"150\">$data[2]</td>
+									 <td width=\"150\">$data[3]</td>
+									 <td width=\"150\">$data[4]</td>
+									 <td width=\"150\">$data[5]</td>
+									 <td width=\"150\">$data[6]</td>
+									 <td width=\"150\">$data[7]</td>
+									 <td width=\"150\">$data[8]</td>
+									 <td width=\"150\">$data[9]</td>
+								   </tr>");
+										  
+						 echo "</table>";
+					 }//End of elseif statement
+					 
+					 
 				 
 					 mysql_close($con);
 					?>

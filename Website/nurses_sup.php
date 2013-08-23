@@ -44,7 +44,7 @@ else
 	<!--Include the Website Sidebar-->
 	<?php include 'sidebar.php'; ?>
     <!-- begin #mainContent -->
-    <div id="mainContent">
+    <div id="mainContent" align="center">
     	<p>
         	<strong>
 					<?php

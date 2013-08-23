@@ -1,10 +1,10 @@
-﻿<?php session_start();
+<?php session_start();
 
 // ** THIS PAGE IS DONE! **
 
 if (isset($_SESSION['login'])) {
 
-if ($_SESSION['uType'] != 'nurse' && $_SESSION['uType'] != 'supnurse' && $_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'doctor') {
+if ($_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director') {
 	header("Location: index.php");
 }
 else
@@ -33,7 +33,7 @@ else
 /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
 </style>
 <![endif]-->
-<title>Starline - Nurses</title>
+<title>Starline - Technicians</title>
 </head>
 
 <body>
@@ -52,26 +52,22 @@ else
 					 include 'login.php';
 
 					 //Nurse Table
-					 $result = mysql_query("SELECT * FROM nurse_patients  WHERE staff = '$uID'");
+					 $result = mysql_query("SELECT * FROM alltechnicians");
 					 
 					 echo "<h2>Patients List<br> $uName - ID#: $uID</h2><br>";
 					 echo "<table border='2'>
-								 <tr>	<th>Patient Name</th>
-										<th>Service</th>
-										<th>Date</th>
-										<th>Start Time</th>
-										<th>End Time</th>
-										<th>Room Number</th>
+								 <tr>	<th>Staff ID</th>
+										<th>Name</th>
+										<th>Specialization</th>
+										<th>Overtime Hours</th>
 								 </tr>";
 
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
-								 <td width=\"150\">$data[3]</td>
-								 <td width=\"150\">$data[4]</td>
-								 <td width=\"150\">$data[5]</td>
-								 <td width=\"150\">$data[6]</td>
-								 <td width=\"150\">$data[7]</td>
-								 <td width=\"150\">$data[8]</td>
+								 <td width=\"90\">$data[0]</td>
+								 <td width=\"150\">$data[1]</td>
+								 <td width=\"150\">$data[2]</td>
+								 <td width=\"120\">$data[3]</td>
 							   </tr>");
 					 					  
 					 echo "</table>";

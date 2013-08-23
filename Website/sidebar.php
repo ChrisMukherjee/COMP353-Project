@@ -8,8 +8,8 @@
 				echo '<li><a href="dir_admin.php">Directors/Administrators</a></li>';
 				echo'<li><a href="doctors.php">Doctors</a></li>';
 				echo '<li><a href="res_int.php">Residents/Interns</a></li>';
-				echo '<li><a href="nurses.php">Nurses</a></li>';
 				echo '<li><a href="nurses_sup.php">Nurse - Shift Supervisor</a></li>';
+				echo '<li><a href="technicians.php">Technicians</a></li>';
 				echo '<li><a href="patients.php">Patients</a></li>';
 				echo '<li><a href="contact.php">Contact Us</a></li>';
 			}

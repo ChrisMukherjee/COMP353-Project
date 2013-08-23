@@ -93,6 +93,22 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `alltechnicians`
+--
+
+DROP TABLE IF EXISTS `alltechnicians`;
+/*!50001 DROP VIEW IF EXISTS `alltechnicians`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `alltechnicians` (
+  `staffID` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `specialization` tinyint NOT NULL,
+  `overtimeHours` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `director`
 --
 
@@ -155,6 +171,7 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE TABLE `doctor_patient` (
   `DoctorID` tinyint NOT NULL,
+  `DoctorName` tinyint NOT NULL,
   `ServiceNB` tinyint NOT NULL,
   `Service` tinyint NOT NULL,
   `Patient Name` tinyint NOT NULL,
@@ -882,6 +899,25 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `alltechnicians`
+--
+
+/*!50001 DROP TABLE IF EXISTS `alltechnicians`*/;
+/*!50001 DROP VIEW IF EXISTS `alltechnicians`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `alltechnicians` AS select `staff`.`staffID` AS `staffID`,`staff`.`name` AS `name`,`technicians`.`specialization` AS `specialization`,`technicians`.`overtimeHours` AS `overtimeHours` from (`staff` join `technicians` on((`staff`.`staffID` = `technicians`.`staffID`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `doctor_patient`
 --
 
@@ -895,7 +931,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `doctor_patient` AS (select `doctor`.`staffID` AS `DoctorID`,`scheduledservices`.`serviceNb` AS `ServiceNB`,`services`.`serviceName` AS `Service`,`patients`.`patientName` AS `Patient Name`,`scheduledservices`.`assistantID` AS `AssistantID`,`scheduledservices`.`date` AS `date`,`scheduledservices`.`startTime` AS `startTime`,`scheduledservices`.`endTime` AS `endTime`,`scheduledservices`.`roomNumber` AS `roomNumber` from (((`scheduledservices` join `doctor` on((`doctor`.`staffID` = `scheduledservices`.`staffID`))) join `services` on((`services`.`serviceID` = `scheduledservices`.`serviceID`))) join `patients` on((`patients`.`patientID` = `scheduledservices`.`patientsID`)))) */
+/*!50001 VIEW `doctor_patient` AS (select `doctor`.`staffID` AS `DoctorID`,`staff`.`name` AS `DoctorName`,`scheduledservices`.`serviceNb` AS `ServiceNB`,`services`.`serviceName` AS `Service`,`patients`.`patientName` AS `Patient Name`,`scheduledservices`.`assistantID` AS `AssistantID`,`scheduledservices`.`date` AS `date`,`scheduledservices`.`startTime` AS `startTime`,`scheduledservices`.`endTime` AS `endTime`,`scheduledservices`.`roomNumber` AS `roomNumber` from ((((`scheduledservices` join `doctor` on((`doctor`.`staffID` = `scheduledservices`.`staffID`))) join `staff` on((`staff`.`staffID` = `scheduledservices`.`staffID`))) join `services` on((`services`.`serviceID` = `scheduledservices`.`serviceID`))) join `patients` on((`patients`.`patientID` = `scheduledservices`.`patientsID`))) order by `doctor`.`staffID`,`scheduledservices`.`date`,`scheduledservices`.`startTime`) */
 /*!50002 WITH CASCADED CHECK OPTION */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -1196,4 +1232,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-08-22 21:10:07
+-- Dump completed on 2013-08-22 22:30:25

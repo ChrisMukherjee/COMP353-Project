@@ -45,7 +45,7 @@ else
 	<!--Include the Website Sidebar-->
 	<?php include 'sidebar.php'; ?>
     <!-- begin #mainContent -->
-    <div id="mainContent">
+    <div id="mainContent" align="center">
     	<p>
         	<strong>
 					<?php
@@ -65,9 +65,7 @@ else
 					  	 echo "<h2>Schedule<br> $uName - ID#: $uID</h2><br>";
 					 }
 					 echo "<table border='2'>
-								 <tr>	<th>Staff ID</th>
-										<th>Staff Name</th>
-										<th>Patient Name</th>
+								 <tr>	<th>Patient Name</th>
 										<th>Service</th>
 										<th>Date</th>
 										<th>Start Time</th>
@@ -77,8 +75,6 @@ else
 
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
-								 <td width=\"150\">$data[0]</td>
-								 <td width=\"150\">$data[1]</td>
 								 <td width=\"150\">$data[2]</td>
 								 <td width=\"150\">$data[3]</td>
 								 <td width=\"150\">$data[4]</td>
