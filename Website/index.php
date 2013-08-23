@@ -63,12 +63,17 @@ if (!isset($_SESSION['login']))
 		 //Gets Username's Name
 		 $uName= mysql_query("SELECT name FROM staff WHERE staffID='$username'");
 		 $row = mysql_fetch_assoc($uName);
+		 
+		 //Gets Unit
+		 $unit= mysql_query("SELECT unitName FROM staff WHERE staffID='$username'");
+		 $row = mysql_fetch_assoc($unit);
 		 		
 		 //Determines which table has the "staffID" and redirects to the appropriate page
 		 if($admCount >= 1)
 		 {
 			 $_SESSION['uType'] = 'admin';
 			 $_SESSION['uName'] = $row['name'];
+			 $_SESSION['unit'] = $row['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: dir_admin.php');
 			 exit;
@@ -78,6 +83,7 @@ if (!isset($_SESSION['login']))
 		 {
 			 $_SESSION['uType'] = 'director';
 			 $_SESSION['uName'] = $row['name'];
+			 $_SESSION['unit'] = $row['unitName'];
 			 $_SESSION['login']=true;
 		     header('Location: dir_admin.php');
 		 	 exit;
@@ -87,6 +93,7 @@ if (!isset($_SESSION['login']))
 		 {
 			 $_SESSION['uType'] = 'resident';
 			 $_SESSION['uName'] = $row['name'];
+			 $_SESSION['unit'] = $row['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: res_int.php');
 			 exit;
@@ -96,6 +103,7 @@ if (!isset($_SESSION['login']))
 		 {
 			 $_SESSION['uType'] = 'intern';
 			 $_SESSION['uName'] = $row['name'];
+			 $_SESSION['unit'] = $row['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: res_int.php');
 			 exit;
@@ -105,6 +113,7 @@ if (!isset($_SESSION['login']))
 		 {
 			 $_SESSION['uType'] = 'doctor';
 			 $_SESSION['uName'] = $row['name'];
+			 $_SESSION['unit'] = $row['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: doctors.php');
 			 exit;
@@ -114,6 +123,7 @@ if (!isset($_SESSION['login']))
 		 {
 			 $_SESSION['uType'] = 'nurse';
 			 $_SESSION['uName'] = $row['name'];
+			 $_SESSION['unit'] = $row['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: nurses.php');
 			 exit;
@@ -123,6 +133,7 @@ if (!isset($_SESSION['login']))
 		 {
 			 $_SESSION['uType'] = 'supnurse';
 			 $_SESSION['uName'] = $row['name'];
+			 $_SESSION['unit'] = $row['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: nurses_sup.php');
 			 exit;

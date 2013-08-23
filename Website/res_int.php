@@ -61,7 +61,7 @@ else
 					 
 					else 
 					{ 
-						 $result = mysql_query("SELECT * FROM int_res_schedule  WHERE staff = '$uID'");
+						 $result = mysql_query("SELECT * FROM int_res_schedule  WHERE StaffID = '$uID'");
 					  	 echo "<h2>Schedule<br> $uName - ID#: $uID</h2><br>";
 					 }
 					 echo "<table border='2'>

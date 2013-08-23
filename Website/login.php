@@ -16,5 +16,6 @@ mysql_select_db("$db_name")or die("Error: Cannot select database \"$db_name\"");
 if (isset($_SESSION['uType']) && $_SESSION['uType'] != 'patient') {
 	$uID = $_SESSION['uID'];
 	$uName = $_SESSION['uName'];
+	$unit = $_SESSION['unit'];
 }
 ?>

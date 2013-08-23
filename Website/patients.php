@@ -49,14 +49,14 @@ if (isset($_SESSION['login']))
 					 echo "<table border='2'>
 								 <tr>	<th>Patient Name</th>
 										<th>Medicare Card #</th>
-										<th>Symptoms/Treatment</th>
+										<th>Comments</th>
 								 </tr>";
 
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
 								 <td width=\"150\">$data[0]</td>
-								 <td width=\"150\">$data[1]</td>
-								 <td width=\"150\">$data[2]</td>
+								 <td width=\"100\">$data[1]</td>
+								 <td width=\"450\">$data[2]</td>
 							   </tr>");
 					 					  
 					 echo "</table>";

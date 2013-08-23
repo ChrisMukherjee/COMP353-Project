@@ -50,13 +50,15 @@ else
 					<?php
 
 					 include 'login.php';
-
+						
 					 //Nurse Supervisor Table
-					 $result = mysql_query("SELECT * FROM nurse_patients");
+					 $result = mysql_query("SELECT * FROM nurse_patients WHERE UnitName = '$unit'");
 					 
-					 echo "<h2>Patients' List<br> $uName - ID#: $uID</h2><br>";
+					 echo "<h2>Patients List<br> $uName - ID#: $uID</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Nurse ID</th>
+										<th>Nurse Name</th>
+										<th>Unit</th>
 										<th>Patient Name</th>
 										<th>Service</th>
 										<th>Date</th>
@@ -74,6 +76,8 @@ else
 								 <td width=\"150\">$data[4]</td>
 								 <td width=\"150\">$data[5]</td>
 								 <td width=\"150\">$data[6]</td>
+								 <td width=\"150\">$data[7]</td>
+								 <td width=\"150\">$data[8]</td>
 							   </tr>");
 					 					  
 					 echo "</table>";

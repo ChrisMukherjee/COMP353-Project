@@ -54,7 +54,7 @@ else
 					 //Nurse Table
 					 $result = mysql_query("SELECT * FROM nurse_patients  WHERE staff = '$uID'");
 					 
-					 echo "<h2>Patients' List<br> $uName - ID#: $uID</h2><br>";
+					 echo "<h2>Patients List<br> $uName - ID#: $uID</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Patient Name</th>
 										<th>Service</th>
@@ -66,12 +66,12 @@ else
 
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
-								 <td width=\"150\">$data[1]</td>
-								 <td width=\"150\">$data[2]</td>
 								 <td width=\"150\">$data[3]</td>
 								 <td width=\"150\">$data[4]</td>
 								 <td width=\"150\">$data[5]</td>
 								 <td width=\"150\">$data[6]</td>
+								 <td width=\"150\">$data[7]</td>
+								 <td width=\"150\">$data[8]</td>
 							   </tr>");
 					 					  
 					 echo "</table>";

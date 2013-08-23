@@ -66,10 +66,11 @@ else
 								 <tr>	<th>Service Number</th>
 										<th>Patient's Name</th>
 										<th>Service</th>
-										<th>AssistantID</th>
+										<th>Assistant ID</th>
 										<th>Date</th>
 										<th>Start Time</th>
 										<th>End Time</th>
+										<th>Room Number</th>
 								 </tr>";
 
 					 while($data = mysql_fetch_array($result)) 
@@ -81,6 +82,7 @@ else
 								 <td width=\"150\">$data[5]</td>
 								 <td width=\"150\">$data[6]</td>
 								 <td width=\"150\">$data[7]</td>
+								 <td width=\"150\">$data[8]</td>
 							   </tr>");
 					 					  
 					 echo "</table>";
