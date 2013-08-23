@@ -45,6 +45,7 @@ Christopher Mukherjee:
 	- Created required database views (supported Alexander)
 	- Created PHP code and SQL queries to retrieve and display appropriate views on some of the staff pages (supported Alexander)
 	- Updated website look-and-feel, in HTML/CSS
+	- Created code to allow Administrators to update and delete their services as specified
 	- Finalized website
 	- Wrote README.txt (contributions for myself, Karim, and Cheng)
 
@@ -63,4 +64,5 @@ Alexander Vissa:
 	- Added Welcome text that displays user's name
 	- Created required database views
 	- Created PHP code and SQL queries to retrieve and display appropriate views on each of the staff pages
+	- Created code to allow Doctors to update and delete their services as specified
 	- Wrote README.txt (contributions for myself)

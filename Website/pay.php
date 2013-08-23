@@ -41,45 +41,16 @@ else {
     <p>
         <strong>
 					<?php
-					include 'login.php';
+					 include 'login.php';
 
-					  if(isset($_POST['update'])) { 
-						 $updateOP = $_POST['operSel'];
-						 $updateAsst = $_POST['asstSel'];
-						 $update = mysql_query("UPDATE scheduledservices SET assistantID = '$updateAsst'  WHERE serviceNum = '$updateOP'") or die(mysql_error());
-						 unset($_SESSION['update']);
-					 } 
-					 else if(isset($_POST['cancel'])) {
-						 $cancelop = $_POST['operSel'];
-						 $cancel = mysql_query("DELETE FROM scheduledservices WHERE serviceNum = '$cancelop'") or die(mysql_error());
-						 unset($_SESSION['cancel']);
-					 }
-					  
-					 //Doctor Table
-					if($_SESSION['uType'] == 'doctor') {
-						 $result = mysql_query("SELECT * FROM doctor_patient WHERE DoctorID = '$uID'");
+					 //Pay Table
+					if($_SESSION['uType'] == 'nurse') {
+						$result = mysql_query("SELECT * FROM viewpay WHERE Staff = '$uID'");
 						 echo "<h2>Your Patients List<br>$uName - ID#: $uID</h2><br>";
-						 echo "<table border='2'>
-									 <tr>	<th>Service Number</th>
-											<th>Patient's Name</th>
-											<th>Service</th>
-											<th>Assistant ID</th>
-											<th>Date</th>
-											<th>Start Time</th>
-											<th>End Time</th>
-											<th>Room Number</th>
-									 </tr>";
 						 while($data = mysql_fetch_array($result))
-							 echo("<tr>
-									 <td width=\"150\">$data[2]</td>
-									 <td width=\"150\">$data[3]</td>
-									 <td width=\"150\">$data[4]</td>
-									 <td width=\"150\">$data[5]</td>
-									 <td width=\"150\">$data[6]</td>
-									 <td width=\"150\">$data[7]</td>
-									 <td width=\"150\">$data[8]</td>
-									 <td width=\"150\">$data[9]</td>
-								   </tr>");
+							 echo 'Years of Seniority: $data[1]<br/>';
+						 	$sum = mysql_query("SELECT sum($data[3]) FROM viewpay WHERE Staff = '$uID'");
+							echo 'Hours worked this week: $sum[0]';
 						 echo "</table>";
 					 }
 					 elseif($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
@@ -114,14 +85,6 @@ else {
 					 }
 					 mysql_close($con);
 					?>
-			 <br><div align="right">
-<form name="form" action="" method="post">
-Service Number: <input name="operSel" id="operSel" type="text" size="10"/><br>
-Assistant ID: <input name="asstSel" id="asstSel" type="text" size="10"/><br>
-<input type="submit" name="update" value="Update"/>
-<input type="submit" name="cancel" value="Cancel Operation"/>
-</form>
-</div>
 		</strong><br/><br/>
 	</p>
 <!-- end #mainContent -->

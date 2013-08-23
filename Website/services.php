@@ -52,7 +52,7 @@ else {
 					  }
 					  else if(isset($_POST['delete'])) {
 						 $del = $_POST['delNum'];
-						 $delete = mysql_query("DELETE FROM services WHERE serviceID = '$del'") or die(mysql_error());
+						 $delete = mysql_query("DELETE FROM services WHERE serviceID = '$del'") or die("Specified Service ID cannot be deleted because it is currently scheduled for one or more patients.");
 						 unset($_POST['delete']);
 					  }
 

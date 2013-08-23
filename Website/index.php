@@ -197,7 +197,6 @@ if (isset($_SESSION['error'])) {
 	unset($_SESSION['error']);
 }
 ?>
-<p><br><br><br><br><br><br><br>Admin = 1<br>Director = 5<br>Intern = 4<br>Resident = 9<br>Doctor = 18<br>Nurse = 17<br>Sup Nurse = 26<br></p>
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->
