@@ -24,23 +24,23 @@ a {
 	font-size:12px;
 	text-decoration:underline;
 }
+
 a:hover {
 	color:#20B2AA;
 	font-size:12px;
 	text-decoration:none;
 }
+
 #container { 
 	width: 1200px;  
 	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
 	display: block;
 	position: relative;
 } 
+
 #header {
 	width:1200px;
 	background:url(images/hospital.png) no-repeat left top;
-}
-#menu {
-	padding:20px 0;
 }
 
 #logo {
@@ -48,10 +48,12 @@ a:hover {
 	font-size:48px;
 	text-align:center;
 }
+
 #author {
 	padding-top:220px;
 	text-align:center;
 }
+
 #sidebar1 {
     color: #778899;
 	background-color: white;
@@ -59,30 +61,28 @@ a:hover {
 	width: 210px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
 	min-height: 500px;
 }
+
 #sidebar1 li {
 	list-style:none;
-	background:url(images/pp.jpg) no-repeat left 4px;
 	margin:10px 0;
 }
+
 #mainContent {
 	margin: 0 0 0 210px;  
 	min-height: 400px;
 	background:#ebebeb;
 	padding:20px;
 } 
+
 #footer {
 	text-align:center;
 	padding:20px 0;
+	background:url(images/hospital_footer.png) no-repeat left bottom;
 } 
 
 .error {
 	font-weight: bold;
 	color: red;
-}
-	
-.success {
-	font-weight: bold;
-	color: blue;
 }
 
 .loginLeft {
