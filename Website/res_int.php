@@ -48,11 +48,11 @@ else {
 
 					 //Intern Table
 					 if ($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director' || $_SESSION['uType'] == 'doctor') {
-						 $result = mysql_query("SELECT * FROM int_res_schedule WHERE staff.staffID IN (SELECT interns.staffID FROM interns))");
-					 echo "<h2>All Interns</h2><br>";
+						 $result = mysql_query("SELECT * FROM viewinterns");
+					 echo "<h2>All Interns &amp; their schedules</h2><br>";
 					 echo "<table border='2'>
-								 <tr>	<th>Intern ID</th>
-										<th>Intern Name</th>
+								 <tr>	<th>Staff ID</th>
+										<th>Name</th>
 										<th>Patient Name</th>
 										<th>Service</th>
 										<th>Date</th>
@@ -74,12 +74,12 @@ else {
 					 echo "</table>";
 
 					 //Resident Table
-					 $result = mysql_query("SELECT * FROM int_res_schedule WHERE staff.staffID IN (SELECT residents.staffID FROM residents))");
+					 $result2 = mysql_query("SELECT * FROM viewresidents");
 					 echo "<br><br><br><br><br><hr><br>";
-					 echo "<h2>All Residents</h2><br>";
+					 echo "<h2>All Residents &amp; their schedules</h2><br>";
 					 echo "<table border='2'>
-								 <tr>	<th>Resident ID</th>
-										<th>Resident Name</th>
+								 <tr>	<th>Staff ID</th>
+										<th>Name</th>
 										<th>Patient Name</th>
 										<th>Service</th>
 										<th>Date</th>
@@ -87,7 +87,7 @@ else {
 										<th>End Time</th>
 										<th>Room Number</th>
 								 </tr>";
-					 while($data = mysql_fetch_array($result)) 
+					 while($data = mysql_fetch_array($result2)) 
 					 	 echo("<tr>
 								 <td width=\"150\">$data[0]</td>
 								 <td width=\"150\">$data[1]</td>
@@ -102,7 +102,7 @@ else {
 					 }
 					else if($_SESSION['uType'] == 'resident' || $_SESSION['uType'] == 'intern') {
 						 $result = mysql_query("SELECT * FROM int_res_schedule  WHERE StaffID = '$uID'");
-					  	 echo "<h2>Schedule<br> $uName - ID#: $uID</h2><br>";
+					 echo "<h2>Your Schedule<br>$uName - ID#: $uID</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Patient Name</th>
 										<th>Service</th>

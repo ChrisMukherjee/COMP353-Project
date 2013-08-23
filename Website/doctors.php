@@ -58,7 +58,7 @@ else {
 					 //Doctor Table
 					if($_SESSION['uType'] == 'doctor') {
 						 $result = mysql_query("SELECT * FROM doctor_patient WHERE DoctorID = '$uID'");
-						 echo "<h2>Your Patients List<br>$uName - ID#: $uID</h2><br>";
+						 echo "<h2>Your Schedule<br>$uName - ID#: $uID</h2><br>";
 						 echo "<table border='2'>
 									 <tr>	<th>Service Number</th>
 											<th>Patient's Name</th>
@@ -84,7 +84,7 @@ else {
 					 }
 					 else if($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
 						 $result2 = mysql_query("SELECT * FROM doctor_patient");
-						 echo "<h2>All Doctors</h2><br>";
+						 echo "<h2>All Doctors &amp; their schedules</h2><br>";
 						 echo "<table border='2'>
 									 <tr>	<th>Staff ID</th>
 											<th>Name</th>

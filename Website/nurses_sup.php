@@ -46,8 +46,9 @@ else {
 					 include 'login.php';
 						
 					 //Nurse Supervisor Table
-					 $result = mysql_query("SELECT * FROM nurse_patients WHERE UnitName = '$unit'");
-					 echo "<h2>Patients List<br> $uName - ID#: $uID</h2><br>";
+					if($_SESSION['uType'] == 'doctor' || $_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
+					 $result = mysql_query("SELECT * FROM viewsupnurse");
+					 echo "<h2>All Nurse Shift Supervisors &amp; their schedules</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Nurse ID</th>
 										<th>Nurse Name</th>
@@ -71,7 +72,30 @@ else {
 								 <td width=\"150\">$data[7]</td>
 								 <td width=\"150\">$data[8]</td>
 							   </tr>");
+					 echo "</table>";
+					 }
+					 else if($_SESSION['uType'] == 'supnurse') {
+					 $result = mysql_query("SELECT * FROM viewsupnurse WHERE UnitName = '$unit' AND Staff = '$uID'");
+					 echo "<h2>Your Schedule<br/>$uName - ID#: $uID<br/>(working in $unit)</h2><br>";
+					 echo "<table border='2'>
+								 <tr>	<th>Patient Name</th>
+										<th>Service</th>
+										<th>Date</th>
+										<th>Start Time</th>
+										<th>End Time</th>
+										<th>Room Number</th>
+								 </tr>";
+					 while($data = mysql_fetch_array($result)) 
+					 	 echo("<tr>
+								 <td width=\"150\">$data[3]</td>
+								 <td width=\"150\">$data[4]</td>
+								 <td width=\"150\">$data[5]</td>
+								 <td width=\"150\">$data[6]</td>
+								 <td width=\"150\">$data[7]</td>
+								 <td width=\"150\">$data[8]</td>
+							   </tr>");
 					 	echo "</table>";
+					 }
 					 mysql_close($con);
 					?>
 			</strong><br /><br />

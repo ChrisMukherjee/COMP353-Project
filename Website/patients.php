@@ -37,13 +37,14 @@ if (isset($_SESSION['login']))
 <?php include 'sidebar.php'; ?>
 <!-- begin #mainContent -->
 <div id="mainContent" align="center">
-   <p>
+    	<p>
+        	<strong>
 					<?php
 					 include 'login.php';
 
 					 //Patients Table
 					 $result = mysql_query("SELECT * FROM patients_schedule");
-					 echo "<h2>Patients' List</h2><br>";
+					 echo "<h2>All Patients &amp; their schedules</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Patient Name</th>
 										<th>Medicare Card #</th>
@@ -58,8 +59,8 @@ if (isset($_SESSION['login']))
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
 								 <td width=\"150\">$data[0]</td>
-								 <td width=\"100\">$data[1]</td>
-								 <td width=\"100\">$data[3]</td>
+								 <td width=\"150\">$data[1]</td>
+								 <td width=\"150\">$data[3]</td>
 								 <td width=\"100\">$data[4]</td>
 								 <td width=\"100\">$data[5]</td>
 								 <td width=\"100\">$data[6]</td>
@@ -70,7 +71,8 @@ if (isset($_SESSION['login']))
 					 echo "</table>";
 					 mysql_close($con);
 					?>
-</p>
+			</strong><br /><br />
+		</p>
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->

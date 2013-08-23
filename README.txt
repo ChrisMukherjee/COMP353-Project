@@ -44,6 +44,8 @@ Christopher Mukherjee:
 	    - if a user tries to manually access a page that they should not have access to, redirect to contact us page
 	- Created required database views (supported Alexander)
 	- Created PHP code and SQL queries to retrieve and display appropriate views on some of the staff pages (supported Alexander)
+	- Updated website look-and-feel, in HTML/CSS
+	- Finalized website
 	- Wrote README.txt (contributions for myself, Karim, and Cheng)
 
 Alexander Vissa:

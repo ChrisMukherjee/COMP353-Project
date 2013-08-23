@@ -1,7 +1,7 @@
 ﻿<?php session_start();
 
 if (isset($_SESSION['login'])) {
-if ($_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'doctor') {
+if ($_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'doctor' && $_SESSION['uType'] != 'supnurse' && $_SESSION['uType'] != 'nurse' && $_SESSION['uType'] != 'intern' && $_SESSION['uType'] != 'resident') {
 	header("Location: index.php");
 }
 else {
