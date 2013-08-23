@@ -1,34 +1,35 @@
-COMP353 - Project
+COMP353 - Final Project
 ===============
-
-Final Project for COMP 353 (Databases)
 
 Contributions:
 
 Cheng Cheng:
-	- Created preliminary Diagram (without table relations)
+	- Created preliminary Diagram
+	    - only included tables, no relations
 	- Created initial database tables
-	- Found and modified HTML/CSS template
+	- Found HTML/CSS template
 	- Created contact us page
 
 Karim Kaidbey:
 	- Modified Relational Diagram
-	    - added non-identifying & identifying relationships
-	- Finalized Relational Diagram
 	- Wrote assumptions text for Relational Diagram
 	- Created/modified database tables
 	- Created generic database views
-	- Generated database test data
+	   - not included in final project
+	- Generated some database test data
+	   - not included in final project
 
 Christopher Mukherjee:
 	- Modified Relational Diagram
 	    - added non-identifying & identifying relationships
+	- Finalized Relational Diagram
 	- Created/modified database tables
 	- Converted pure HTML template to PHP/HTML blend
 	    - added PHP includes for header, footer, and sidebar
 	    - removed redundant blocks of HTML
+	- Worked on HTML & CSS
 	- Edited header and footer of website
-	- Edited HTML/CSS of contact us page
+	- Modified contact us page
 	- Created initial login page with POST method form
 	    - on unsuccessful login, display red error message using PHP
 	- Added PHP redirect code to enforce proper login
@@ -41,6 +42,7 @@ Christopher Mukherjee:
 	- Added PHP code to limit access to pages
 	    - sidebar will only display links to certain pages, based on the user's staff type
 	    - if a user tries to manually access a page that they should not have access to, redirect to contact us page
+	- Wrote README.txt (contributions for myself, Karim, and Cheng)
 
 Alexander Vissa:
 	- Modified Relational Diagram
@@ -57,3 +59,4 @@ Alexander Vissa:
 	- Created specific database views
 	- Created PHP code and SQL queries to retrieve and display appropriate views on each of the staff pages
 	- Added Welcome text that displays user's name
+	- Wrote README.txt (contributions for myself)
