@@ -151,10 +151,8 @@ if($_SESSION['uType'] == 'doctor') {
 <td class="center spaced">Assistant ID:</td>
 <td class="center spaced"><input name="asstSel" id="asstSel" type="text" size="10"/></td>
 </tr>
-<tr>
-<td class="center spaced"><input type="submit" name="update" value="Update"/></td>
-</tr>
 </table>
+<input type="submit" name="update" value="Update"/>
 </div>
 <div class="centerTable">
 <p class="spaced"><br/>Use the option below to cancel a service:</p>
@@ -163,10 +161,8 @@ if($_SESSION['uType'] == 'doctor') {
 <td class="center spaced">Service Number:</td>
 <td class="center spaced"><input name="cancelSel" id="cancelSel" type="text" size="10"/></td>
 </tr>
-<tr>
-<td class="center spaced"><input type="submit" name="cancel" value="Cancel Operation"/></td>
-</tr>
 </table>
+<input type="submit" name="cancel" value="Cancel Operation"/>
 </div>
 </form>
 <?php
@@ -197,10 +193,8 @@ else if($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
 <td class="center spaced">New room:</td>
 <td class="center spaced"><input name="schedRoom" id="schedRoom" type="text" size="10"/></td>
 </tr>
-<tr>
-<td class="center spaced"><input type="submit" name="schedUpdate" value="Update"/></td>
-</tr>
 </table>
+<input type="submit" name="schedUpdate" value="Update"/>
 </div>
 </form>
 <?php

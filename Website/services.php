@@ -58,7 +58,7 @@ else {
 
 					 //Services Table
 					 $result = mysql_query("SELECT * FROM viewservices");
-					 echo "<h2>All Directors</h2><br>";
+					 echo "<h2>All Services</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Service ID</th>
 										<th>Service Name</th>
@@ -82,21 +82,29 @@ else {
 <div class="centerTable">
 <table style="margin: 0px auto;">
 <tr>
-<td class="center spaced">Service Name: <input name="serviceName" id="serviceName" type="text" size="10"/><br>
-Unit Name: <input name="unitName" id="unitName" type="text" size="10"/><br>
-Cost: <input name="cost" id="cost" type="text" size="10"/><br>
-<input type="submit" name="add" value="Add"/></td>
+<td class="center spaced">Service Name:</td>
+<td class="center spaced"><input name="serviceName" id="serviceName" type="text" size="10"/></td>
+</tr>
+<tr>
+<td class="center spaced">Unit Name:</td>
+<td class="center spaced"><input name="unitName" id="unitName" type="text" size="10"/></td>
+</tr>
+<tr>
+<td class="center spaced">Cost:</td>
+<td class="center spaced"><input name="cost" id="cost" type="text" size="10"/></td>
 </tr>
 </table>
+<input type="submit" name="add" value="Add"/>
 </div>
 <div class="centerTable">
 <p class="spaced"><br/>Use the option below to delete a service:</p>
 <table style="margin: 0px auto;">
 <tr>
-<td class="center spaced">Service ID: <input name="delNum" id="delNum" type="text" size="10"/><br>
-<input type="submit" name="delete" value="Delete"/></td>
+<td class="center spaced">Service ID:</td>
+<td class="center spaced"><input name="delNum" id="delNum" type="text" size="10"/></td>
 </tr>
 </table>
+<input type="submit" name="delete" value="Delete"/>
 </div>
 </form>
 </div>

@@ -72,11 +72,12 @@ else {
 						 $extraPay = ($overtime * (1.25 * $base)) + ($parttime * (1.25 * $base));
 						 $raise = (floor($yearPay / 5)) * 1.50;
 						 $sum = (($base + $raise) * 36) + $extraPay;
+						 $sum = round($sum, 2, PHP_ROUND_HALF_UP);
 						 echo "This period's pay = \$$sum";
 					 }
 					 else if($_SESSION['uType'] == 'supnurse') {
 						$base = 24.50;
-						echo "Base Hourly Salary: \$$base<br/>";
+						echo "Base Hourly Salary: \$$base (+ $3.50)<br/>";
 						$years = mysql_query("SELECT numYears FROM staff WHERE staffID = '$uID'");
 						 while($data1 = mysql_fetch_array($years)) {
 						 	 $yearPay = $data1[0];
@@ -96,6 +97,7 @@ else {
 						 $extraPay = ($overtime * (1.25 * $base)) + ($parttime * (1.25 * $base));
 						 $raise = (floor($yearPay / 5)) * 1.50;
 						 $sum = (($base + $raise + 3.25) * 36) + $extraPay;
+						 $sum = round($sum, 2, PHP_ROUND_HALF_UP);
 						 echo "This period's pay = \$$sum";
 					 }
 					 else if($_SESSION['uType'] == 'admin') {
@@ -121,6 +123,7 @@ else {
 						 else
 					 		 $raise = pow(1.01,$yearPay);					 
 						 $sum = $base * $raise;
+						 $sum = round($sum, 2, PHP_ROUND_HALF_UP);
 						 echo "This period's pay = \$$sum";
 					 }
 					 else if($_SESSION['uType'] == 'director') {
@@ -133,11 +136,13 @@ else {
 						 }
 					 	 $raise = pow(1.015,$yearPay);
 						 $sum = $base * $raise;
+						 $sum = round($sum, 2, PHP_ROUND_HALF_UP);
 						 echo "This period's pay = \$$sum";
 					 }
 					  else if($_SESSION['uType'] == 'intern') {
 					 	 $base = 40000;
 						 $sum = $base;
+						 $sum = round($sum, 2, PHP_ROUND_HALF_UP);
 						 echo "This period's pay = \$$sum";
 					 }
 					  else if($_SESSION['uType'] == 'resident') {
@@ -153,6 +158,7 @@ else {
 						 	 echo "Years of Seniority: $yearPay<br/>";
 						 }
 						 $sum = $base;
+						 $sum = round($sum, 2, PHP_ROUND_HALF_UP);
 						 echo "This period's pay = \$$sum";
 					 }
 					  else if($_SESSION['uType'] == 'doctor') {
@@ -164,6 +170,7 @@ else {
 						 	 echo "Operations: $visitNum<br/>";
 						 }
 						 $sum = $visitNum * 1500 + $operation * 2000;
+						 $sum = round($sum, 2, PHP_ROUND_HALF_UP);
 						 echo "This period's pay = \$$sum";
 					 }
 
