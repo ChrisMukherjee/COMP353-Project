@@ -41,9 +41,9 @@ if (isset($_SESSION['login'])) {
     	<p>
                 If you have questions , please do not hestitate to contact us!<br/><br/>
                 <strong>
-                <p class="spaced">Karim Kaidbey - <a href="mailto:kkaidbey@yahoo.ca">kkaidbey@yahoo.ca</a><br/>
-                Alexander Vissa - <a href="mailto:alexvissa@gmail.com">alexvissa@gmail.com</a><br/>
+                <p class="spaced">Alexander Vissa - <a href="mailto:alexvissa@gmail.com">alexvissa@gmail.com</a><br/>
                 Christopher Mukherjee - <a href="mailto:chris.mukherjee@gmail.com">chris.mukherjee@gmail.com</a><br/>
+                Karim Kaidbey - <a href="mailto:kkaidbey@yahoo.ca">kkaidbey@yahoo.ca</a><br/>
                 Cheng Cheng - <a href="mailto:cheng.cheng@hotmail.ca">cheng.cheng@hotmail.ca</a></p>
 				</strong>
         </p>

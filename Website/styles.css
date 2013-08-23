@@ -52,9 +52,14 @@ a:hover {
 }
 
 #logo {
-	color:#FFF;
 	font-size:48px;
 	text-align:center;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
 }
 
 #author {
@@ -142,7 +147,8 @@ table, tr, td {
 
 .floatRight {
 	float: right;
-	right: 0px;
+	right: 10px;
+	padding-top: 5px;
 	position: absolute;
 	text-align: right;
 }

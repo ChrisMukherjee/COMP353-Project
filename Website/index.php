@@ -1,29 +1,23 @@
 <?php session_start();
 // If the logout variable has been retrieved using the GET method:
-if (isset($_GET['logout'])) 
-{
+if (isset($_GET['logout'])) {
 	// Get logout value
 	$logout = $_GET['logout'];
-	
+
 	// If logout is equal to 99, logout the user by destroying the session
-	if ($logout == 99) 
-	{
+	if ($logout == 99) {
 		 session_destroy();
 		 unset($_SESSION['login']);
 	}
 }
 
-if (!isset($_SESSION['login'])) 
-{
-	if (isset($_POST["username"])) 
-	{
+if (!isset($_SESSION['login'])) {
+	if (isset($_POST["username"])) {
 	 //Include login credentials for the MySQL Server
 	 include 'login.php';
-			
 	 //Gets user name and password from user
 	 $username = $_POST['username'];
 	 $password = $_POST['password'];
-
 	 // To protect MySQL injection
 	 $username = stripslashes($username);
 	 $password = stripslashes($password);
@@ -33,11 +27,10 @@ if (!isset($_SESSION['login']))
 	 $sql="SELECT * FROM $tbl_name WHERE staffID = '$username' and password = '$password'";
 	 $result = mysql_query($sql) or die ('Unable to run query: '.mysql_error());
 	 $count = mysql_num_rows($result);
-	
 	 $_SESSION['uID'] = $username;
+
      // Login successful
 	 if($count == 1) {
-	 
 		 //Counts the number of times "staffID" appears in each table (should only be 1 ID in 1 table)
 		 $adm="SELECT * FROM administrators WHERE staffID='$username'";
 		 $admCount = mysql_num_rows(mysql_query($adm));
@@ -63,108 +56,86 @@ if (!isset($_SESSION['login']))
 		 //Gets Username's Name
 		 $uName= mysql_query("SELECT name FROM staff WHERE staffID='$username'");
 		 $row = mysql_fetch_assoc($uName);
-		 
 		 //Gets Unit
 		 $unit= mysql_query("SELECT unitName FROM staff WHERE staffID='$username'");
 		 $unitRow = mysql_fetch_assoc($unit);
-		 		
+
 		 //Determines which table has the "staffID" and redirects to the appropriate page
-		 if($admCount >= 1)
-		 {
+		 if($admCount >= 1) {
 			 $_SESSION['uType'] = 'admin';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['unit'] = $unitRow['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: dir_admin.php');
 			 exit;
-		 }//End of administrators count
-		
-		 else if($dirCount >= 1)
-		 {
+		 }
+		 else if($dirCount >= 1) {
 			 $_SESSION['uType'] = 'director';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['unit'] = $unitRow['unitName'];
 			 $_SESSION['login']=true;
 		     header('Location: dir_admin.php');
 		 	 exit;
-		 }//End of director count
-		
-		 else if($resCount >= 1)
-		 {
+		 }
+		 else if($resCount >= 1) {
 			 $_SESSION['uType'] = 'resident';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['unit'] = $unitRow['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: res_int.php');
 			 exit;
-		 }//End of residents count
-		
-		 else if($intCount >= 1)
-		 {
+		 }
+		 else if($intCount >= 1) {
 			 $_SESSION['uType'] = 'intern';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['unit'] = $unitRow['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: res_int.php');
 			 exit;
-		 }//End of interns count
-		
-		 else if($docCount >= 1)
-		 {
+		 }
+		 else if($docCount >= 1) {
 			 $_SESSION['uType'] = 'doctor';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['unit'] = $unitRow['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: doctors.php');
 			 exit;
-		 }//End of doctor count
-		
-		 else if($nurCount >= 1)
-		 {
+		 }
+		 else if($nurCount >= 1) {
 			 $_SESSION['uType'] = 'nurse';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['unit'] = $unitRow['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: nurses.php');
 			 exit;
-		 }//End of nurse count
-		
-		 else if($supCount >= 1)
-		 {
+		 }
+		 else if($supCount >= 1) {
 			 $_SESSION['uType'] = 'supnurse';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['unit'] = $unitRow['unitName'];
 			 $_SESSION['login']=true;
 			 header('Location: nurses_sup.php');
 			 exit;
-		 }//End of supervisor count
-		
-		 else
-		 {
+		 }
+		 else {
 			 $_SESSION['uType'] = 'patient';
 			 $_SESSION['uName'] = $row['name'];
 			 $_SESSION['login']=true;
 			 header('Location: patients.php');
 			 exit;
-		 }//End of default
-	 }//End of if($count == 1)
-	 
-	 else if(isset($_POST['LoginAsPatient'])) 
-	 {
+		 }
+	 }
+	 else if(isset($_POST['LoginAsPatient'])) {
 		 $_SESSION['uType'] = 'patient';
 		 $_SESSION['login']=true;
 		 header('Location: patients.php');
-	 }//End of else if(isset($_POST["Login as Patient"])) 
-
-	 else 
-	 {
+	 }
+	 else {
 		// Login unsuccessful
-		//$_SESSION['uType'] = 'patient';
 		$_SESSION['error']=true;
-	 }//End of else
-
+	 }
 	 mysql_close($con);
-}//End of if (isset($_POST["username"]))
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -196,11 +167,11 @@ if (!isset($_SESSION['login']))
 <div class="wrapper">
 <!-- begin #container -->
 <div id="container">
-	<!--Include the Website Header-->
-	<?php include 'header.php'; ?>
+<!--Include the Website Header-->
+<?php include 'header.php'; ?>
 <!-- begin #mainContent -->
 <h2><br/>Please login below to access the Starline Medical Center Database.<br/><br/></h2>
-<form method="post" onsubmit="window.location.reload()" action="?">
+<form method="post" onsubmit="window.location.reload()" action="">
 <div class="loginLeft">
 <table>
 <tr>
@@ -216,14 +187,17 @@ if (!isset($_SESSION['login']))
 </tr>
 </table>
 </div>
-<div class="loginRight"><p>OR</p><input type="submit" value="Login as Patient" name="LoginAsPatient" style="width: 100px"></div>
+<div class="loginRight">
+<p>OR</p><input type="submit" value="Login as Patient" name="LoginAsPatient" style="width: 100px">
+</div>
+</form>
 <?php
 if (isset($_SESSION['error'])) {
 	echo '<div class="absolute"><p class="error"><br/><br/><br/><br/><br/>Error: Invalid username or password</p></div>';
-	UNSET($_SESSION['error']);
+	unset($_SESSION['error']);
 }
 ?>
-<p><br><br><br><br><br><br><br>Admin = 1<br>Director = 5<br>Intern = 4<br>Resident = 9<br>Doctor = 18<br>Nurse = 17<br>Sup Nurse = 26<br>
+<p><br><br><br><br><br><br><br>Admin = 1<br>Director = 5<br>Intern = 4<br>Resident = 9<br>Doctor = 18<br>Nurse = 17<br>Sup Nurse = 26<br></p>
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->
