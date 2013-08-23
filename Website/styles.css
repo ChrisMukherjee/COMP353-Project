@@ -102,6 +102,14 @@ a:hover {
 	display: block;
 }
 
+.centerTable {
+	margin: 0px auto;
+}
+
+.center {
+	text-align:center;
+}
+
 .error {
 	font-weight: bold;
 	color: red;

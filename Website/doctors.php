@@ -44,15 +44,15 @@ else {
 					include 'login.php';
 
 					  if(isset($_POST['update'])) { 
-						 $updateOP = $_POST['operSel'];
+						 $updateop = $_POST['operSel'];
 						 $updateAsst = $_POST['asstSel'];
-						 $update = mysql_query("UPDATE scheduledservices SET assistantID = '$updateAsst'  WHERE serviceNum = '$updateOP'") or die(mysql_error());
-						 unset($_SESSION['update']);
+						 $update = mysql_query("UPDATE scheduledservices SET assistantID = '$updateAsst'  WHERE serviceNum = '$updateop'") or die(mysql_error());
+						 unset($_POST['update']);
 					 } 
 					 else if(isset($_POST['cancel'])) {
-						 $cancelop = $_POST['operSel'];
+						 $cancelop = $_POST['cancelSel'];
 						 $cancel = mysql_query("DELETE FROM scheduledservices WHERE serviceNum = '$cancelop'") or die(mysql_error());
-						 unset($_SESSION['cancel']);
+						 unset($_POST['cancel']);
 					 }
 					  
 					 //Doctor Table
@@ -61,8 +61,8 @@ else {
 						 echo "<h2>Your Schedule<br>$uName - ID#: $uID</h2><br>";
 						 echo "<table border='2'>
 									 <tr>	<th>Service Number</th>
-											<th>Patient's Name</th>
 											<th>Service</th>
+											<th>Patient's Name</th>
 											<th>Assistant ID</th>
 											<th>Date</th>
 											<th>Start Time</th>
@@ -89,8 +89,8 @@ else {
 									 <tr>	<th>Staff ID</th>
 											<th>Name</th>
 											<th>Service Number</th>
-											<th>Patient's Name</th>
 											<th>Service</th>
+											<th>Patient's Name</th>
 											<th>Assistant ID</th>
 											<th>Date</th>
 											<th>Start Time</th>
@@ -114,12 +114,28 @@ else {
 					 }
 					 mysql_close($con);
 					?>
-			 <br><div align="right">
-<form name="form" action="" method="post">
-Service Number: <input name="operSel" id="operSel" type="text" size="10"/><br>
+			 <br><div class="center">
+<br><br><br><br><br><hr><br>
+<form name="form" action="?" method="post">
+<p class="spaced">Use the option below to select an intern or resident to work with you:</p>
+<div class="centerTable">
+<table style="margin: 0px auto;">
+<tr>
+<td class="center spaced">Service Number: <input name="operSel" id="operSel" type="text" size="10"/><br>
 Assistant ID: <input name="asstSel" id="asstSel" type="text" size="10"/><br>
-<input type="submit" name="update" value="Update"/>
-<input type="submit" name="cancel" value="Cancel Operation"/>
+<input type="submit" name="update" value="Update"/></td>
+</tr>
+</table>
+</div>
+<div class="centerTable">
+<p class="spaced"><br/>Use the option below to cancel a service:</p>
+<table style="margin: 0px auto;">
+<tr>
+<td class="center spaced">Service Number: <input name="cancelSel" id="cancelSel" type="text" size="10"/><br>
+<input type="submit" name="cancel" value="Cancel Operation"/></td>
+</tr>
+</table>
+</div>
 </form>
 </div>
 		</strong><br/><br/>

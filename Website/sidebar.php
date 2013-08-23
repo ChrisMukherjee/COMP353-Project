@@ -11,6 +11,7 @@
 				echo '<li><a href="nurses.php">Nurses</a></li>';
 				echo '<li><a href="technicians.php">Technicians</a></li>';
 				echo '<li><a href="patients.php">Patients</a></li>';
+				echo '<li><a href="services.php">Services</a></li>';
 				echo '<li><a href="pay.php">Your Pay this Period</a></li>';
 				echo '<li><a href="contact.php">Contact Us</a></li>';
 			}

@@ -6,7 +6,6 @@ if ($_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director') {
 }
 else {
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +34,12 @@ else {
 <body>
 <!-- begin #container -->
 <div id="container">
-	<!--Include the Website Header-->
-	<?php include 'header.php'; ?>
-	<!--Include the Website Sidebar-->
-	<?php include 'sidebar.php'; ?>
-    <!-- begin #mainContent -->
-    <div id="mainContent" align="center">
+<!--Include the Website Header-->
+<?php include 'header.php'; ?>
+<!--Include the Website Sidebar-->
+<?php include 'sidebar.php'; ?>
+<!-- begin #mainContent -->
+<div id="mainContent" align="center">
     	<p>
         	<strong>
 					<?php
