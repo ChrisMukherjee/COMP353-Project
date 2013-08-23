@@ -1,14 +1,10 @@
 <?php session_start();
 
-// ** THIS PAGE IS DONE! **
-
 if (isset($_SESSION['login'])) {
-
 if ($_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director') {
 	header("Location: index.php");
 }
-else
-{
+else {
 ?>
 
 <!DOCTYPE html>
@@ -48,20 +44,17 @@ else
     	<p>
         	<strong>
 					<?php
-
 					 include 'login.php';
 
-					 //Nurse Table
+					 //Technician Table
 					 $result = mysql_query("SELECT * FROM alltechnicians");
-					 
-					 echo "<h2>Patients List<br> $uName - ID#: $uID</h2><br>";
+					 echo "<h2>All Technicians</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Staff ID</th>
 										<th>Name</th>
 										<th>Specialization</th>
 										<th>Overtime Hours</th>
 								 </tr>";
-
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
 								 <td width=\"90\">$data[0]</td>
@@ -69,9 +62,7 @@ else
 								 <td width=\"150\">$data[2]</td>
 								 <td width=\"120\">$data[3]</td>
 							   </tr>");
-					 					  
 					 echo "</table>";
-				 
 					 mysql_close($con);
 					?>
 			</strong><br /><br />
@@ -80,7 +71,6 @@ else
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->
-<div class="push"></div>
 </div>
 <!--Include the Website Footer-->
 <?php include 'footer.php'; ?>

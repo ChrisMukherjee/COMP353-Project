@@ -127,11 +127,8 @@ table, tr, td {
 	z-index: 999;
 }
 
-.absolute {
-	float: left;
-	left: 200px;
-	position: absolute;
-	z-index: -1;
+th {
+	text-align: center;
 }
 
 .spaced {

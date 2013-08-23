@@ -1,11 +1,9 @@
-	<!-- begin #header -->
-    <div id="header">
-    	<div id="logo">
-        	Starline Medical Center
-        </div>
-        <div id="author">
-        	
-        </div>
+<!-- begin #header -->
+<div id="header">
+	<div id="logo">
+	 Starline Medical Center
+	</div>
+	<div id="author"></div>
 <?php
 $currpage = $_SERVER['PHP_SELF'];
 if (strpos($currpage, 'index.php') == FALSE) {
@@ -18,4 +16,4 @@ if (strpos($currpage, 'index.php') == FALSE) {
 }
 ?>
 </div>
-    <!-- end #header -->
+<!-- end #header -->

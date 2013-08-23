@@ -1,14 +1,10 @@
 ﻿<?php session_start();
 
-// ** THIS PAGE IS DONE! **
-
 if (isset($_SESSION['login'])) {
-
 if ($_SESSION['uType'] != 'nurse' && $_SESSION['uType'] != 'supnurse' && $_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'doctor') {
 	header("Location: index.php");
 }
-else
-{
+else {
 ?>
 
 <!DOCTYPE html>
@@ -48,14 +44,41 @@ else
     	<p>
         	<strong>
 					<?php
-
 					 include 'login.php';
 
 					 //Nurse Table
-					 $result = mysql_query("SELECT * FROM nurse_patients  WHERE staff = '$uID'");
-					 
-					 echo "<h2>Patients List<br> $uName - ID#: $uID</h2><br>";
-					 echo "<table border='2'>
+					if($_SESSION['uType'] == 'doctor' || $_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director' || $_SESSION['uType'] == 'supnurse') {
+						 $result = mysql_query("SELECT * FROM nurse_patients");
+						 echo "<h2>All Nurses</h2><br>";
+						 echo "<table border='2'>
+								 <tr>	<th>Staff ID</th>
+										<th>Name</th>
+										<th>Unit</th>
+										<th>Patient Name</th>
+										<th>Service</th>
+										<th>Date</th>
+										<th>Start Time</th>
+										<th>End Time</th>
+										<th>Room Number</th>
+								 </tr>";
+					 while($data = mysql_fetch_array($result)) 
+					 	 echo("<tr>
+						 		 <td width=\"150\">$data[0]</td>
+						 		 <td width=\"150\">$data[1]</td>
+						 		 <td width=\"150\">$data[2]</td>
+								 <td width=\"150\">$data[3]</td>
+								 <td width=\"150\">$data[4]</td>
+								 <td width=\"150\">$data[5]</td>
+								 <td width=\"150\">$data[6]</td>
+								 <td width=\"150\">$data[7]</td>
+								 <td width=\"150\">$data[8]</td>
+							   </tr>");
+						 echo "</table>";
+					 }
+					 else if($_SESSION['uType'] == 'nurse') {
+						 $result2 = mysql_query("SELECT * FROM nurse_patients WHERE staff = '$uID'");
+						 echo "<h2>Your Patients List<br>$uName - ID#: $uID</h2><br>";
+						 echo "<table border='2'>
 								 <tr>	<th>Patient Name</th>
 										<th>Service</th>
 										<th>Date</th>
@@ -63,7 +86,6 @@ else
 										<th>End Time</th>
 										<th>Room Number</th>
 								 </tr>";
-
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
 								 <td width=\"150\">$data[3]</td>
@@ -73,9 +95,8 @@ else
 								 <td width=\"150\">$data[7]</td>
 								 <td width=\"150\">$data[8]</td>
 							   </tr>");
-					 					  
-					 echo "</table>";
-				 
+						 echo "</table>";
+					  }
 					 mysql_close($con);
 					?>
 			</strong><br /><br />

@@ -1,12 +1,10 @@
 ﻿<?php session_start();
 
 if (isset($_SESSION['login'])) {
-	
 if ($_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director') {
 	header("Location: index.php");
 }
-else
-{
+else {
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,22 +34,20 @@ else
 <body>
 <!-- begin #container -->
 <div id="container">
-	<!--Include the Website Header-->
-	<?php include 'header.php'; ?>
-	<!--Include the Website Sidebar-->
-	<?php include 'sidebar.php'; ?>
+<!--Include the Website Header-->
+<?php include 'header.php'; ?>
+<!--Include the Website Sidebar-->
+<?php include 'sidebar.php'; ?>
 <!-- begin #mainContent -->
 	<div id="mainContent" align="center">
     	<p>
         	<strong>
 					<?php
-
 					 include 'login.php';
-
+					 
 					 //Admin/Directors Table
 					 $result = mysql_query("SELECT * FROM viewdirectors");
-
-					 echo "<h2>Directors Table</h2><br>";
+					 echo "<h2>All Directors</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Staff ID</th>
 										<th>Name</th>
@@ -59,7 +55,6 @@ else
 										<th>Salary</th>
 										<th>Years</th>
 								 </tr>";
-
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
 								 <td width=\"150\">$data[0]</td>
@@ -67,15 +62,13 @@ else
 								 <td width=\"150\">$data[2]</td>
 								 <td width=\"150\">$data[3]</td>
 								 <td width=\"150\">$data[4]</td>
-							   </tr>");
-					 					  
+							   </tr>");		  
 					 echo "</table>";
 					 
 					 //Administrators Table
 					 $result2 = mysql_query("SELECT * FROM viewadmin");
-					 
 					 echo "<br><br><br><br><br><hr><br>";
-					 echo "<h2>Administrators Table</h2><br>";
+					 echo "<h2>All Administrators</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Staff ID</th>
 										<th>Name</th>
@@ -83,7 +76,6 @@ else
 										<th>Salary</th>
 										<th>Years</th>
 								 </tr>";
-
 					 while($data = mysql_fetch_array($result2)) 
 					 	 echo("<tr>
 								 <td width=\"150\">$data[0]</td>
@@ -92,33 +84,7 @@ else
 								 <td width=\"150\">$data[3]</td>
 								 <td width=\"150\">$data[4]</td>
 							   </tr>");
-					 					  
 					 echo "</table>";
-					 
-					 //All Staff Members Table
-					 $result3 = mysql_query("SELECT * FROM allstaff");
-					 
-					 echo "<br><br><br><br><br><hr><br>";
-					 echo "<h2>All Staff Members  Table</h2><br>";
-					 echo "<table border='2'>
-								 <tr>	<th>Staff ID</th>
-										<th>Name</th>
-										<th>Unit Name</th>
-										<th>Salary</th>
-										<th>Years</th>
-								 </tr>";
-
-					 while($data = mysql_fetch_array($result3)) 
-					 	 echo("<tr>
-								 <td width=\"150\">$data[0]</td>
-								 <td width=\"150\">$data[1]</td>
-								 <td width=\"150\">$data[2]</td>
-								 <td width=\"150\">$data[3]</td>
-								 <td width=\"150\">$data[4]</td>
-							   </tr>");
-					 					  
-					 echo "</table>";
-					 
 					 mysql_close($con);
 					?>
 			</strong><br /><br />
@@ -126,7 +92,6 @@ else
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->
-<div class="push"></div>
 </div>
 <!--Include the Website Footer-->
 <?php include 'footer.php'; ?>

@@ -1,10 +1,8 @@
 <?php
-
 $username = "";
 $password = "";
 $db_uname = "root";
 $db_pw = "root";
-
 $host = "localhost";
 $db_name = "hospital";
 $tbl_name = "staff";

@@ -82,12 +82,12 @@ else {
 								   </tr>");
 						 echo "</table>";
 					 }
-					 else if($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
+					 elseif($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
 						 $result2 = mysql_query("SELECT * FROM doctor_patient");
-						 echo "<h2>All Doctors</h2><br>";
+						 echo "<h2>Doctors/Patients List<br>$uName - ID#: $uID</h2><br>";
 						 echo "<table border='2'>
-									 <tr>	<th>Staff ID</th>
-											<th>Name</th>
+									 <tr>	<th>Doctor ID</th>
+											<th>Doctor Name</th>
 											<th>Service Number</th>
 											<th>Patient's Name</th>
 											<th>Service</th>

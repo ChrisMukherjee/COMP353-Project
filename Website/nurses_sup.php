@@ -1,15 +1,10 @@
 ﻿<?php session_start();
 
-// ** NOT DONE - NEED TO WORK ON DEFINING THE PATIENTS LIST AND SERVICES LIST - LIST OF NURSES COMES UP THOUGH **
-
 if (isset($_SESSION['login'])) {
-include 'login.php';
-
 if ($_SESSION['uType'] != 'supnurse' && $_SESSION['uType'] != 'admin' && $_SESSION['uType'] != 'director' && $_SESSION['uType'] != 'doctor') {
 	header("Location: index.php");
 }
-else
-{
+else {
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,12 +43,10 @@ else
     	<p>
         	<strong>
 					<?php
-
 					 include 'login.php';
 						
 					 //Nurse Supervisor Table
 					 $result = mysql_query("SELECT * FROM nurse_patients WHERE UnitName = '$unit'");
-					 
 					 echo "<h2>Patients List<br> $uName - ID#: $uID</h2><br>";
 					 echo "<table border='2'>
 								 <tr>	<th>Nurse ID</th>
@@ -66,7 +59,6 @@ else
 										<th>End Time</th>
 										<th>Room Number</th>
 								 </tr>";
-
 					 while($data = mysql_fetch_array($result)) 
 					 	 echo("<tr>
 								 <td width=\"150\">$data[0]</td>
@@ -79,9 +71,7 @@ else
 								 <td width=\"150\">$data[7]</td>
 								 <td width=\"150\">$data[8]</td>
 							   </tr>");
-					 					  
-					 echo "</table>";
-				 
+					 	echo "</table>";
 					 mysql_close($con);
 					?>
 			</strong><br /><br />
@@ -89,7 +79,6 @@ else
 <!-- end #mainContent -->
 </div>
 <!-- end #container -->
-<div class="push"></div>
 </div>
 <!--Include the Website Footer-->
 <?php include 'footer.php'; ?>

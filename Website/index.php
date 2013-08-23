@@ -193,7 +193,7 @@ if (!isset($_SESSION['login'])) {
 </form>
 <?php
 if (isset($_SESSION['error'])) {
-	echo '<div class="absolute"><p class="error"><br/><br/><br/><br/><br/>Error: Invalid username or password</p></div>';
+	echo '<div class=loginLeft"><p class="error"><br/><br/><br/><br/><br/>Error: Invalid username or password</p></div>';
 	unset($_SESSION['error']);
 }
 ?>
