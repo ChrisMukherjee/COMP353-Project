@@ -18,6 +18,7 @@ Karim Kaidbey:
 	   - not included in final project
 	- Generated some database test data
 	   - not included in final project
+	- Calculated staff salary equations
 
 Christopher Mukherjee:
 	- Modified Relational Diagram
@@ -46,6 +47,8 @@ Christopher Mukherjee:
 	- Created PHP code and SQL queries to retrieve and display appropriate views on some of the staff pages (supported Alexander)
 	- Updated website look-and-feel, in HTML/CSS
 	- Created code to allow Administrators to update and delete their services as specified
+	- Added payment calculation page
+	   - shows appropriate pay for each staff type
 	- Finalized website
 	- Wrote README.txt (contributions for myself, Karim, and Cheng)
 

@@ -43,46 +43,131 @@ else {
 					<?php
 					 include 'login.php';
 
-					 //Pay Table
+					 //Pay
+					 if($_SESSION['uType'] == 'doctor')
+						 echo "<h2>Your pay for this period (one week)<br>$uName - ID#: $uID</h2><br>";
+					 else
+					 	 echo "<h2>Your Pay for this period (two weeks)<br>$uName - ID#: $uID</h2><br>";
+
+					echo '<br><hr><br><br><p class="spaced">';
 					if($_SESSION['uType'] == 'nurse') {
-						$result = mysql_query("SELECT * FROM viewpay WHERE Staff = '$uID'");
-						 echo "<h2>Your Patients List<br>$uName - ID#: $uID</h2><br>";
-						 while($data = mysql_fetch_array($result))
-							 echo 'Years of Seniority: $data[1]<br/>';
-						 	$sum = mysql_query("SELECT sum($data[3]) FROM viewpay WHERE Staff = '$uID'");
-							echo 'Hours worked this week: $sum[0]';
-						 echo "</table>";
+						$base = 24.50;
+						echo "Base Hourly Salary: \$$base<br/>";
+						$years = mysql_query("SELECT numYears FROM staff WHERE staffID = '$uID'");
+						 while($data1 = mysql_fetch_array($years)) {
+						 	 $yearPay = $data1[0];
+							 echo "Years of Seniority: $yearPay<br/>";
+						 }
+						$extra = mysql_query("SELECT overtimeHours, parttimeHours FROM nurses WHERE staffID = '$uID'");
+						 while($data2 = mysql_fetch_array($extra)) {
+							 if ($data2[0] == null)
+							 	$data2[0] = 0;
+							 if ($data2[1] == null)
+							 	$data2[1] = 0;
+							 $overtime = $data2[0];
+							 $parttime = $data2[1];
+							 echo "Overtime Hours: $overtime<br/>";
+							 echo "Part Time Hours: $parttime<br/>";
+						 }
+						 $extraPay = ($overtime * (1.25 * $base)) + ($parttime * (1.25 * $base));
+						 $raise = (floor($yearPay / 5)) * 1.50;
+						 $sum = (($base + $raise) * 36) + $extraPay;
+						 echo "This period's pay = \$$sum";
 					 }
-					 elseif($_SESSION['uType'] == 'admin' || $_SESSION['uType'] == 'director') {
-						 $result2 = mysql_query("SELECT * FROM doctor_patient");
-						 echo "<h2>Doctors/Patients List<br>$uName - ID#: $uID</h2><br>";
-						 echo "<table border='2'>
-									 <tr>	<th>Doctor ID</th>
-											<th>Doctor Name</th>
-											<th>Service Number</th>
-											<th>Patient's Name</th>
-											<th>Service</th>
-											<th>Assistant ID</th>
-											<th>Date</th>
-											<th>Start Time</th>
-											<th>End Time</th>
-											<th>Room Number</th>
-									 </tr>";
-						 while($data = mysql_fetch_array($result2))
-							 echo("<tr>
-									 <td width=\"100\">$data[0]</td>
-									 <td width=\"150\">$data[1]</td>
-									 <td width=\"150\">$data[2]</td>
-									 <td width=\"150\">$data[3]</td>
-									 <td width=\"150\">$data[4]</td>
-									 <td width=\"150\">$data[5]</td>
-									 <td width=\"150\">$data[6]</td>
-									 <td width=\"150\">$data[7]</td>
-									 <td width=\"150\">$data[8]</td>
-									 <td width=\"150\">$data[9]</td>
-								   </tr>");
-						 echo "</table>";
+					 else if($_SESSION['uType'] == 'supnurse') {
+						$base = 24.50;
+						echo "Base Hourly Salary: \$$base<br/>";
+						$years = mysql_query("SELECT numYears FROM staff WHERE staffID = '$uID'");
+						 while($data1 = mysql_fetch_array($years)) {
+						 	 $yearPay = $data1[0];
+						 	 echo "Years of Seniority: $yearPay<br/>";
+						 }
+						$extra = mysql_query("SELECT overtimeHours, parttimeHours FROM nurses WHERE staffID = '$uID'");
+						 while($data2 = mysql_fetch_array($extra)) {
+							 if ($data2[0] == null)
+							 	$data2[0] = 0;
+							 if ($data2[1] == null)
+							 	$data2[1] = 0;
+							 $overtime = $data2[0];
+							 $parttime = $data2[1];
+							 echo "Overtime Hours: $overtime<br/>";
+							 echo "Part Time Hours: $parttime<br/>";
+						 }
+						 $extraPay = ($overtime * (1.25 * $base)) + ($parttime * (1.25 * $base));
+						 $raise = (floor($yearPay / 5)) * 1.50;
+						 $sum = (($base + $raise + 3.25) * 36) + $extraPay;
+						 echo "This period's pay = \$$sum";
 					 }
+					 else if($_SESSION['uType'] == 'admin') {
+						 $seniors = mysql_query("SELECT seniorAdminID1, seniorAdminID2 FROM facility");
+						 while($data1 = mysql_fetch_array($seniors)) {
+						 	if($data1[0] == $uID || $data1[1] == $uID) {
+						 	 $base = 98000;
+							 $senior = true;
+							}
+							else {
+						 	 $base = 78500;
+							 $senior = false;
+							}
+					 	 }
+						 echo "Base Hourly Salary: \$$base<br/>";
+						$years = mysql_query("SELECT numYears FROM staff WHERE staffID = '$uID'");
+						 while($data2 = mysql_fetch_array($years)) {
+						 	 $yearPay = $data2[0];
+						 	 echo "Years of Seniority: $yearPay<br/>";
+						 }
+						 if($senior == true)
+					 		 $raise = pow(1.0115,$yearPay);
+						 else
+					 		 $raise = pow(1.01,$yearPay);					 
+						 $sum = $base * $raise;
+						 echo "This period's pay = \$$sum";
+					 }
+					 else if($_SESSION['uType'] == 'director') {
+					 	 $base = 125000;
+						 echo "Base Hourly Salary: \$$base<br/>";
+						$years = mysql_query("SELECT numYears FROM staff WHERE staffID = '$uID'");
+						 while($data2 = mysql_fetch_array($years)) {
+						 	 $yearPay = $data2[0];
+						 	 echo "Years of Seniority: $yearPay<br/>";
+						 }
+					 	 $raise = pow(1.015,$yearPay);
+						 $sum = $base * $raise;
+						 echo "This period's pay = \$$sum";
+					 }
+					  else if($_SESSION['uType'] == 'intern') {
+					 	 $base = 40000;
+						 $sum = $base;
+						 echo "This period's pay = \$$sum";
+					 }
+					  else if($_SESSION['uType'] == 'resident') {
+						$years = mysql_query("SELECT numYears FROM staff WHERE staffID = '$uID'");
+						 while($data1 = mysql_fetch_array($years)) {
+						 	 $yearPay = $data1[0];
+							 if ($yearPay == 1)
+							 	$base = 42000;
+							 if ($yearPay == 2)
+							 	$base = 44000;
+							 if ($yearPay == 3)
+							 	$base = 46000;
+						 	 echo "Years of Seniority: $yearPay<br/>";
+						 }
+						 $sum = $base;
+						 echo "This period's pay = \$$sum";
+					 }
+					  else if($_SESSION['uType'] == 'doctor') {
+						$pays = mysql_query("SELECT visits, operations FROM doctor WHERE staffID = '$uID'");
+						while($data1 = mysql_fetch_array($pays)) {
+						 	 $visitNum = $data1[0];
+							 $operationNum = $data1[1];
+						 	 echo "Visits: $visitNum<br/>";
+						 	 echo "Operations: $visitNum<br/>";
+						 }
+						 $sum = $visitNum * 1500 + $operation * 2000;
+						 echo "This period's pay = \$$sum";
+					 }
+
+					 echo '</p>';
 					 mysql_close($con);
 					?>
 		</strong><br/><br/>
