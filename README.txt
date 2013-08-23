@@ -67,7 +67,14 @@ Alexander Vissa:
 	    - check form values against database values
 	    - on successful login, redirect staff member to appropriate page using PHP
 	- Added Welcome text that displays user's name
+	- Added function to retrieve staff member's unit
 	- Created required database views
 	- Created PHP code and SQL queries to retrieve and display appropriate views on each of the staff pages
+	- Created Nurses page to display their schedule
+	- Created Interns/Residents page to their schedule
+	- Created Nurse Supervisor page to display schedules
+	- Optimized Nurse Supervisor page to display schedules of Nurses only in their unit
 	- Created code to allow Doctors to update and delete their services as specified
+	- Modified Patients page
+	- Generated several 100 entries of test data; used to test the final database system
 	- Wrote README.txt (contributions for myself)
