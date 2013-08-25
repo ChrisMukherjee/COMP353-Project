@@ -1,0 +1,12 @@
+Team G
+Group Members
+
+Name			Student ID
+---------------------	----------
+Alexander Vissa		6335241
+Christopher Mukherjee	6291929
+Karim Kaidbey		6354726
+Cheng Cheng		9718648
+
+
+(See README.txt for a list of individual contributions)
